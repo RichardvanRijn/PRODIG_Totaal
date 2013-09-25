@@ -1,0 +1,446 @@
+Quartus II 32-bit
+Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
+14
+1378
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+Hometrainer
+# storage
+db|Hometrainer.(0).cnf
+db|Hometrainer.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+hometrainer.vhd
+ec6b3cbd1ddb7b74a8aa41fd86a14521
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+ADC
+# storage
+db|Hometrainer.(1).cnf
+db|Hometrainer.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+adc.vhd
+f69a6648e09778a1dc6e911152282cf5
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(db)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(data)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+ADC:ADClezer
+}
+# macro_sequence
+
+# end
+# entity
+Hbrug
+# storage
+db|Hometrainer.(2).cnf
+db|Hometrainer.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+hbrug.vhd
+60fe8f285b9a1a1318fc0ed3c7660c4
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(stand)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(adc_data)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+Hbrug:Motorsturing
+}
+# macro_sequence
+
+# end
+# entity
+FSMnep
+# storage
+db|Hometrainer.(3).cnf
+db|Hometrainer.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+fsmnep.vhd
+3d2ea7adf756682647c7a904d75d0dd
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(sw1714)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(stand)
+3 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+FSMnep:FSM
+}
+# macro_sequence
+
+# end
+# entity
+seg_decoder_vector
+# storage
+db|Hometrainer.(4).cnf
+db|Hometrainer.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+seg_decoder_vector.vhd
+4b7341563f6f71b324ef67f1e3bb42
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(data)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(leds)
+6 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+seg_decoder_vector:Display0
+seg_decoder_vector:Display1
+seg_decoder_vector:Display3
+seg_decoder_vector:Display4
+}
+# macro_sequence
+
+# end
+# entity
+prescaler
+# storage
+db|Hometrainer.(5).cnf
+db|Hometrainer.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+prescaler.vhd
+b2557ebc29c93e57861be63fce9347d
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+freqin
+50000000
+PARAMETER_SIGNED_DEC
+DEF
+freqout
+10000
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+prescaler:ClockScaler
+}
+# macro_sequence
+
+# end
+# entity
+Timer
+# storage
+db|Hometrainer.(6).cnf
+db|Hometrainer.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+timer.vhd
+2bb8e6d76978f92b1ee1d05de1157b9
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(tempcount)
+14 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+Timer:TotalTimer
+}
+# macro_sequence
+
+# end
+# entity
+HallCounter
+# storage
+db|Hometrainer.(7).cnf
+db|Hometrainer.(7).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+hallcounter.vhd
+21b169911bb13965619c7b5b06da265
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+HallCounter:HallSensCount
+}
+# macro_sequence
+
+# end
+# entity
+SequentialDevider
+# storage
+db|Hometrainer.(8).cnf
+db|Hometrainer.(8).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+sequentialdevider.vhd
+31b429e24ce19660299ee4da65fb3
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(tempcount)
+14 downto 0
+PARAMETER_STRING
+USR
+ constraint(currentrpm)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+SequentialDevider:Devider
+}
+# macro_sequence
+
+# end
+# entity
+seg_decoder
+# storage
+db|Hometrainer.(9).cnf
+db|Hometrainer.(9).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+seg_decoder.vhd
+592b9dd6f85be6fa2372741272aacc
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(data)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(leds)
+6 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+seg_decoder:Digit0
+seg_decoder:Digit1
+seg_decoder:Digit2
+}
+# macro_sequence
+
+# end
+# entity
+double_dabble_8bit
+# storage
+db|Hometrainer.(10).cnf
+db|Hometrainer.(10).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+double.vhd
+48f92162553e16d4c89d567d59ecf32
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(bin)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(bcd)
+9 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+double_dabble_8bit:converter
+}
+# macro_sequence
+
+# end
+# complete
+
