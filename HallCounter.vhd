@@ -5,13 +5,15 @@ use ieee.numeric_std.all;
 
 entity HallCounter is
 	port(	Clk_10k 	 	: in std_logic;
-			Hallsensor  : in std_logic;
 			reset			: in std_logic;
-			refresh 		: out std_logic -- Signals sequential devider to refresh output to new value
+			Hallsensor  : in std_logic;
+			refresh 		: out std_logic; -- Signals sequential devider to refresh output to new value
+			data 			: out unsigned(31 downto 0)
 			);
 end entity HallCounter;
 
 architecture hardware of HallCounter is
+signal TotalCount : unsigned(31 downto 0);
 signal DelayCount : integer range 0 to 3;
 signal CalcTick : std_logic;
 
@@ -25,6 +27,7 @@ begin
 
 		if reset = '1' then
 			state <= Rest;
+			TotalCount <= "00000000000000000000000000000000";
 			DelayCount <= 0;
 			CalcTick <= '0';
 		elsif rising_edge(Clk_10k) then
@@ -52,6 +55,7 @@ begin
 									state <= WaitLow;
 								else
 									state <= WaitHigh;
+									TotalCount <= TotalCount + 1;
 									CalcTick <= '1';
 								end if;
 				when WaitHigh =>
@@ -77,6 +81,7 @@ begin
 		end if;
 	end process;
 	
+	data <=	TotalCount;
 	refresh <= CalcTick;
 	
 end architecture;

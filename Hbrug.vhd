@@ -6,7 +6,7 @@ use ieee.numeric_std.all;
 entity Hbrug is
 port(
 		Clk_10K : in std_logic;
-		Stand	: in std_logic_vector(3 downto 0):= "0000"; -- stand aangegeven door de FSM
+		Stand	: in std_logic_vector(7 downto 0):= "00000000"; -- stand aangegeven door de FSM
 		ADC_data : in std_logic_vector (7 downto 0):="00000000"; -- stand van de servomotor
 		brugplus : out std_logic;
 		brugmin : out std_logic
@@ -16,8 +16,7 @@ end entity Hbrug;
 architecture hardware of Hbrug is
 signal Buf : std_logic_vector(7 downto 0);
 Begin
-buf (7 downto 4) <= Stand; -- stand aangegeven door de FSM omzetten in een 8 bit
-buf (3 downto 0) <= "1000";--Stand;
+buf (7 downto 0) <= Stand;
 process (Clk_10K, Stand)
 begin
 

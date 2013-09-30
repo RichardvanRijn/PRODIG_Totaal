@@ -1,5 +1,5 @@
 Assembler report for Hometrainer
-Wed Sep 25 00:52:40 2013
+Mon Sep 30 09:33:58 2013
 Quartus II 32-bit Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
 
 
@@ -10,8 +10,8 @@ Quartus II 32-bit Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Editio
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/School/Github/PRODIGADCRMP/Hometrainer.sof
-  6. Assembler Device Options: C:/School/Github/PRODIGADCRMP/Hometrainer.pof
+  5. Assembler Device Options: C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Hometrainer.sof
+  6. Assembler Device Options: C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Hometrainer.pof
   7. Assembler Messages
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Wed Sep 25 00:52:40 2013 ;
+; Assembler Status      ; Successful - Mon Sep 30 09:33:58 2013 ;
 ; Revision Name         ; Hometrainer                           ;
 ; Top-level Entity Name ; HomeTrainer                           ;
 ; Family                ; Cyclone II                            ;
@@ -78,37 +78,37 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+----------+---------------+
 
 
-+-----------------------------------------------+
-; Assembler Generated Files                     ;
-+-----------------------------------------------+
-; File Name                                     ;
-+-----------------------------------------------+
-; C:/School/Github/PRODIGADCRMP/Hometrainer.sof ;
-; C:/School/Github/PRODIGADCRMP/Hometrainer.pof ;
-+-----------------------------------------------+
++-----------------------------------------------------------------+
+; Assembler Generated Files                                       ;
++-----------------------------------------------------------------+
+; File Name                                                       ;
++-----------------------------------------------------------------+
+; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Hometrainer.sof ;
+; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Hometrainer.pof ;
++-----------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------+
-; Assembler Device Options: C:/School/Github/PRODIGADCRMP/Hometrainer.sof ;
-+----------------+--------------------------------------------------------+
-; Option         ; Setting                                                ;
-+----------------+--------------------------------------------------------+
-; Device         ; EP2C70F896C6                                           ;
-; JTAG usercode  ; 0xFFFFFFFF                                             ;
-; Checksum       ; 0x0063B182                                             ;
-+----------------+--------------------------------------------------------+
++-------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Hometrainer.sof ;
++----------------+--------------------------------------------------------------------------+
+; Option         ; Setting                                                                  ;
++----------------+--------------------------------------------------------------------------+
+; Device         ; EP2C70F896C6                                                             ;
+; JTAG usercode  ; 0xFFFFFFFF                                                               ;
+; Checksum       ; 0x0060C201                                                               ;
++----------------+--------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------+
-; Assembler Device Options: C:/School/Github/PRODIGADCRMP/Hometrainer.pof ;
-+--------------------+----------------------------------------------------+
-; Option             ; Setting                                            ;
-+--------------------+----------------------------------------------------+
-; Device             ; EPCS16                                             ;
-; JTAG usercode      ; 0x00000000                                         ;
-; Checksum           ; 0x18797A20                                         ;
-; Compression Ratio  ; 3                                                  ;
-+--------------------+----------------------------------------------------+
++-------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Hometrainer.pof ;
++--------------------+----------------------------------------------------------------------+
+; Option             ; Setting                                                              ;
++--------------------+----------------------------------------------------------------------+
+; Device             ; EPCS16                                                               ;
+; JTAG usercode      ; 0x00000000                                                           ;
+; Checksum           ; 0x187E1CF6                                                           ;
+; Compression Ratio  ; 3                                                                    ;
++--------------------+----------------------------------------------------------------------+
 
 
 +--------------------+
@@ -117,13 +117,18 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Assembler
     Info: Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Sep 25 00:52:31 2013
+    Info: Processing started: Mon Sep 30 09:33:49 2013
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Hometrainer -c Hometrainer
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'Hometrainer.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332144): No user constrained base clocks found in the design
+Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
+Info (223000): Starting Vectorless Power Activity Estimation
+Info (223001): Completed Vectorless Power Activity Estimation
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
-Info: Quartus II 32-bit Assembler was successful. 0 errors, 0 warnings
+Info: Quartus II 32-bit Assembler was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 409 megabytes
-    Info: Processing ended: Wed Sep 25 00:52:40 2013
+    Info: Processing ended: Mon Sep 30 09:33:58 2013
     Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:08
 

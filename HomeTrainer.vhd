@@ -47,56 +47,59 @@ entity HomeTrainer is
 end entity HomeTrainer;
 
 architecture structural of HomeTrainer is
+
 	component prescaler is
 		port (clkin  : in std_logic;
 				reset : in std_logic;
 				clkout : out std_logic
 				);
 	end component prescaler;
-	component Timer is
-		port (clk:			in std_logic;
-				refresh:		in std_logic;
-				tempcount:	out unsigned(14 downto 0) -- Seconden met één cijfer achter de komma voor berekening huidige RPM
-				);
-	end component Timer;
-	component HallCounter is
-		port(	Clk_10k 	 	: in std_logic;
-				reset			: in std_logic;
-				Hallsensor  : in std_logic;
-				refresh 		: out std_logic -- Signals sequential devider to refresh output to new value
-				);
-	end component HallCounter;
 	
-	component SequentialDevider is
-		port(	clk 	 		: in std_logic;
-				refresh 		: in std_logic;
-				reset			: in std_logic;
-				tempcount	: in unsigned(14 downto 0);
-				ready				: out std_logic;
-				CurrentRPM	: out unsigned(7 downto 0)
-				);
-	end component SequentialDevider;
-	component seg_decoder is
-		 port (data   : in unsigned(3 downto 0);
-				 leds   : out std_logic_vector(6 downto 0)
-				);
-	end component seg_decoder;
+component Timer is
+	port (clk:			in std_logic;
+			enable:		in std_logic;
+			reset:		in std_logic;
+			refresh:		in std_logic;
+			tempcount:	out unsigned(14 downto 0); -- Seconden met één cijfer achter de komma voor berekening huidige RPM
+			sec:			out unsigned(5 downto 0);
+			min:			out unsigned(5 downto 0);
+			hr:			out unsigned(6 downto 0)
+			);
+end component Timer;
 	
-	component seg_decoder_vector is
-    port (data   : in std_logic_vector(3 downto 0);
-          leds   : out std_logic_vector(6 downto 0)
-         );
-	end component seg_decoder_vector;
+component HallCounter is
+	port(	Clk_10k 	 	: in std_logic;
+			reset			: in std_logic;
+			Hallsensor  : in std_logic;
+			refresh 		: out std_logic; -- Signals sequential devider to refresh output to new value
+			data 			: out unsigned(31 downto 0)
+			);
+end component HallCounter;
 	
-	component double_dabble_8bit is
-		port (clk : in std_logic;
-		areset : in std_logic;
-		start : in std_logic;
-		bin : in unsigned (7 downto 0);
-		bcd : out unsigned (9 downto 0)
-		--ready : out std_logic
-		);
-	end component double_dabble_8bit;
+component SequentialDevider is
+	port(	clk 	 		: in std_logic;
+			reset			: in std_logic;
+			refresh 		: in std_logic;
+			outputtotal	: in std_logic;
+			tempcount	: in unsigned(14 downto 0);
+			sec			: in unsigned(5 downto 0);
+			min			: in unsigned(5 downto 0);
+			hr				: in unsigned(6 downto 0);
+			Halldata 	: in unsigned(31 downto 0);
+			CurrentRPM	: out unsigned(7 downto 0);
+			TotAvgRPM	: out unsigned(7 downto 0)
+			);
+end component SequentialDevider;
+	
+--	component double_dabble_8bit is
+--		port (clk : in std_logic;
+--		areset : in std_logic;
+--		start : in std_logic;
+--		bin : in unsigned (7 downto 0);
+--		bcd : out unsigned (9 downto 0)
+--		--ready : out std_logic
+--		);
+--	end component double_dabble_8bit;
 	
 		component ADC is
 	port(
@@ -112,33 +115,25 @@ architecture structural of HomeTrainer is
 	component Hbrug is
 	port(
 			Clk_10K : in std_logic;
-			Stand	: in std_logic_vector(3 downto 0):="0000"; -- stand aangegeven door de FSM
+			Stand	: in std_logic_vector(7 downto 0):= "00000000"; -- stand aangegeven door de FSM
 			ADC_data : in std_logic_vector (7 downto 0):="00000000"; -- stand van de servomotor
 			brugplus : out std_logic;
 			brugmin : out std_logic
 			);
 	end component Hbrug;
-
-	component FSMnep is
-	port(
-			clk			:in	std_logic;
-		SW1714		:in	std_logic_vector(3 downto 0);
-		Stand			:out	std_logic_vector(3 downto 0)
-			);
-	end component FSMnep;
 	
-signal reset, CLOCK_10, refresh: std_logic;
+signal reset, CLOCK_10, refresh, enable, outputtotal: std_logic;
+signal countdata: unsigned(31 downto 0);
+signal sec, min: unsigned(5 downto 0);
 signal tempcount: unsigned(14 downto 0);
-signal CurrentRPM : unsigned(7 downto 0);
-signal bcd			: unsigned(9 downto 0);
-signal deviderready : std_logic;
+signal hr: unsigned(6 downto 0);
+signal CurrentRPM, TotAvgRPM : unsigned(7 downto 0);
 
 signal LCD_Data, ADC_Data: std_logic_vector(7 downto 0);
 signal LCD_RS, LCD_RW, LCD_E, Servo_Positive, Servo_Negative, ADC_ConvStart, ADC_RD, ADC_Busy, Hallsensor: std_logic;
 signal BikeButtons: std_logic_vector(6 downto 1);
-signal CurrentRPMDig0, CurrentRPMDig1, CurrentRPMDig2: unsigned(3 downto 0);
 
-signal StandFSM : std_logic_vector(3 downto 0);
+signal StandFSM : std_logic_vector(7 downto 0);
 signal ADC_data_int : std_logic_vector(7 downto 0);
 
 begin
@@ -155,71 +150,29 @@ begin
 	ADC_Busy <= IO_A(16);
 	ADC_Data(7 downto 0) <= IO_A(24 downto 17);
 	BikeButtons(6 downto 1) <= IO_A(31 downto 26);
---	CurrentRPMDig0 <= CurrentRPM(3 downto 0);
---	CurrentRPMDig1 <= CurrentRPM(7 downto 4);
-	CurrentRPMDig0 <= bcd(3 downto 0);
-	CurrentRPMDig1 <= bcd(7 downto 4);
-	CurrentRPMDig2(1 downto 0) <= bcd(9 downto 8);
-	CurrentRPMDig2(3 downto 2) <= "00";
 	
 	ADClezer : ADC
 		port map (CLK_10K => CLOCK_10, DB => ADC_Data, Busy => ADC_Busy, conv => ADC_Convstart, rd => ADC_RD, data => ADC_data_int);
 
 	Motorsturing : Hbrug
 		port map (CLK_10K => CLOCK_10, Stand => StandFSM, ADC_data => ADC_data_int, brugplus => Servo_Positive, brugmin => Servo_Negative);
-
-	FSM : FSMnep
-		port map (clk => CLOCK_10, SW1714 => SW(17 downto 14), Stand => StandFSM);
-
-	Display0 : seg_decoder_vector
-		port map (data => ADC_Data_int(3 downto 0), leds => HEX6_D);
-
-	Display1 : seg_decoder_vector
-		port map (data => ADC_Data_int(7 downto 4), leds => HEX7_D);
-
-	Display3 : seg_decoder_vector
-		port map (data => StandFSM(3 downto 0), leds => HEX4_D);
-
-	Display4 : seg_decoder_vector
-		port map (data => StandFSM(3 downto 0), leds => HEX5_D);
-		
+	
 	ClockScaler: prescaler
 		port map (clkin => CLOCK_50, reset => reset, clkout => CLOCK_10);
 
 	TotalTimer: Timer
-		port map (clk => CLOCK_10, refresh => refresh, tempcount => tempcount);
+		port map (clk => CLOCK_10, enable => enable, reset => reset, refresh => refresh, tempcount => tempcount, sec => sec, min => min, hr => hr);
 
 	HallSensCount: HallCounter
-		port map (Clk_10k => CLOCK_10, reset => reset, Hallsensor => Hallsensor, refresh => refresh);
+		port map (Clk_10k => CLOCK_10, reset => reset, Hallsensor => Hallsensor, refresh => refresh, data => countdata);
 
 	Devider:	SequentialDevider
-		port map (clk => CLOCK_10, reset => reset, refresh => refresh, tempcount => tempcount,  CurrentRPM => CurrentRPM, ready => deviderready);
+		port map (clk => CLOCK_10, reset => reset, refresh => refresh, outputtotal => outputtotal, tempcount => tempcount, sec => sec, min => min, hr => hr, Halldata => countdata, CurrentRPM => CurrentRPM, TotAvgRPM => TotAvgRPM);
 	
 
---	Digit0: seg_decoder
---		 port map (data => CurrentRPMDig0, leds => HEX0_D);
 
---	Digit1: seg_decoder
---		 port map (data => CurrentRPMDig1, leds => HEX1_D);
-
---	Digit2: seg_decoder
---		 port map (data => CurrentRPMDig2, leds => HEX2_D);
-	
-	Digit0: seg_decoder
-		 port map (data => CurrentRPMDig0, leds => HEX0_D);
-
-	Digit1: seg_decoder
-		 port map (data => CurrentRPMDig1, leds => HEX1_D);
-
-	Digit2: seg_decoder
-		 port map (data => CurrentRPMDig2, leds => HEX2_D);
-
-	converter: double_dabble_8bit
-		port map (clk => CLOCK_50, areset => reset, bin => CurrentRPM, bcd => bcd, start => deviderready);
-
-		 
---	FullVisual: vier7segmentdecoder
---		port map (data0 => digit0_2_data0, data1 => digit1_2_data1, data2 => digit2_2_data2, data3 => digit3_2_data3, leds0 => HEX0_D, leds1 => HEX1_D, leds2 => HEX2_D, leds3 => HEX3_D);
+--	converter: double_dabble_8bit
+--		port map (clk => CLOCK_50, areset => reset, bin => CurrentRPM, bcd => bcd, start => deviderready);
 	
 	
 	reset <= SW(0);
@@ -233,14 +186,13 @@ begin
 	HEX6_DP <= '1';
 	HEX7_DP <= '1';
 
+	HEX0_D <= "1111111";
+	HEX1_D <= "1111111";
+	HEX2_D <= "1111111";
 	HEX3_D <= "1111111";
+	HEX4_D <= "1111111";
+	HEX5_D <= "1111111";
+	HEX6_D <= "1111111";
+	HEX7_D <= "1111111";
 
-	
---	inputsync: process (CLOCK_10) is
---	begin
---		startstop <= (NOT BUTTON(0));
---		mins <= (NOT BUTTON(1));
---		secs <= (NOT BUTTON(2));
---	end process;
-		
 end architecture structural;

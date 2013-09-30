@@ -1,5 +1,5 @@
 Fitter report for Hometrainer
-Wed Sep 25 00:52:29 2013
+Mon Sep 30 09:33:45 2013
 Quartus II 32-bit Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
 
 
@@ -62,17 +62,17 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                     ;
 +------------------------------------+-----------------------------------------------+
-; Fitter Status                      ; Successful - Wed Sep 25 00:52:29 2013         ;
+; Fitter Status                      ; Successful - Mon Sep 30 09:33:45 2013         ;
 ; Quartus II 32-bit Version          ; 11.1 Build 216 11/23/2011 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Hometrainer                                   ;
 ; Top-level Entity Name              ; HomeTrainer                                   ;
 ; Family                             ; Cyclone II                                    ;
 ; Device                             ; EP2C70F896C6                                  ;
 ; Timing Models                      ; Final                                         ;
-; Total logic elements               ; 301 / 68,416 ( < 1 % )                        ;
-;     Total combinational functions  ; 263 / 68,416 ( < 1 % )                        ;
-;     Dedicated logic registers      ; 160 / 68,416 ( < 1 % )                        ;
-; Total registers                    ; 160                                           ;
+; Total logic elements               ; 34 / 68,416 ( < 1 % )                         ;
+;     Total combinational functions  ; 28 / 68,416 ( < 1 % )                         ;
+;     Dedicated logic registers      ; 29 / 68,416 ( < 1 % )                         ;
+; Total registers                    ; 29                                            ;
 ; Total pins                         ; 146 / 622 ( 23 % )                            ;
 ; Total virtual pins                 ; 0                                             ;
 ; Total memory bits                  ; 0 / 1,152,000 ( 0 % )                         ;
@@ -91,6 +91,8 @@ applicable agreement for further details.
 ; Maximum Core Junction Temperature                                          ; 85                             ;                                ;
 ; Fit Attempts to Skip                                                       ; 0                              ; 0.0                            ;
 ; Device I/O Standard                                                        ; 3.3-V LVTTL                    ;                                ;
+; PowerPlay Power Optimization                                               ; Extra effort                   ; Normal compilation             ;
+; Fitter Effort                                                              ; Standard Fit                   ; Auto Fit                       ;
 ; Use smart compilation                                                      ; Off                            ; Off                            ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                             ; On                             ;
 ; Enable compact report table                                                ; Off                            ; Off                            ;
@@ -102,7 +104,6 @@ applicable agreement for further details.
 ; Always Enable Input Buffers                                                ; Off                            ; Off                            ;
 ; Optimize Hold Timing                                                       ; IO Paths and Minimum TPD Paths ; IO Paths and Minimum TPD Paths ;
 ; Optimize Multi-Corner Timing                                               ; Off                            ; Off                            ;
-; PowerPlay Power Optimization                                               ; Normal compilation             ; Normal compilation             ;
 ; Optimize Timing                                                            ; Normal compilation             ; Normal compilation             ;
 ; Optimize Timing for ECOs                                                   ; Off                            ; Off                            ;
 ; Regenerate full fit report during ECO compiles                             ; Off                            ; Off                            ;
@@ -123,7 +124,6 @@ applicable agreement for further details.
 ; Perform Logic to Memory Mapping for Fitting                                ; Off                            ; Off                            ;
 ; Perform Register Retiming for Performance                                  ; Off                            ; Off                            ;
 ; Perform Asynchronous Signal Pipelining                                     ; Off                            ; Off                            ;
-; Fitter Effort                                                              ; Auto Fit                       ; Auto Fit                       ;
 ; Physical Synthesis Effort Level                                            ; Normal                         ; Normal                         ;
 ; Auto Global Clock                                                          ; On                             ; On                             ;
 ; Auto Global Register Control Signals                                       ; On                             ; On                             ;
@@ -148,8 +148,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Type                ; Value                  ;
 +---------------------+------------------------+
 ; Placement (by node) ;                        ;
-;     -- Requested    ; 0 / 574 ( 0.00 % )     ;
-;     -- Achieved     ; 0 / 574 ( 0.00 % )     ;
+;     -- Requested    ; 0 / 209 ( 0.00 % )     ;
+;     -- Achieved     ; 0 / 209 ( 0.00 % )     ;
 ;                     ;                        ;
 ; Routing (by net)    ;                        ;
 ;     -- Requested    ; 0 / 0 ( 0.00 % )       ;
@@ -172,7 +172,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
 ; Partition Name                 ; # Nodes ; # Preserved Nodes ; Preservation Level Used ; Netlist Type Used ;
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
-; Top                            ; 571     ; 0                 ; N/A                     ; Source File       ;
+; Top                            ; 206     ; 0                 ; N/A                     ; Source File       ;
 ; hard_block:auto_generated_inst ; 3       ; 0                 ; N/A                     ; Source File       ;
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
 
@@ -180,7 +180,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/School/Github/PRODIGADCRMP/Hometrainer.pin.
+The pin-out file can be found in C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Hometrainer.pin.
 
 
 +------------------------------------------------------------------------------------+
@@ -188,26 +188,26 @@ The pin-out file can be found in C:/School/Github/PRODIGADCRMP/Hometrainer.pin.
 +---------------------------------------------+--------------------------------------+
 ; Resource                                    ; Usage                                ;
 +---------------------------------------------+--------------------------------------+
-; Total logic elements                        ; 301 / 68,416 ( < 1 % )               ;
-;     -- Combinational with no register       ; 141                                  ;
-;     -- Register only                        ; 38                                   ;
-;     -- Combinational with a register        ; 122                                  ;
+; Total logic elements                        ; 34 / 68,416 ( < 1 % )                ;
+;     -- Combinational with no register       ; 5                                    ;
+;     -- Register only                        ; 6                                    ;
+;     -- Combinational with a register        ; 23                                   ;
 ;                                             ;                                      ;
 ; Logic element usage by number of LUT inputs ;                                      ;
-;     -- 4 input functions                    ; 110                                  ;
-;     -- 3 input functions                    ; 89                                   ;
-;     -- <=2 input functions                  ; 64                                   ;
-;     -- Register only                        ; 38                                   ;
+;     -- 4 input functions                    ; 7                                    ;
+;     -- 3 input functions                    ; 6                                    ;
+;     -- <=2 input functions                  ; 15                                   ;
+;     -- Register only                        ; 6                                    ;
 ;                                             ;                                      ;
 ; Logic elements by mode                      ;                                      ;
-;     -- normal mode                          ; 166                                  ;
-;     -- arithmetic mode                      ; 97                                   ;
+;     -- normal mode                          ; 17                                   ;
+;     -- arithmetic mode                      ; 11                                   ;
 ;                                             ;                                      ;
-; Total registers*                            ; 160 / 70,234 ( < 1 % )               ;
-;     -- Dedicated logic registers            ; 160 / 68,416 ( < 1 % )               ;
+; Total registers*                            ; 29 / 70,234 ( < 1 % )                ;
+;     -- Dedicated logic registers            ; 29 / 68,416 ( < 1 % )                ;
 ;     -- I/O registers                        ; 0 / 1,818 ( 0 % )                    ;
 ;                                             ;                                      ;
-; Total LABs:  partially or completely used   ; 24 / 4,276 ( < 1 % )                 ;
+; Total LABs:  partially or completely used   ; 3 / 4,276 ( < 1 % )                  ;
 ; User inserted logic elements                ; 0                                    ;
 ; Virtual pins                                ; 0                                    ;
 ; I/O pins                                    ; 146 / 622 ( 23 % )                   ;
@@ -223,86 +223,86 @@ The pin-out file can be found in C:/School/Github/PRODIGADCRMP/Hometrainer.pin.
 ; ASMI blocks                                 ; 0 / 1 ( 0 % )                        ;
 ; CRC blocks                                  ; 0 / 1 ( 0 % )                        ;
 ; Average interconnect usage (total/H/V)      ; 0% / 0% / 0%                         ;
-; Peak interconnect usage (total/H/V)         ; 2% / 2% / 2%                         ;
+; Peak interconnect usage (total/H/V)         ; 0% / 0% / 0%                         ;
 ; Maximum fan-out node                        ; prescaler:ClockScaler|clkint~clkctrl ;
-; Maximum fan-out                             ; 115                                  ;
-; Highest non-global fan-out signal           ; SW[0]                                ;
-; Highest non-global fan-out                  ; 98                                   ;
-; Total fan-out                               ; 1470                                 ;
-; Average fan-out                             ; 2.46                                 ;
+; Maximum fan-out                             ; 16                                   ;
+; Highest non-global fan-out signal           ; prescaler:ClockScaler|count[5]~0     ;
+; Highest non-global fan-out                  ; 12                                   ;
+; Total fan-out                               ; 163                                  ;
+; Average fan-out                             ; 0.77                                 ;
 +---------------------------------------------+--------------------------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
 
 
 
-+------------------------------------------------------------------------------------------------------+
-; Fitter Partition Statistics                                                                          ;
-+---------------------------------------------+-----------------------+--------------------------------+
-; Statistic                                   ; Top                   ; hard_block:auto_generated_inst ;
-+---------------------------------------------+-----------------------+--------------------------------+
-; Difficulty Clustering Region                ; Low                   ; Low                            ;
-;                                             ;                       ;                                ;
-; Total logic elements                        ; 301 / 68416 ( < 1 % ) ; 0 / 68416 ( 0 % )              ;
-;     -- Combinational with no register       ; 141                   ; 0                              ;
-;     -- Register only                        ; 38                    ; 0                              ;
-;     -- Combinational with a register        ; 122                   ; 0                              ;
-;                                             ;                       ;                                ;
-; Logic element usage by number of LUT inputs ;                       ;                                ;
-;     -- 4 input functions                    ; 110                   ; 0                              ;
-;     -- 3 input functions                    ; 89                    ; 0                              ;
-;     -- <=2 input functions                  ; 64                    ; 0                              ;
-;     -- Register only                        ; 38                    ; 0                              ;
-;                                             ;                       ;                                ;
-; Logic elements by mode                      ;                       ;                                ;
-;     -- normal mode                          ; 166                   ; 0                              ;
-;     -- arithmetic mode                      ; 97                    ; 0                              ;
-;                                             ;                       ;                                ;
-; Total registers                             ; 160                   ; 0                              ;
-;     -- Dedicated logic registers            ; 160 / 68416 ( < 1 % ) ; 0 / 68416 ( 0 % )              ;
-;     -- I/O registers                        ; 0                     ; 0                              ;
-;                                             ;                       ;                                ;
-; Total LABs:  partially or completely used   ; 24 / 4276 ( < 1 % )   ; 0 / 4276 ( 0 % )               ;
-;                                             ;                       ;                                ;
-; Virtual pins                                ; 0                     ; 0                              ;
-; I/O pins                                    ; 146                   ; 0                              ;
-; Embedded Multiplier 9-bit elements          ; 0 / 300 ( 0 % )       ; 0 / 300 ( 0 % )                ;
-; Total memory bits                           ; 0                     ; 0                              ;
-; Total RAM block bits                        ; 0                     ; 0                              ;
-; Clock control block                         ; 2 / 20 ( 10 % )       ; 0 / 20 ( 0 % )                 ;
-;                                             ;                       ;                                ;
-; Connections                                 ;                       ;                                ;
-;     -- Input Connections                    ; 0                     ; 0                              ;
-;     -- Registered Input Connections         ; 0                     ; 0                              ;
-;     -- Output Connections                   ; 0                     ; 0                              ;
-;     -- Registered Output Connections        ; 0                     ; 0                              ;
-;                                             ;                       ;                                ;
-; Internal Connections                        ;                       ;                                ;
-;     -- Total Connections                    ; 1470                  ; 0                              ;
-;     -- Registered Connections               ; 650                   ; 0                              ;
-;                                             ;                       ;                                ;
-; External Connections                        ;                       ;                                ;
-;     -- Top                                  ; 0                     ; 0                              ;
-;     -- hard_block:auto_generated_inst       ; 0                     ; 0                              ;
-;                                             ;                       ;                                ;
-; Partition Interface                         ;                       ;                                ;
-;     -- Input Ports                          ; 23                    ; 0                              ;
-;     -- Output Ports                         ; 91                    ; 0                              ;
-;     -- Bidir Ports                          ; 32                    ; 0                              ;
-;                                             ;                       ;                                ;
-; Registered Ports                            ;                       ;                                ;
-;     -- Registered Input Ports               ; 0                     ; 0                              ;
-;     -- Registered Output Ports              ; 0                     ; 0                              ;
-;                                             ;                       ;                                ;
-; Port Connectivity                           ;                       ;                                ;
-;     -- Input Ports driven by GND            ; 0                     ; 0                              ;
-;     -- Output Ports driven by GND           ; 0                     ; 0                              ;
-;     -- Input Ports driven by VCC            ; 0                     ; 0                              ;
-;     -- Output Ports driven by VCC           ; 0                     ; 0                              ;
-;     -- Input Ports with no Source           ; 0                     ; 0                              ;
-;     -- Output Ports with no Source          ; 0                     ; 0                              ;
-;     -- Input Ports with no Fanout           ; 0                     ; 0                              ;
-;     -- Output Ports with no Fanout          ; 0                     ; 0                              ;
-+---------------------------------------------+-----------------------+--------------------------------+
++-----------------------------------------------------------------------------------------------------+
+; Fitter Partition Statistics                                                                         ;
++---------------------------------------------+----------------------+--------------------------------+
+; Statistic                                   ; Top                  ; hard_block:auto_generated_inst ;
++---------------------------------------------+----------------------+--------------------------------+
+; Difficulty Clustering Region                ; Low                  ; Low                            ;
+;                                             ;                      ;                                ;
+; Total logic elements                        ; 34 / 68416 ( < 1 % ) ; 0 / 68416 ( 0 % )              ;
+;     -- Combinational with no register       ; 5                    ; 0                              ;
+;     -- Register only                        ; 6                    ; 0                              ;
+;     -- Combinational with a register        ; 23                   ; 0                              ;
+;                                             ;                      ;                                ;
+; Logic element usage by number of LUT inputs ;                      ;                                ;
+;     -- 4 input functions                    ; 7                    ; 0                              ;
+;     -- 3 input functions                    ; 6                    ; 0                              ;
+;     -- <=2 input functions                  ; 15                   ; 0                              ;
+;     -- Register only                        ; 6                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Logic elements by mode                      ;                      ;                                ;
+;     -- normal mode                          ; 17                   ; 0                              ;
+;     -- arithmetic mode                      ; 11                   ; 0                              ;
+;                                             ;                      ;                                ;
+; Total registers                             ; 29                   ; 0                              ;
+;     -- Dedicated logic registers            ; 29 / 68416 ( < 1 % ) ; 0 / 68416 ( 0 % )              ;
+;     -- I/O registers                        ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Total LABs:  partially or completely used   ; 3 / 4276 ( < 1 % )   ; 0 / 4276 ( 0 % )               ;
+;                                             ;                      ;                                ;
+; Virtual pins                                ; 0                    ; 0                              ;
+; I/O pins                                    ; 146                  ; 0                              ;
+; Embedded Multiplier 9-bit elements          ; 0 / 300 ( 0 % )      ; 0 / 300 ( 0 % )                ;
+; Total memory bits                           ; 0                    ; 0                              ;
+; Total RAM block bits                        ; 0                    ; 0                              ;
+; Clock control block                         ; 2 / 20 ( 10 % )      ; 0 / 20 ( 0 % )                 ;
+;                                             ;                      ;                                ;
+; Connections                                 ;                      ;                                ;
+;     -- Input Connections                    ; 0                    ; 0                              ;
+;     -- Registered Input Connections         ; 0                    ; 0                              ;
+;     -- Output Connections                   ; 0                    ; 0                              ;
+;     -- Registered Output Connections        ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Internal Connections                        ;                      ;                                ;
+;     -- Total Connections                    ; 163                  ; 0                              ;
+;     -- Registered Connections               ; 60                   ; 0                              ;
+;                                             ;                      ;                                ;
+; External Connections                        ;                      ;                                ;
+;     -- Top                                  ; 0                    ; 0                              ;
+;     -- hard_block:auto_generated_inst       ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Partition Interface                         ;                      ;                                ;
+;     -- Input Ports                          ; 23                   ; 0                              ;
+;     -- Output Ports                         ; 91                   ; 0                              ;
+;     -- Bidir Ports                          ; 32                   ; 0                              ;
+;                                             ;                      ;                                ;
+; Registered Ports                            ;                      ;                                ;
+;     -- Registered Input Ports               ; 0                    ; 0                              ;
+;     -- Registered Output Ports              ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Port Connectivity                           ;                      ;                                ;
+;     -- Input Ports driven by GND            ; 0                    ; 0                              ;
+;     -- Output Ports driven by GND           ; 0                    ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0                    ; 0                              ;
+;     -- Output Ports driven by VCC           ; 0                    ; 0                              ;
+;     -- Input Ports with no Source           ; 0                    ; 0                              ;
+;     -- Output Ports with no Source          ; 0                    ; 0                              ;
+;     -- Input Ports with no Fanout           ; 0                    ; 0                              ;
+;     -- Output Ports with no Fanout          ; 0                    ; 0                              ;
++---------------------------------------------+----------------------+--------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -315,22 +315,22 @@ The pin-out file can be found in C:/School/Github/PRODIGADCRMP/Hometrainer.pin.
 ; BUTTON[2] ; U30   ; 6        ; 95           ; 23           ; 1           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; BUTTON[3] ; U29   ; 6        ; 95           ; 23           ; 2           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; CLOCK_50  ; AD15  ; 7        ; 49           ; 0            ; 1           ; 1                     ; 0                  ; yes    ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
-; SW[0]     ; AA23  ; 6        ; 95           ; 8            ; 1           ; 98                    ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; SW[0]     ; AA23  ; 6        ; 95           ; 8            ; 1           ; 2                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; SW[10]    ; W5    ; 1        ; 0            ; 15           ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; SW[11]    ; V10   ; 1        ; 0            ; 16           ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; SW[12]    ; U9    ; 1        ; 0            ; 21           ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; SW[13]    ; T9    ; 1        ; 0            ; 22           ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
-; SW[14]    ; L5    ; 2        ; 0            ; 41           ; 1           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
-; SW[15]    ; L4    ; 2        ; 0            ; 36           ; 4           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
-; SW[16]    ; L7    ; 2        ; 0            ; 43           ; 4           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
-; SW[17]    ; L8    ; 2        ; 0            ; 43           ; 3           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; SW[14]    ; L5    ; 2        ; 0            ; 41           ; 1           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; SW[15]    ; L4    ; 2        ; 0            ; 36           ; 4           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; SW[16]    ; L7    ; 2        ; 0            ; 43           ; 4           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; SW[17]    ; L8    ; 2        ; 0            ; 43           ; 3           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; SW[1]     ; AB26  ; 6        ; 95           ; 9            ; 2           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; SW[2]     ; AB25  ; 6        ; 95           ; 8            ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; SW[3]     ; AC27  ; 6        ; 95           ; 11           ; 1           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; SW[4]     ; AC26  ; 6        ; 95           ; 4            ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; SW[5]     ; AC24  ; 6        ; 95           ; 3            ; 3           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; SW[6]     ; AC23  ; 6        ; 95           ; 2            ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
-; SW[7]     ; V24   ; 6        ; 95           ; 16           ; 2           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; SW[7]     ; C7    ; 3        ; 13           ; 51           ; 2           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
 ; SW[8]     ; AD24  ; 6        ; 95           ; 2            ; 2           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 ; SW[9]     ; AE27  ; 6        ; 95           ; 7            ; 2           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
 +-----------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
@@ -442,9 +442,9 @@ The pin-out file can be found in C:/School/Github/PRODIGADCRMP/Hometrainer.pin.
 +----------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+-----------------+------------------------+---------------+-----------------+------------+----------+--------------+--------------+------------------+-------------+----------------------+------+----------------------+---------------------+
 ; IO_A[0]  ; C30   ; 5        ; 95           ; 45           ; 1           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
 ; IO_A[10] ; F29   ; 5        ; 95           ; 43           ; 2           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
-; IO_A[11] ; G29   ; 5        ; 95           ; 42           ; 3           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
+; IO_A[11] ; G29   ; 5        ; 95           ; 42           ; 3           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
 ; IO_A[12] ; F30   ; 5        ; 95           ; 43           ; 1           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
-; IO_A[13] ; G30   ; 5        ; 95           ; 42           ; 2           ; 6                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
+; IO_A[13] ; G30   ; 5        ; 95           ; 42           ; 2           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
 ; IO_A[14] ; H29   ; 5        ; 95           ; 40           ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
 ; IO_A[15] ; H30   ; 5        ; 95           ; 41           ; 3           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
 ; IO_A[16] ; J29   ; 5        ; 95           ; 36           ; 1           ; 5                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; User                 ; 0 pF ; -                    ; -                   ;
@@ -482,10 +482,10 @@ The pin-out file can be found in C:/School/Github/PRODIGADCRMP/Hometrainer.pin.
 +----------+------------------+---------------+--------------+
 ; 1        ; 4 / 85 ( 5 % )   ; 3.3V          ; --           ;
 ; 2        ; 46 / 79 ( 58 % ) ; 3.3V          ; --           ;
-; 3        ; 0 / 72 ( 0 % )   ; 3.3V          ; --           ;
+; 3        ; 1 / 72 ( 1 % )   ; 3.3V          ; --           ;
 ; 4        ; 0 / 74 ( 0 % )   ; 3.3V          ; --           ;
 ; 5        ; 32 / 85 ( 38 % ) ; 3.3V          ; --           ;
-; 6        ; 23 / 81 ( 28 % ) ; 3.3V          ; --           ;
+; 6        ; 22 / 81 ( 27 % ) ; 3.3V          ; --           ;
 ; 7        ; 12 / 74 ( 16 % ) ; 3.3V          ; --           ;
 ; 8        ; 32 / 72 ( 44 % ) ; 3.3V          ; --           ;
 +----------+------------------+---------------+--------------+
@@ -858,7 +858,7 @@ The pin-out file can be found in C:/School/Github/PRODIGADCRMP/Hometrainer.pin.
 ; C4       ; 620        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; C5       ; 624        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; C6       ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; C7       ; 613        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; C7       ; 613        ; 3        ; SW[7]                                    ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; C8       ;            ; 3        ; VCCIO3                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; C9       ; 603        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; C10      ; 600        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -1325,7 +1325,7 @@ The pin-out file can be found in C:/School/Github/PRODIGADCRMP/Hometrainer.pin.
 ; V21      ; 373        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; V22      ; 370        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; V23      ; 382        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; V24      ; 368        ; 6        ; SW[7]                                    ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; V24      ; 368        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; V25      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; V26      ;            ; 6        ; VCCIO6                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; V27      ; 387        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -1433,27 +1433,16 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 Note: User assignments will override these defaults. The user specified values are listed in the Output Pins and Bidir Pins tables.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                                        ;
-+-----------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-------------------------------------------+--------------+
-; Compilation Hierarchy Node        ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M4Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name                       ; Library Name ;
-+-----------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-------------------------------------------+--------------+
-; |HomeTrainer                      ; 301 (0)     ; 160 (0)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 146  ; 0            ; 141 (0)      ; 38 (0)            ; 122 (0)          ; |HomeTrainer                              ;              ;
-;    |ADC:ADClezer|                 ; 16 (16)     ; 15 (15)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 1 (1)        ; 1 (1)             ; 14 (14)          ; |HomeTrainer|ADC:ADClezer                 ;              ;
-;    |FSMnep:FSM|                   ; 4 (4)       ; 4 (4)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 4 (4)            ; |HomeTrainer|FSMnep:FSM                   ;              ;
-;    |HallCounter:HallSensCount|    ; 20 (20)     ; 9 (9)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (11)      ; 0 (0)             ; 9 (9)            ; |HomeTrainer|HallCounter:HallSensCount    ;              ;
-;    |Hbrug:Motorsturing|           ; 13 (13)     ; 2 (2)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 8 (8)        ; 0 (0)             ; 5 (5)            ; |HomeTrainer|Hbrug:Motorsturing           ;              ;
-;    |SequentialDevider:Devider|    ; 146 (146)   ; 55 (55)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 91 (91)      ; 22 (22)           ; 33 (33)          ; |HomeTrainer|SequentialDevider:Devider    ;              ;
-;    |Timer:TotalTimer|             ; 34 (34)     ; 30 (30)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 4 (4)        ; 15 (15)           ; 15 (15)          ; |HomeTrainer|Timer:TotalTimer             ;              ;
-;    |double_dabble_8bit:converter| ; 35 (35)     ; 32 (32)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 32 (32)          ; |HomeTrainer|double_dabble_8bit:converter ;              ;
-;    |prescaler:ClockScaler|        ; 17 (17)     ; 13 (13)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 13 (13)          ; |HomeTrainer|prescaler:ClockScaler        ;              ;
-;    |seg_decoder:Digit0|           ; 7 (7)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 4 (4)            ; |HomeTrainer|seg_decoder:Digit0           ;              ;
-;    |seg_decoder:Digit1|           ; 7 (7)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 4 (4)            ; |HomeTrainer|seg_decoder:Digit1           ;              ;
-;    |seg_decoder:Digit2|           ; 3 (3)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 2 (2)            ; |HomeTrainer|seg_decoder:Digit2           ;              ;
-;    |seg_decoder_vector:Display0|  ; 7 (7)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 4 (4)            ; |HomeTrainer|seg_decoder_vector:Display0  ;              ;
-;    |seg_decoder_vector:Display1|  ; 7 (7)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 1 (1)            ; |HomeTrainer|seg_decoder_vector:Display1  ;              ;
-;    |seg_decoder_vector:Display4|  ; 7 (7)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 4 (4)            ; |HomeTrainer|seg_decoder_vector:Display4  ;              ;
-+-----------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-------------------------------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                          ;
++----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------------------------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M4Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name                ; Library Name ;
++----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------------------------------+--------------+
+; |HomeTrainer               ; 34 (0)      ; 29 (0)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 146  ; 0            ; 5 (0)        ; 6 (0)             ; 23 (0)           ; |HomeTrainer                       ;              ;
+;    |ADC:ADClezer|          ; 15 (15)     ; 15 (15)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 6 (6)             ; 9 (9)            ; |HomeTrainer|ADC:ADClezer          ;              ;
+;    |Hbrug:Motorsturing|    ; 3 (3)       ; 1 (1)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 3 (3)            ; |HomeTrainer|Hbrug:Motorsturing    ;              ;
+;    |prescaler:ClockScaler| ; 18 (18)     ; 13 (13)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 13 (13)          ; |HomeTrainer|prescaler:ClockScaler ;              ;
++----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -1482,7 +1471,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; IO_A[10]  ; Bidir    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; IO_A[11]  ; Bidir    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; IO_A[12]  ; Bidir    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
-; IO_A[13]  ; Bidir    ; (6) 4075 ps   ; (6) 4075 ps   ; --                    ; --  ;
+; IO_A[13]  ; Bidir    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; IO_A[14]  ; Bidir    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; IO_A[15]  ; Bidir    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; IO_A[16]  ; Bidir    ; (6) 4075 ps   ; (6) 4075 ps   ; --                    ; --  ;
@@ -1504,13 +1493,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; SW[4]     ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; SW[5]     ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; SW[6]     ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
-; SW[7]     ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
+; SW[7]     ; Input    ; (0) 287 ps    ; (0) 287 ps    ; --                    ; --  ;
 ; SW[8]     ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; SW[9]     ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; SW[10]    ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; SW[11]    ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; SW[12]    ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; SW[13]    ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
+; SW[14]    ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
+; SW[15]    ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
+; SW[16]    ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
+; SW[17]    ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; LEDG[0]   ; Output   ; --            ; --            ; --                    ; --  ;
 ; LEDG[1]   ; Output   ; --            ; --            ; --                    ; --  ;
 ; LEDG[2]   ; Output   ; --            ; --            ; --                    ; --  ;
@@ -1602,909 +1595,315 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HEX5_DP   ; Output   ; --            ; --            ; --                    ; --  ;
 ; HEX6_DP   ; Output   ; --            ; --            ; --                    ; --  ;
 ; HEX7_DP   ; Output   ; --            ; --            ; --                    ; --  ;
-; SW[14]    ; Input    ; (6) 4075 ps   ; (6) 4075 ps   ; --                    ; --  ;
-; SW[15]    ; Input    ; (6) 4075 ps   ; (6) 4075 ps   ; --                    ; --  ;
-; SW[16]    ; Input    ; (6) 4075 ps   ; (6) 4075 ps   ; --                    ; --  ;
-; SW[17]    ; Input    ; (6) 4075 ps   ; (6) 4075 ps   ; --                    ; --  ;
-; CLOCK_50  ; Input    ; (0) 287 ps    ; (0) 287 ps    ; --                    ; --  ;
 ; SW[0]     ; Input    ; (6) 4075 ps   ; (6) 4075 ps   ; --                    ; --  ;
+; CLOCK_50  ; Input    ; (0) 287 ps    ; (0) 287 ps    ; --                    ; --  ;
 +-----------+----------+---------------+---------------+-----------------------+-----+
 
 
-+---------------------------------------------------------------------------------+
-; Pad To Core Delay Chain Fanout                                                  ;
-+---------------------------------------------------+-------------------+---------+
-; Source Pin / Fanout                               ; Pad To Core Index ; Setting ;
-+---------------------------------------------------+-------------------+---------+
-; IO_A[25]                                          ;                   ;         ;
-; IO_A[26]                                          ;                   ;         ;
-; IO_A[27]                                          ;                   ;         ;
-; IO_A[28]                                          ;                   ;         ;
-; IO_A[29]                                          ;                   ;         ;
-; IO_A[30]                                          ;                   ;         ;
-; IO_A[31]                                          ;                   ;         ;
-; IO_A[0]                                           ;                   ;         ;
-; IO_A[1]                                           ;                   ;         ;
-; IO_A[2]                                           ;                   ;         ;
-; IO_A[3]                                           ;                   ;         ;
-; IO_A[4]                                           ;                   ;         ;
-; IO_A[5]                                           ;                   ;         ;
-; IO_A[6]                                           ;                   ;         ;
-; IO_A[7]                                           ;                   ;         ;
-; IO_A[8]                                           ;                   ;         ;
-; IO_A[9]                                           ;                   ;         ;
-; IO_A[10]                                          ;                   ;         ;
-; IO_A[11]                                          ;                   ;         ;
-; IO_A[12]                                          ;                   ;         ;
-; IO_A[13]                                          ;                   ;         ;
-;      - HallCounter:HallSensCount|CalcTick~0       ; 0                 ; 6       ;
-;      - HallCounter:HallSensCount|Selector7~0      ; 0                 ; 6       ;
-;      - HallCounter:HallSensCount|Selector7~2      ; 0                 ; 6       ;
-;      - HallCounter:HallSensCount|Selector3~4      ; 0                 ; 6       ;
-;      - HallCounter:HallSensCount|Selector3~6      ; 0                 ; 6       ;
-;      - HallCounter:HallSensCount|Selector6~0      ; 0                 ; 6       ;
-; IO_A[14]                                          ;                   ;         ;
-; IO_A[15]                                          ;                   ;         ;
-; IO_A[16]                                          ;                   ;         ;
-;      - ADC:ADClezer|state~7                       ; 1                 ; 6       ;
-;      - ADC:ADClezer|Selector1~0                   ; 1                 ; 6       ;
-;      - ADC:ADClezer|Selector2~0                   ; 1                 ; 6       ;
-;      - ADC:ADClezer|state~8                       ; 1                 ; 6       ;
-;      - ADC:ADClezer|Selector0~0                   ; 1                 ; 6       ;
-; IO_A[17]                                          ;                   ;         ;
-;      - ADC:ADClezer|Buf[0]                        ; 1                 ; 6       ;
-; IO_A[18]                                          ;                   ;         ;
-;      - ADC:ADClezer|Buf[1]                        ; 0                 ; 6       ;
-; IO_A[19]                                          ;                   ;         ;
-;      - ADC:ADClezer|Buf[2]                        ; 0                 ; 6       ;
-; IO_A[20]                                          ;                   ;         ;
-;      - ADC:ADClezer|Buf[3]                        ; 1                 ; 6       ;
-; IO_A[21]                                          ;                   ;         ;
-;      - ADC:ADClezer|Buf[4]                        ; 0                 ; 6       ;
-; IO_A[22]                                          ;                   ;         ;
-;      - ADC:ADClezer|Buf[5]                        ; 0                 ; 6       ;
-; IO_A[23]                                          ;                   ;         ;
-;      - ADC:ADClezer|Buf[6]                        ; 1                 ; 6       ;
-; IO_A[24]                                          ;                   ;         ;
-;      - ADC:ADClezer|Buf[7]                        ; 1                 ; 6       ;
-; BUTTON[0]                                         ;                   ;         ;
-; BUTTON[1]                                         ;                   ;         ;
-; BUTTON[2]                                         ;                   ;         ;
-; BUTTON[3]                                         ;                   ;         ;
-; SW[1]                                             ;                   ;         ;
-; SW[2]                                             ;                   ;         ;
-; SW[3]                                             ;                   ;         ;
-; SW[4]                                             ;                   ;         ;
-; SW[5]                                             ;                   ;         ;
-; SW[6]                                             ;                   ;         ;
-; SW[7]                                             ;                   ;         ;
-; SW[8]                                             ;                   ;         ;
-; SW[9]                                             ;                   ;         ;
-; SW[10]                                            ;                   ;         ;
-; SW[11]                                            ;                   ;         ;
-; SW[12]                                            ;                   ;         ;
-; SW[13]                                            ;                   ;         ;
-; SW[14]                                            ;                   ;         ;
-;      - FSMnep:FSM|SWbuffer[0]                     ; 0                 ; 6       ;
-; SW[15]                                            ;                   ;         ;
-;      - FSMnep:FSM|SWbuffer[1]                     ; 0                 ; 6       ;
-; SW[16]                                            ;                   ;         ;
-;      - FSMnep:FSM|SWbuffer[2]                     ; 0                 ; 6       ;
-; SW[17]                                            ;                   ;         ;
-;      - FSMnep:FSM|SWbuffer[3]                     ; 1                 ; 6       ;
-; CLOCK_50                                          ;                   ;         ;
-; SW[0]                                             ;                   ;         ;
-;      - double_dabble_8bit:converter|bcd[0]        ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd[1]        ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd[2]        ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd[3]        ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd[4]        ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd[5]        ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd[6]        ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd[7]        ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd[8]        ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd[9]        ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Calc[4]  ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Calc[6]  ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Calc[7]  ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Calc[5]  ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Calc[3]  ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Calc[2]  ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Calc[1]  ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Calc[0]  ; 1                 ; 6       ;
-;      - prescaler:ClockScaler|clkint               ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd_int[8]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd_int[7]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd_int[6]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd_int[5]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd_int[4]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd_int[3]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd_int[2]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd_int[1]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bin_int[0]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|refreshint       ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|counter[2]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|counter[1]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|counter[0]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|counter[3]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd_int[9]    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bcd_int[0]    ; 1                 ; 6       ;
-;      - HallCounter:HallSensCount|CalcTick         ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|WaitTimer[1]     ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|WaitTimer[0]     ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRunning      ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[13]      ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[14]   ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[12]      ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[13]   ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[11]      ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[12]   ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[10]      ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[11]   ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[9]       ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[10]   ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[8]       ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[9]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[7]       ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[8]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[6]       ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[7]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[5]       ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[6]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[4]       ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[5]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[3]       ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[4]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[2]       ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[3]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[1]       ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[2]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[0]       ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[1]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[17]      ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[16]      ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[15]      ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[18]      ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[14]      ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempBottom[0]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempTop[19]      ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bin_int[7]    ; 1                 ; 6       ;
-;      - prescaler:ClockScaler|count[10]~0          ; 1                 ; 6       ;
-;      - HallCounter:HallSensCount|state.Measure    ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bin_int[6]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Final[7] ; 1                 ; 6       ;
-;      - HallCounter:HallSensCount|state.DelayIn    ; 1                 ; 6       ;
-;      - HallCounter:HallSensCount|DelayCount[1]    ; 1                 ; 6       ;
-;      - HallCounter:HallSensCount|DelayCount[0]    ; 1                 ; 6       ;
-;      - HallCounter:HallSensCount|state.DelayOut   ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bin_int[5]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Final[6] ; 1                 ; 6       ;
-;      - HallCounter:HallSensCount|state.WaitLow    ; 1                 ; 6       ;
-;      - HallCounter:HallSensCount|state.Rest       ; 1                 ; 6       ;
-;      - HallCounter:HallSensCount|state.WaitHigh   ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bin_int[4]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Final[5] ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bin_int[3]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Final[4] ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bin_int[2]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Final[3] ; 1                 ; 6       ;
-;      - double_dabble_8bit:converter|bin_int[1]    ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Final[2] ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Final[1] ; 1                 ; 6       ;
-;      - SequentialDevider:Devider|TempRPM_Final[0] ; 1                 ; 6       ;
-+---------------------------------------------------+-------------------+---------+
++-----------------------------------------------------------------------+
+; Pad To Core Delay Chain Fanout                                        ;
++-----------------------------------------+-------------------+---------+
+; Source Pin / Fanout                     ; Pad To Core Index ; Setting ;
++-----------------------------------------+-------------------+---------+
+; IO_A[25]                                ;                   ;         ;
+; IO_A[26]                                ;                   ;         ;
+; IO_A[27]                                ;                   ;         ;
+; IO_A[28]                                ;                   ;         ;
+; IO_A[29]                                ;                   ;         ;
+; IO_A[30]                                ;                   ;         ;
+; IO_A[31]                                ;                   ;         ;
+; IO_A[0]                                 ;                   ;         ;
+; IO_A[1]                                 ;                   ;         ;
+; IO_A[2]                                 ;                   ;         ;
+; IO_A[3]                                 ;                   ;         ;
+; IO_A[4]                                 ;                   ;         ;
+; IO_A[5]                                 ;                   ;         ;
+; IO_A[6]                                 ;                   ;         ;
+; IO_A[7]                                 ;                   ;         ;
+; IO_A[8]                                 ;                   ;         ;
+; IO_A[9]                                 ;                   ;         ;
+; IO_A[10]                                ;                   ;         ;
+; IO_A[11]                                ;                   ;         ;
+; IO_A[12]                                ;                   ;         ;
+; IO_A[13]                                ;                   ;         ;
+; IO_A[14]                                ;                   ;         ;
+; IO_A[15]                                ;                   ;         ;
+; IO_A[16]                                ;                   ;         ;
+;      - ADC:ADClezer|Selector2~1         ; 1                 ; 6       ;
+;      - ADC:ADClezer|state~7             ; 1                 ; 6       ;
+;      - ADC:ADClezer|Selector1~0         ; 1                 ; 6       ;
+;      - ADC:ADClezer|state~8             ; 1                 ; 6       ;
+;      - ADC:ADClezer|Selector0~0         ; 1                 ; 6       ;
+; IO_A[17]                                ;                   ;         ;
+;      - ADC:ADClezer|Buf[0]~feeder       ; 0                 ; 6       ;
+; IO_A[18]                                ;                   ;         ;
+;      - ADC:ADClezer|Buf[1]~feeder       ; 1                 ; 6       ;
+; IO_A[19]                                ;                   ;         ;
+;      - ADC:ADClezer|Buf[2]~feeder       ; 1                 ; 6       ;
+; IO_A[20]                                ;                   ;         ;
+;      - ADC:ADClezer|Buf[3]              ; 1                 ; 6       ;
+; IO_A[21]                                ;                   ;         ;
+;      - ADC:ADClezer|Buf[4]              ; 1                 ; 6       ;
+; IO_A[22]                                ;                   ;         ;
+;      - ADC:ADClezer|Buf[5]              ; 0                 ; 6       ;
+; IO_A[23]                                ;                   ;         ;
+;      - ADC:ADClezer|Buf[6]              ; 0                 ; 6       ;
+; IO_A[24]                                ;                   ;         ;
+;      - ADC:ADClezer|Buf[7]~feeder       ; 1                 ; 6       ;
+; BUTTON[0]                               ;                   ;         ;
+; BUTTON[1]                               ;                   ;         ;
+; BUTTON[2]                               ;                   ;         ;
+; BUTTON[3]                               ;                   ;         ;
+; SW[1]                                   ;                   ;         ;
+; SW[2]                                   ;                   ;         ;
+; SW[3]                                   ;                   ;         ;
+; SW[4]                                   ;                   ;         ;
+; SW[5]                                   ;                   ;         ;
+; SW[6]                                   ;                   ;         ;
+; SW[7]                                   ;                   ;         ;
+; SW[8]                                   ;                   ;         ;
+; SW[9]                                   ;                   ;         ;
+; SW[10]                                  ;                   ;         ;
+; SW[11]                                  ;                   ;         ;
+; SW[12]                                  ;                   ;         ;
+; SW[13]                                  ;                   ;         ;
+; SW[14]                                  ;                   ;         ;
+; SW[15]                                  ;                   ;         ;
+; SW[16]                                  ;                   ;         ;
+; SW[17]                                  ;                   ;         ;
+; SW[0]                                   ;                   ;         ;
+;      - prescaler:ClockScaler|clkint~0   ; 0                 ; 6       ;
+;      - prescaler:ClockScaler|count[5]~0 ; 0                 ; 6       ;
+; CLOCK_50                                ;                   ;         ;
++-----------------------------------------+-------------------+---------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                                                                                      ;
-+----------------------------------------------+--------------------+---------+-----------------------------------------+--------+----------------------+------------------+---------------------------+
-; Name                                         ; Location           ; Fan-Out ; Usage                                   ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+----------------------------------------------+--------------------+---------+-----------------------------------------+--------+----------------------+------------------+---------------------------+
-; ADC:ADClezer|state.s4                        ; LCFF_X13_Y39_N1    ; 9       ; Clock enable                            ; no     ; --                   ; --               ; --                        ;
-; CLOCK_50                                     ; PIN_AD15           ; 45      ; Clock                                   ; yes    ; Global Clock         ; GCLK14           ; --                        ;
-; HallCounter:HallSensCount|CalcTick           ; LCFF_X61_Y12_N9    ; 36      ; Clock enable, Sync. clear               ; no     ; --                   ; --               ; --                        ;
-; Hbrug:Motorsturing|brugplus~5                ; LCCOMB_X2_Y39_N14  ; 2       ; Clock enable                            ; no     ; --                   ; --               ; --                        ;
-; SW[0]                                        ; PIN_AA23           ; 98      ; Async. clear, Clock enable, Sync. clear ; no     ; --                   ; --               ; --                        ;
-; SequentialDevider:Devider|TempBottom[14]~0   ; LCCOMB_X53_Y12_N22 ; 15      ; Clock enable                            ; no     ; --                   ; --               ; --                        ;
-; SequentialDevider:Devider|TempRPM_Calc[4]~3  ; LCCOMB_X52_Y10_N22 ; 28      ; Clock enable                            ; no     ; --                   ; --               ; --                        ;
-; SequentialDevider:Devider|TempRPM_Final[7]~2 ; LCCOMB_X49_Y10_N26 ; 8       ; Clock enable                            ; no     ; --                   ; --               ; --                        ;
-; SequentialDevider:Devider|process_0~0        ; LCCOMB_X53_Y12_N30 ; 31      ; Sync. clear                             ; no     ; --                   ; --               ; --                        ;
-; SequentialDevider:Devider|refreshint         ; LCFF_X52_Y10_N19   ; 28      ; Sync. clear, Sync. load                 ; no     ; --                   ; --               ; --                        ;
-; double_dabble_8bit:converter|bcd[0]~0        ; LCCOMB_X52_Y10_N6  ; 28      ; Clock enable                            ; no     ; --                   ; --               ; --                        ;
-; prescaler:ClockScaler|clkint                 ; LCFF_X65_Y7_N17    ; 115     ; Clock                                   ; yes    ; Global Clock         ; GCLK13           ; --                        ;
-; prescaler:ClockScaler|count[10]~0            ; LCCOMB_X65_Y7_N14  ; 12      ; Sync. clear                             ; no     ; --                   ; --               ; --                        ;
-+----------------------------------------------+--------------------+---------+-----------------------------------------+--------+----------------------+------------------+---------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                             ;
++----------------------------------+------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; Name                             ; Location         ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++----------------------------------+------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; ADC:ADClezer|state.s4            ; LCFF_X94_Y43_N17 ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; CLOCK_50                         ; PIN_AD15         ; 13      ; Clock        ; yes    ; Global Clock         ; GCLK14           ; --                        ;
+; prescaler:ClockScaler|clkint     ; LCFF_X94_Y9_N1   ; 16      ; Clock        ; yes    ; Global Clock         ; GCLK5            ; --                        ;
+; prescaler:ClockScaler|count[5]~0 ; LCCOMB_X93_Y9_N2 ; 12      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
++----------------------------------+------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Global & Other Fast Signals                                                                                                    ;
-+------------------------------+-----------------+---------+----------------------+------------------+---------------------------+
-; Name                         ; Location        ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+------------------------------+-----------------+---------+----------------------+------------------+---------------------------+
-; CLOCK_50                     ; PIN_AD15        ; 45      ; Global Clock         ; GCLK14           ; --                        ;
-; prescaler:ClockScaler|clkint ; LCFF_X65_Y7_N17 ; 115     ; Global Clock         ; GCLK13           ; --                        ;
-+------------------------------+-----------------+---------+----------------------+------------------+---------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Global & Other Fast Signals                                                                                                   ;
++------------------------------+----------------+---------+----------------------+------------------+---------------------------+
+; Name                         ; Location       ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++------------------------------+----------------+---------+----------------------+------------------+---------------------------+
+; CLOCK_50                     ; PIN_AD15       ; 13      ; Global Clock         ; GCLK14           ; --                        ;
+; prescaler:ClockScaler|clkint ; LCFF_X94_Y9_N1 ; 16      ; Global Clock         ; GCLK5            ; --                        ;
++------------------------------+----------------+---------+----------------------+------------------+---------------------------+
 
 
-+--------------------------------------------------------+
-; Non-Global High Fan-Out Signals                        ;
-+----------------------------------------------+---------+
-; Name                                         ; Fan-Out ;
-+----------------------------------------------+---------+
-; SW[0]                                        ; 98      ;
-; HallCounter:HallSensCount|CalcTick           ; 36      ;
-; SequentialDevider:Devider|process_0~0        ; 31      ;
-; SequentialDevider:Devider|TempRPM_Calc[4]~3  ; 28      ;
-; double_dabble_8bit:converter|bcd[0]~0        ; 28      ;
-; SequentialDevider:Devider|refreshint         ; 28      ;
-; SequentialDevider:Devider|LessThan1~31       ; 22      ;
-; SequentialDevider:Devider|TempBottom[14]~0   ; 15      ;
-; prescaler:ClockScaler|count[10]~0            ; 12      ;
-; FSMnep:FSM|SWbuffer[3]                       ; 10      ;
-; FSMnep:FSM|SWbuffer[2]                       ; 10      ;
-; FSMnep:FSM|SWbuffer[1]                       ; 10      ;
-; FSMnep:FSM|SWbuffer[0]                       ; 10      ;
-; ADC:ADClezer|Buf[3]                          ; 10      ;
-; ADC:ADClezer|Buf[7]                          ; 10      ;
-; ADC:ADClezer|Buf[6]                          ; 10      ;
-; ADC:ADClezer|Buf[5]                          ; 10      ;
-; ADC:ADClezer|Buf[4]                          ; 10      ;
-; SequentialDevider:Devider|TempRunning        ; 9       ;
-; ADC:ADClezer|state.s4                        ; 9       ;
-; SequentialDevider:Devider|TempRPM_Final[7]~2 ; 8       ;
-; ADC:ADClezer|Buf[2]                          ; 8       ;
-; ADC:ADClezer|Buf[1]                          ; 8       ;
-; ADC:ADClezer|Buf[0]                          ; 8       ;
-; HallCounter:HallSensCount|DelayCount[1]      ; 7       ;
-; SequentialDevider:Devider|WaitTimer[0]       ; 7       ;
-; SequentialDevider:Devider|WaitTimer[1]       ; 7       ;
-; double_dabble_8bit:converter|bcd[3]          ; 7       ;
-; double_dabble_8bit:converter|bcd[2]          ; 7       ;
-; double_dabble_8bit:converter|bcd[1]          ; 7       ;
-; double_dabble_8bit:converter|bcd[0]          ; 7       ;
-; double_dabble_8bit:converter|bcd[7]          ; 7       ;
-; double_dabble_8bit:converter|bcd[6]          ; 7       ;
-; double_dabble_8bit:converter|bcd[5]          ; 7       ;
-; double_dabble_8bit:converter|bcd[4]          ; 7       ;
-; IO_A[13]~31                                  ; 6       ;
-; HallCounter:HallSensCount|state.DelayOut     ; 6       ;
-; HallCounter:HallSensCount|state.DelayIn      ; 6       ;
-; SequentialDevider:Devider|TempTop[19]        ; 6       ;
-; SequentialDevider:Devider|TempTop[18]        ; 6       ;
-; IO_A[16]~34                                  ; 5       ;
-; HallCounter:HallSensCount|DelayCount[0]      ; 5       ;
-; SequentialDevider:Devider|TempTop[14]        ; 5       ;
-; SequentialDevider:Devider|Equal1~2           ; 5       ;
-; double_dabble_8bit:converter|bcd_int[0]      ; 5       ;
-; double_dabble_8bit:converter|counter[3]      ; 5       ;
-; double_dabble_8bit:converter|bcd_int[3]      ; 5       ;
-; double_dabble_8bit:converter|bcd_int[2]      ; 5       ;
-; double_dabble_8bit:converter|bcd_int[1]      ; 5       ;
-; double_dabble_8bit:converter|bcd_int[7]      ; 5       ;
-; double_dabble_8bit:converter|bcd_int[6]      ; 5       ;
-; double_dabble_8bit:converter|bcd_int[5]      ; 5       ;
-; double_dabble_8bit:converter|bcd_int[4]      ; 5       ;
-; HallCounter:HallSensCount|state.WaitHigh     ; 4       ;
-; HallCounter:HallSensCount|state.WaitLow      ; 4       ;
-; SequentialDevider:Devider|LessThan1~0        ; 4       ;
-; SequentialDevider:Devider|TempBottom[1]      ; 4       ;
-; SequentialDevider:Devider|TempTop[0]         ; 4       ;
-; SequentialDevider:Devider|TempBottom[2]      ; 4       ;
-; SequentialDevider:Devider|TempTop[1]         ; 4       ;
-; SequentialDevider:Devider|TempBottom[3]      ; 4       ;
-; SequentialDevider:Devider|TempTop[2]         ; 4       ;
-; SequentialDevider:Devider|TempBottom[4]      ; 4       ;
-; SequentialDevider:Devider|TempTop[3]         ; 4       ;
-; SequentialDevider:Devider|TempBottom[5]      ; 4       ;
-; SequentialDevider:Devider|TempTop[4]         ; 4       ;
-; SequentialDevider:Devider|TempBottom[6]      ; 4       ;
-; SequentialDevider:Devider|TempTop[5]         ; 4       ;
-; SequentialDevider:Devider|TempBottom[7]      ; 4       ;
-; SequentialDevider:Devider|TempTop[6]         ; 4       ;
-; SequentialDevider:Devider|TempBottom[8]      ; 4       ;
-; SequentialDevider:Devider|TempTop[7]         ; 4       ;
-; SequentialDevider:Devider|TempBottom[9]      ; 4       ;
-; SequentialDevider:Devider|TempTop[8]         ; 4       ;
-; SequentialDevider:Devider|TempBottom[10]     ; 4       ;
-; SequentialDevider:Devider|TempTop[9]         ; 4       ;
-; SequentialDevider:Devider|TempBottom[11]     ; 4       ;
-; SequentialDevider:Devider|TempTop[10]        ; 4       ;
-; SequentialDevider:Devider|TempBottom[12]     ; 4       ;
-; SequentialDevider:Devider|TempTop[11]        ; 4       ;
-; SequentialDevider:Devider|TempBottom[13]     ; 4       ;
-; SequentialDevider:Devider|TempTop[12]        ; 4       ;
-; SequentialDevider:Devider|TempBottom[14]     ; 4       ;
-; SequentialDevider:Devider|TempTop[13]        ; 4       ;
-; ADC:ADClezer|state.s3                        ; 4       ;
-; double_dabble_8bit:converter|LessThan0~0     ; 4       ;
-; double_dabble_8bit:converter|counter[0]      ; 4       ;
-; double_dabble_8bit:converter|bcd[9]          ; 4       ;
-; double_dabble_8bit:converter|bcd[8]          ; 4       ;
-; Timer:TotalTimer|RefreshCount[11]            ; 4       ;
-; HallCounter:HallSensCount|Selector3~4        ; 3       ;
-; HallCounter:HallSensCount|Selector3~2        ; 3       ;
-; HallCounter:HallSensCount|state.Rest         ; 3       ;
-; ADC:ADClezer|state.s1                        ; 3       ;
-; Hbrug:Motorsturing|Equal0~0                  ; 3       ;
-; ADC:ADClezer|state.s2                        ; 3       ;
-; SequentialDevider:Devider|TempTop[15]        ; 3       ;
-; SequentialDevider:Devider|TempTop[16]        ; 3       ;
-; SequentialDevider:Devider|TempTop[17]        ; 3       ;
-; double_dabble_8bit:converter|counter[1]      ; 3       ;
-; Timer:TotalTimer|RefreshCount[4]             ; 3       ;
-; Timer:TotalTimer|RefreshCount[5]             ; 3       ;
-; Timer:TotalTimer|RefreshCount[6]             ; 3       ;
-; Timer:TotalTimer|RefreshCount[7]             ; 3       ;
-; Timer:TotalTimer|RefreshCount[8]             ; 3       ;
-; Timer:TotalTimer|RefreshCount[9]             ; 3       ;
-; Timer:TotalTimer|RefreshCount[10]            ; 3       ;
-; Timer:TotalTimer|RefreshCount[12]            ; 3       ;
-; Timer:TotalTimer|RefreshCount[13]            ; 3       ;
-; Timer:TotalTimer|RefreshCount[14]            ; 3       ;
-; SequentialDevider:Devider|TempRPM_Calc[5]    ; 3       ;
-; SequentialDevider:Devider|TempRPM_Calc[0]    ; 3       ;
-; SequentialDevider:Devider|TempRPM_Calc[1]    ; 3       ;
-; SequentialDevider:Devider|TempRPM_Calc[2]    ; 3       ;
-; SequentialDevider:Devider|TempRPM_Calc[3]    ; 3       ;
-; SequentialDevider:Devider|TempRPM_Calc[7]    ; 3       ;
-; SequentialDevider:Devider|TempRPM_Calc[4]    ; 3       ;
-; SequentialDevider:Devider|TempRPM_Calc[6]    ; 3       ;
-; HallCounter:HallSensCount|Selector3~5        ; 2       ;
-; HallCounter:HallSensCount|Selector7~3        ; 2       ;
-; HallCounter:HallSensCount|Selector7~2        ; 2       ;
-; HallCounter:HallSensCount|Selector7~0        ; 2       ;
-; ADC:ADClezer|state.s0                        ; 2       ;
-; Hbrug:Motorsturing|brugplus~5                ; 2       ;
-; Hbrug:Motorsturing|brugplus~1                ; 2       ;
-; Hbrug:Motorsturing|Equal0~3                  ; 2       ;
-; Hbrug:Motorsturing|Equal0~2                  ; 2       ;
-; Hbrug:Motorsturing|LessThan0~2               ; 2       ;
-; Hbrug:Motorsturing|LessThan0~1               ; 2       ;
-; SequentialDevider:Devider|process_0~1        ; 2       ;
-; SequentialDevider:Devider|LessThan2~28       ; 2       ;
-; SequentialDevider:Devider|LessThan1~32       ; 2       ;
-; HallCounter:HallSensCount|state.Measure      ; 2       ;
-; ADC:ADClezer|rdint                           ; 2       ;
-; ADC:ADClezer|convint                         ; 2       ;
-; SequentialDevider:Devider|TempBottom[0]      ; 2       ;
-; SequentialDevider:Devider|TempRPM_Calc[4]~0  ; 2       ;
-; SequentialDevider:Devider|WaitTimer[1]~0     ; 2       ;
-; prescaler:ClockScaler|Equal0~2               ; 2       ;
-; prescaler:ClockScaler|Equal0~1               ; 2       ;
-; prescaler:ClockScaler|Equal0~0               ; 2       ;
-; double_dabble_8bit:converter|counter[2]      ; 2       ;
-; seg_decoder:Digit2|Mux1~0                    ; 2       ;
-; seg_decoder_vector:Display4|Mux0~0           ; 2       ;
-; seg_decoder_vector:Display4|Mux1~0           ; 2       ;
-; seg_decoder_vector:Display4|Mux2~0           ; 2       ;
-; seg_decoder_vector:Display4|Mux3~0           ; 2       ;
-; seg_decoder_vector:Display4|Mux4~0           ; 2       ;
-; seg_decoder_vector:Display4|Mux5~0           ; 2       ;
-; seg_decoder_vector:Display4|Mux6~0           ; 2       ;
-; double_dabble_8bit:converter|bin_int[0]      ; 2       ;
-; Timer:TotalTimer|RefreshCount[0]             ; 2       ;
-; Timer:TotalTimer|RefreshCount[1]             ; 2       ;
-; Timer:TotalTimer|RefreshCount[2]             ; 2       ;
-; Timer:TotalTimer|RefreshCount[3]             ; 2       ;
-; SequentialDevider:Devider|LessThan1~29       ; 2       ;
-; SequentialDevider:Devider|LessThan2~26       ; 2       ;
-; prescaler:ClockScaler|count[8]               ; 2       ;
-; prescaler:ClockScaler|count[7]               ; 2       ;
-; prescaler:ClockScaler|count[6]               ; 2       ;
-; prescaler:ClockScaler|count[9]               ; 2       ;
-; prescaler:ClockScaler|count[0]               ; 2       ;
-; prescaler:ClockScaler|count[1]               ; 2       ;
-; prescaler:ClockScaler|count[2]               ; 2       ;
-; prescaler:ClockScaler|count[3]               ; 2       ;
-; prescaler:ClockScaler|count[11]              ; 2       ;
-; prescaler:ClockScaler|count[4]               ; 2       ;
-; prescaler:ClockScaler|count[5]               ; 2       ;
-; prescaler:ClockScaler|count[10]              ; 2       ;
-; double_dabble_8bit:converter|bcd_int[8]      ; 2       ;
-; HallCounter:HallSensCount|state.Rest~feeder  ; 1       ;
-; SW[17]                                       ; 1       ;
-; SW[16]                                       ; 1       ;
-; SW[15]                                       ; 1       ;
-; SW[14]                                       ; 1       ;
-; IO_A[24]~42                                  ; 1       ;
-; IO_A[23]~41                                  ; 1       ;
-; IO_A[22]~40                                  ; 1       ;
-; IO_A[21]~39                                  ; 1       ;
-; IO_A[20]~38                                  ; 1       ;
-; IO_A[19]~37                                  ; 1       ;
-; IO_A[18]~36                                  ; 1       ;
-; IO_A[17]~35                                  ; 1       ;
-; HallCounter:HallSensCount|Selector3~8        ; 1       ;
-; SequentialDevider:Devider|TempRPM_Final[0]   ; 1       ;
-; double_dabble_8bit:converter|bin_int~7       ; 1       ;
-; double_dabble_8bit:converter|bin_int~6       ; 1       ;
-; SequentialDevider:Devider|TempRPM_Final[1]   ; 1       ;
-; double_dabble_8bit:converter|bin_int~5       ; 1       ;
-; SequentialDevider:Devider|TempRPM_Final[2]   ; 1       ;
-; double_dabble_8bit:converter|bin_int[1]      ; 1       ;
-; double_dabble_8bit:converter|bin_int~4       ; 1       ;
-; SequentialDevider:Devider|TempRPM_Final[3]   ; 1       ;
-; double_dabble_8bit:converter|bin_int[2]      ; 1       ;
-; double_dabble_8bit:converter|bin_int~3       ; 1       ;
-; SequentialDevider:Devider|TempRPM_Final[4]   ; 1       ;
-; double_dabble_8bit:converter|bin_int[3]      ; 1       ;
-; HallCounter:HallSensCount|Selector6~0        ; 1       ;
-; HallCounter:HallSensCount|Selector3~7        ; 1       ;
-; HallCounter:HallSensCount|Selector3~6        ; 1       ;
-; HallCounter:HallSensCount|Selector3~3        ; 1       ;
-; ADC:ADClezer|Selector0~0                     ; 1       ;
-; double_dabble_8bit:converter|bin_int~2       ; 1       ;
-; SequentialDevider:Devider|TempRPM_Final[5]   ; 1       ;
-; double_dabble_8bit:converter|bin_int[4]      ; 1       ;
-; Timer:TotalTimer|LessThan0~3                 ; 1       ;
-; Timer:TotalTimer|LessThan0~2                 ; 1       ;
-; Timer:TotalTimer|LessThan0~1                 ; 1       ;
-; Timer:TotalTimer|LessThan0~0                 ; 1       ;
-; HallCounter:HallSensCount|Selector7~5        ; 1       ;
-; HallCounter:HallSensCount|Selector1~0        ; 1       ;
-; HallCounter:HallSensCount|Selector0~0        ; 1       ;
-; HallCounter:HallSensCount|Selector4~0        ; 1       ;
-; HallCounter:HallSensCount|Selector7~4        ; 1       ;
-; HallCounter:HallSensCount|Selector7~1        ; 1       ;
-; ADC:ADClezer|state~8                         ; 1       ;
-; SequentialDevider:Devider|TempRPM_Final[7]~1 ; 1       ;
-; SequentialDevider:Devider|TempRPM_Final[7]~0 ; 1       ;
-; double_dabble_8bit:converter|bin_int~1       ; 1       ;
-; SequentialDevider:Devider|TempRPM_Final[6]   ; 1       ;
-; double_dabble_8bit:converter|bin_int[5]      ; 1       ;
-; HallCounter:HallSensCount|Selector5~0        ; 1       ;
-; ADC:ADClezer|Selector2~1                     ; 1       ;
-; ADC:ADClezer|Selector2~0                     ; 1       ;
-; ADC:ADClezer|Selector3~0                     ; 1       ;
-; Hbrug:Motorsturing|brugplus~4                ; 1       ;
-; Hbrug:Motorsturing|brugplus~3                ; 1       ;
-; Hbrug:Motorsturing|brugplus~2                ; 1       ;
-; Hbrug:Motorsturing|brugplus~0                ; 1       ;
-; Hbrug:Motorsturing|Equal0~1                  ; 1       ;
-; Hbrug:Motorsturing|LessThan0~0               ; 1       ;
-; double_dabble_8bit:converter|bin_int~0       ; 1       ;
-; SequentialDevider:Devider|TempRPM_Final[7]   ; 1       ;
-; double_dabble_8bit:converter|bin_int[6]      ; 1       ;
-; SequentialDevider:Devider|TempTop[19]~1      ; 1       ;
-; SequentialDevider:Devider|TempTop[19]~0      ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[0]        ; 1       ;
-; SequentialDevider:Devider|Add1~56            ; 1       ;
-; SequentialDevider:Devider|Add1~55            ; 1       ;
-; SequentialDevider:Devider|Add1~52            ; 1       ;
-; SequentialDevider:Devider|Add1~51            ; 1       ;
-; SequentialDevider:Devider|Add1~50            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[1]        ; 1       ;
-; SequentialDevider:Devider|Add1~41            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[2]        ; 1       ;
-; SequentialDevider:Devider|Add1~40            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[3]        ; 1       ;
-; SequentialDevider:Devider|Add1~39            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[4]        ; 1       ;
-; SequentialDevider:Devider|Add1~38            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[5]        ; 1       ;
-; SequentialDevider:Devider|Add1~37            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[6]        ; 1       ;
-; SequentialDevider:Devider|Add1~36            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[7]        ; 1       ;
-; SequentialDevider:Devider|Add1~35            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[8]        ; 1       ;
-; SequentialDevider:Devider|Add1~34            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[9]        ; 1       ;
-; SequentialDevider:Devider|Add1~33            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[10]       ; 1       ;
-; SequentialDevider:Devider|Add1~32            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[11]       ; 1       ;
-; SequentialDevider:Devider|Add1~31            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[12]       ; 1       ;
-; SequentialDevider:Devider|Add1~30            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[13]       ; 1       ;
-; SequentialDevider:Devider|Add1~29            ; 1       ;
-; Timer:TotalTimer|RefreshCountFinal[14]       ; 1       ;
-; SequentialDevider:Devider|Add1~28            ; 1       ;
-; SequentialDevider:Devider|TempRPM_Calc[4]~2  ; 1       ;
-; SequentialDevider:Devider|TempRPM_Calc[4]~1  ; 1       ;
-; SequentialDevider:Devider|TempRunning~2      ; 1       ;
-; SequentialDevider:Devider|TempRunning~1      ; 1       ;
-; SequentialDevider:Devider|TempRunning~0      ; 1       ;
-; SequentialDevider:Devider|WaitTimer[0]~2     ; 1       ;
-; SequentialDevider:Devider|WaitTimer[1]~1     ; 1       ;
-; HallCounter:HallSensCount|CalcTick~0         ; 1       ;
-; ADC:ADClezer|Selector1~0                     ; 1       ;
-; Hbrug:Motorsturing|brugmin                   ; 1       ;
-; Hbrug:Motorsturing|brugplus                  ; 1       ;
-; double_dabble_8bit:converter|bcd_int~9       ; 1       ;
-; double_dabble_8bit:converter|bcd_int~8       ; 1       ;
-; double_dabble_8bit:converter|bcd_int~7       ; 1       ;
-; double_dabble_8bit:converter|bcd_int~6       ; 1       ;
-; double_dabble_8bit:converter|bin_int[7]      ; 1       ;
-; double_dabble_8bit:converter|bcd_int~5       ; 1       ;
-; double_dabble_8bit:converter|bcd_int~4       ; 1       ;
-; double_dabble_8bit:converter|bcd_int~3       ; 1       ;
-; double_dabble_8bit:converter|bcd_int~2       ; 1       ;
-; double_dabble_8bit:converter|bcd_int~1       ; 1       ;
-; double_dabble_8bit:converter|counter[3]~3    ; 1       ;
-; double_dabble_8bit:converter|counter[0]~2    ; 1       ;
-; double_dabble_8bit:converter|counter[1]~1    ; 1       ;
-; double_dabble_8bit:converter|counter[2]~0    ; 1       ;
-; double_dabble_8bit:converter|Add0~0          ; 1       ;
-; SequentialDevider:Devider|refreshint~2       ; 1       ;
-; SequentialDevider:Devider|refreshint~1       ; 1       ;
-; SequentialDevider:Devider|Equal1~1           ; 1       ;
-; SequentialDevider:Devider|Equal1~0           ; 1       ;
-; SequentialDevider:Devider|refreshint~0       ; 1       ;
-; double_dabble_8bit:converter|bcd_int~0       ; 1       ;
-; ADC:ADClezer|state~7                         ; 1       ;
-; prescaler:ClockScaler|clkint~0               ; 1       ;
-; double_dabble_8bit:converter|bcd_int[9]      ; 1       ;
-; seg_decoder:Digit0|Mux0~0                    ; 1       ;
-; seg_decoder:Digit0|Mux1~0                    ; 1       ;
-; seg_decoder:Digit0|Mux2~0                    ; 1       ;
-; seg_decoder:Digit0|Mux3~0                    ; 1       ;
-; seg_decoder:Digit0|Mux4~0                    ; 1       ;
-; seg_decoder:Digit0|Mux5~0                    ; 1       ;
-; seg_decoder:Digit0|Mux6~0                    ; 1       ;
-; seg_decoder:Digit1|Mux0~0                    ; 1       ;
-; seg_decoder:Digit1|Mux1~0                    ; 1       ;
-; seg_decoder:Digit1|Mux2~0                    ; 1       ;
-; seg_decoder:Digit1|Mux3~0                    ; 1       ;
-; seg_decoder:Digit1|Mux4~0                    ; 1       ;
-; seg_decoder:Digit1|Mux5~0                    ; 1       ;
-; seg_decoder:Digit1|Mux6~0                    ; 1       ;
-; seg_decoder:Digit2|Mux1~2                    ; 1       ;
-; seg_decoder:Digit2|Mux1~1                    ; 1       ;
-; seg_decoder_vector:Display0|Mux0~0           ; 1       ;
-; seg_decoder_vector:Display0|Mux1~0           ; 1       ;
-; seg_decoder_vector:Display0|Mux2~0           ; 1       ;
-; seg_decoder_vector:Display0|Mux3~0           ; 1       ;
-; seg_decoder_vector:Display0|Mux4~0           ; 1       ;
-; seg_decoder_vector:Display0|Mux5~0           ; 1       ;
-; seg_decoder_vector:Display0|Mux6~0           ; 1       ;
-; seg_decoder_vector:Display1|Mux0~0           ; 1       ;
-; seg_decoder_vector:Display1|Mux1~0           ; 1       ;
-; seg_decoder_vector:Display1|Mux2~0           ; 1       ;
-; seg_decoder_vector:Display1|Mux3~0           ; 1       ;
-; seg_decoder_vector:Display1|Mux4~0           ; 1       ;
-; seg_decoder_vector:Display1|Mux5~0           ; 1       ;
-; seg_decoder_vector:Display1|Mux6~0           ; 1       ;
-; Timer:TotalTimer|Add0~28                     ; 1       ;
-; Timer:TotalTimer|Add0~27                     ; 1       ;
-; Timer:TotalTimer|Add0~26                     ; 1       ;
-; Timer:TotalTimer|Add0~25                     ; 1       ;
-; Timer:TotalTimer|Add0~24                     ; 1       ;
-; Timer:TotalTimer|Add0~23                     ; 1       ;
-; Timer:TotalTimer|Add0~22                     ; 1       ;
-; Timer:TotalTimer|Add0~21                     ; 1       ;
-; Timer:TotalTimer|Add0~20                     ; 1       ;
-; Timer:TotalTimer|Add0~19                     ; 1       ;
-; Timer:TotalTimer|Add0~18                     ; 1       ;
-; Timer:TotalTimer|Add0~17                     ; 1       ;
-; Timer:TotalTimer|Add0~16                     ; 1       ;
-; Timer:TotalTimer|Add0~15                     ; 1       ;
-; Timer:TotalTimer|Add0~14                     ; 1       ;
-; Timer:TotalTimer|Add0~13                     ; 1       ;
-; Timer:TotalTimer|Add0~12                     ; 1       ;
-; Timer:TotalTimer|Add0~11                     ; 1       ;
-; Timer:TotalTimer|Add0~10                     ; 1       ;
-; Timer:TotalTimer|Add0~9                      ; 1       ;
-; Timer:TotalTimer|Add0~8                      ; 1       ;
-; Timer:TotalTimer|Add0~7                      ; 1       ;
-; Timer:TotalTimer|Add0~6                      ; 1       ;
-; Timer:TotalTimer|Add0~5                      ; 1       ;
-; Timer:TotalTimer|Add0~4                      ; 1       ;
-; Timer:TotalTimer|Add0~3                      ; 1       ;
-; Timer:TotalTimer|Add0~2                      ; 1       ;
-; Timer:TotalTimer|Add0~1                      ; 1       ;
-; Timer:TotalTimer|Add0~0                      ; 1       ;
-; SequentialDevider:Devider|Add1~57            ; 1       ;
-; SequentialDevider:Devider|Add3~38            ; 1       ;
-; SequentialDevider:Devider|Add1~54            ; 1       ;
-; SequentialDevider:Devider|Add1~53            ; 1       ;
-; SequentialDevider:Devider|Add3~37            ; 1       ;
-; SequentialDevider:Devider|Add3~36            ; 1       ;
-; SequentialDevider:Devider|Add1~49            ; 1       ;
-; SequentialDevider:Devider|Add1~48            ; 1       ;
-; SequentialDevider:Devider|Add1~47            ; 1       ;
-; SequentialDevider:Devider|Add1~46            ; 1       ;
-; SequentialDevider:Devider|Add1~45            ; 1       ;
-; SequentialDevider:Devider|Add1~44            ; 1       ;
-; SequentialDevider:Devider|Add1~43            ; 1       ;
-; SequentialDevider:Devider|Add1~42            ; 1       ;
-; SequentialDevider:Devider|Add3~35            ; 1       ;
-; SequentialDevider:Devider|Add3~34            ; 1       ;
-; SequentialDevider:Devider|Add3~33            ; 1       ;
-; SequentialDevider:Devider|Add3~32            ; 1       ;
-; SequentialDevider:Devider|Add3~31            ; 1       ;
-; SequentialDevider:Devider|Add3~30            ; 1       ;
-; SequentialDevider:Devider|Add3~29            ; 1       ;
-; SequentialDevider:Devider|Add3~28            ; 1       ;
-; SequentialDevider:Devider|Add1~27            ; 1       ;
-; SequentialDevider:Devider|Add1~26            ; 1       ;
-; SequentialDevider:Devider|Add1~25            ; 1       ;
-; SequentialDevider:Devider|Add1~24            ; 1       ;
-; SequentialDevider:Devider|Add1~23            ; 1       ;
-; SequentialDevider:Devider|Add1~22            ; 1       ;
-; SequentialDevider:Devider|Add1~21            ; 1       ;
-; SequentialDevider:Devider|Add1~20            ; 1       ;
-; SequentialDevider:Devider|Add1~19            ; 1       ;
-; SequentialDevider:Devider|Add1~18            ; 1       ;
-; SequentialDevider:Devider|Add1~17            ; 1       ;
-; SequentialDevider:Devider|Add1~16            ; 1       ;
-; SequentialDevider:Devider|Add1~15            ; 1       ;
-; SequentialDevider:Devider|Add1~14            ; 1       ;
-; SequentialDevider:Devider|Add1~13            ; 1       ;
-; SequentialDevider:Devider|Add1~12            ; 1       ;
-; SequentialDevider:Devider|Add1~11            ; 1       ;
-; SequentialDevider:Devider|Add1~10            ; 1       ;
-; SequentialDevider:Devider|Add1~9             ; 1       ;
-; SequentialDevider:Devider|Add1~8             ; 1       ;
-; SequentialDevider:Devider|Add1~7             ; 1       ;
-; SequentialDevider:Devider|Add1~6             ; 1       ;
-; SequentialDevider:Devider|Add1~5             ; 1       ;
-; SequentialDevider:Devider|Add1~4             ; 1       ;
-; SequentialDevider:Devider|Add1~3             ; 1       ;
-; SequentialDevider:Devider|Add1~2             ; 1       ;
-; SequentialDevider:Devider|Add1~1             ; 1       ;
-; SequentialDevider:Devider|Add1~0             ; 1       ;
-; SequentialDevider:Devider|Add3~27            ; 1       ;
-; SequentialDevider:Devider|Add3~26            ; 1       ;
-; SequentialDevider:Devider|Add3~25            ; 1       ;
-; SequentialDevider:Devider|Add3~24            ; 1       ;
-; SequentialDevider:Devider|Add3~23            ; 1       ;
-; SequentialDevider:Devider|Add3~22            ; 1       ;
-; SequentialDevider:Devider|Add3~21            ; 1       ;
-; SequentialDevider:Devider|Add3~20            ; 1       ;
-; SequentialDevider:Devider|Add3~19            ; 1       ;
-; SequentialDevider:Devider|Add3~18            ; 1       ;
-; SequentialDevider:Devider|Add3~17            ; 1       ;
-; SequentialDevider:Devider|Add3~16            ; 1       ;
-; SequentialDevider:Devider|Add3~15            ; 1       ;
-; SequentialDevider:Devider|Add3~14            ; 1       ;
-; SequentialDevider:Devider|Add3~13            ; 1       ;
-; SequentialDevider:Devider|Add3~12            ; 1       ;
-; SequentialDevider:Devider|Add3~11            ; 1       ;
-; SequentialDevider:Devider|Add3~10            ; 1       ;
-; SequentialDevider:Devider|Add3~9             ; 1       ;
-; SequentialDevider:Devider|Add3~8             ; 1       ;
-; SequentialDevider:Devider|Add3~7             ; 1       ;
-; SequentialDevider:Devider|Add3~6             ; 1       ;
-; SequentialDevider:Devider|Add3~5             ; 1       ;
-; SequentialDevider:Devider|Add3~4             ; 1       ;
-; SequentialDevider:Devider|Add3~3             ; 1       ;
-; SequentialDevider:Devider|Add3~2             ; 1       ;
-; SequentialDevider:Devider|Add3~1             ; 1       ;
-; SequentialDevider:Devider|Add3~0             ; 1       ;
-; SequentialDevider:Devider|Add2~14            ; 1       ;
-; SequentialDevider:Devider|Add2~13            ; 1       ;
-; SequentialDevider:Devider|Add2~12            ; 1       ;
-; SequentialDevider:Devider|Add2~11            ; 1       ;
-; SequentialDevider:Devider|Add2~10            ; 1       ;
-; SequentialDevider:Devider|Add2~9             ; 1       ;
-; SequentialDevider:Devider|Add2~8             ; 1       ;
-; SequentialDevider:Devider|Add2~7             ; 1       ;
-; SequentialDevider:Devider|Add2~6             ; 1       ;
-; SequentialDevider:Devider|Add2~5             ; 1       ;
-; SequentialDevider:Devider|Add2~4             ; 1       ;
-; SequentialDevider:Devider|Add2~3             ; 1       ;
-; SequentialDevider:Devider|Add2~2             ; 1       ;
-; SequentialDevider:Devider|Add2~1             ; 1       ;
-; SequentialDevider:Devider|Add2~0             ; 1       ;
-; prescaler:ClockScaler|Add0~22                ; 1       ;
-; prescaler:ClockScaler|Add0~21                ; 1       ;
-; prescaler:ClockScaler|Add0~20                ; 1       ;
-; prescaler:ClockScaler|Add0~19                ; 1       ;
-; prescaler:ClockScaler|Add0~18                ; 1       ;
-; prescaler:ClockScaler|Add0~17                ; 1       ;
-; prescaler:ClockScaler|Add0~16                ; 1       ;
-; prescaler:ClockScaler|Add0~15                ; 1       ;
-; prescaler:ClockScaler|Add0~14                ; 1       ;
-; prescaler:ClockScaler|Add0~13                ; 1       ;
-; prescaler:ClockScaler|Add0~12                ; 1       ;
-; prescaler:ClockScaler|Add0~11                ; 1       ;
-; prescaler:ClockScaler|Add0~10                ; 1       ;
-; prescaler:ClockScaler|Add0~9                 ; 1       ;
-; prescaler:ClockScaler|Add0~8                 ; 1       ;
-; prescaler:ClockScaler|Add0~7                 ; 1       ;
-; prescaler:ClockScaler|Add0~6                 ; 1       ;
-; prescaler:ClockScaler|Add0~5                 ; 1       ;
-; prescaler:ClockScaler|Add0~4                 ; 1       ;
-; prescaler:ClockScaler|Add0~3                 ; 1       ;
-; prescaler:ClockScaler|Add0~2                 ; 1       ;
-; prescaler:ClockScaler|Add0~1                 ; 1       ;
-; prescaler:ClockScaler|Add0~0                 ; 1       ;
-; SequentialDevider:Devider|LessThan1~28       ; 1       ;
-; SequentialDevider:Devider|LessThan1~26       ; 1       ;
-; SequentialDevider:Devider|LessThan1~24       ; 1       ;
-; SequentialDevider:Devider|LessThan1~22       ; 1       ;
-; SequentialDevider:Devider|LessThan1~20       ; 1       ;
-; SequentialDevider:Devider|LessThan1~18       ; 1       ;
-; SequentialDevider:Devider|LessThan1~16       ; 1       ;
-; SequentialDevider:Devider|LessThan1~14       ; 1       ;
-; SequentialDevider:Devider|LessThan1~12       ; 1       ;
-; SequentialDevider:Devider|LessThan1~10       ; 1       ;
-; SequentialDevider:Devider|LessThan1~8        ; 1       ;
-; SequentialDevider:Devider|LessThan1~6        ; 1       ;
-; SequentialDevider:Devider|LessThan1~4        ; 1       ;
-; SequentialDevider:Devider|LessThan1~2        ; 1       ;
-; SequentialDevider:Devider|LessThan2~25       ; 1       ;
-; SequentialDevider:Devider|LessThan2~23       ; 1       ;
-; SequentialDevider:Devider|LessThan2~21       ; 1       ;
-; SequentialDevider:Devider|LessThan2~19       ; 1       ;
-; SequentialDevider:Devider|LessThan2~17       ; 1       ;
-; SequentialDevider:Devider|LessThan2~15       ; 1       ;
-; SequentialDevider:Devider|LessThan2~13       ; 1       ;
-; SequentialDevider:Devider|LessThan2~11       ; 1       ;
-; SequentialDevider:Devider|LessThan2~9        ; 1       ;
-; SequentialDevider:Devider|LessThan2~7        ; 1       ;
-; SequentialDevider:Devider|LessThan2~5        ; 1       ;
-; SequentialDevider:Devider|LessThan2~3        ; 1       ;
-; SequentialDevider:Devider|LessThan2~1        ; 1       ;
-; prescaler:ClockScaler|clkint                 ; 1       ;
-+----------------------------------------------+---------+
++--------------------------------------------+
+; Non-Global High Fan-Out Signals            ;
++----------------------------------+---------+
+; Name                             ; Fan-Out ;
++----------------------------------+---------+
+; prescaler:ClockScaler|count[5]~0 ; 12      ;
+; ADC:ADClezer|state.s4            ; 9       ;
+; IO_A[16]~34                      ; 5       ;
+; ADC:ADClezer|state.s3            ; 4       ;
+; ADC:ADClezer|state.s2            ; 3       ;
+; ADC:ADClezer|state.s1            ; 3       ;
+; SW[0]                            ; 2       ;
+; ADC:ADClezer|state.s0            ; 2       ;
+; prescaler:ClockScaler|Equal0~2   ; 2       ;
+; prescaler:ClockScaler|Equal0~1   ; 2       ;
+; prescaler:ClockScaler|Equal0~0   ; 2       ;
+; ADC:ADClezer|rdint               ; 2       ;
+; ADC:ADClezer|convint             ; 2       ;
+; prescaler:ClockScaler|count[11]  ; 2       ;
+; prescaler:ClockScaler|count[8]   ; 2       ;
+; prescaler:ClockScaler|count[10]  ; 2       ;
+; prescaler:ClockScaler|count[9]   ; 2       ;
+; prescaler:ClockScaler|count[7]   ; 2       ;
+; prescaler:ClockScaler|count[6]   ; 2       ;
+; prescaler:ClockScaler|count[0]   ; 2       ;
+; prescaler:ClockScaler|count[1]   ; 2       ;
+; prescaler:ClockScaler|count[2]   ; 2       ;
+; prescaler:ClockScaler|count[3]   ; 2       ;
+; prescaler:ClockScaler|count[4]   ; 2       ;
+; prescaler:ClockScaler|count[5]   ; 2       ;
+; IO_A[24]~42                      ; 1       ;
+; IO_A[23]~41                      ; 1       ;
+; IO_A[22]~40                      ; 1       ;
+; IO_A[21]~39                      ; 1       ;
+; IO_A[20]~38                      ; 1       ;
+; IO_A[19]~37                      ; 1       ;
+; IO_A[18]~36                      ; 1       ;
+; IO_A[17]~35                      ; 1       ;
+; ADC:ADClezer|Selector0~0         ; 1       ;
+; ADC:ADClezer|state~8             ; 1       ;
+; ADC:ADClezer|Selector1~0         ; 1       ;
+; ADC:ADClezer|state~7             ; 1       ;
+; prescaler:ClockScaler|clkint~0   ; 1       ;
+; prescaler:ClockScaler|Equal0~3   ; 1       ;
+; ADC:ADClezer|Selector2~1         ; 1       ;
+; ADC:ADClezer|Selector2~0         ; 1       ;
+; ADC:ADClezer|Selector3~0         ; 1       ;
+; prescaler:ClockScaler|clkint     ; 1       ;
+; Hbrug:Motorsturing|brugmin~2     ; 1       ;
+; ADC:ADClezer|Buf[7]              ; 1       ;
+; ADC:ADClezer|Buf[6]              ; 1       ;
+; Hbrug:Motorsturing|brugmin~1     ; 1       ;
+; ADC:ADClezer|Buf[5]              ; 1       ;
+; ADC:ADClezer|Buf[4]              ; 1       ;
+; Hbrug:Motorsturing|brugmin~0     ; 1       ;
+; ADC:ADClezer|Buf[0]              ; 1       ;
+; ADC:ADClezer|Buf[1]              ; 1       ;
+; ADC:ADClezer|Buf[2]              ; 1       ;
+; ADC:ADClezer|Buf[3]              ; 1       ;
+; Hbrug:Motorsturing|brugmin       ; 1       ;
+; prescaler:ClockScaler|Add0~22    ; 1       ;
+; prescaler:ClockScaler|Add0~21    ; 1       ;
+; prescaler:ClockScaler|Add0~20    ; 1       ;
+; prescaler:ClockScaler|Add0~19    ; 1       ;
+; prescaler:ClockScaler|Add0~18    ; 1       ;
+; prescaler:ClockScaler|Add0~17    ; 1       ;
+; prescaler:ClockScaler|Add0~16    ; 1       ;
+; prescaler:ClockScaler|Add0~15    ; 1       ;
+; prescaler:ClockScaler|Add0~14    ; 1       ;
+; prescaler:ClockScaler|Add0~13    ; 1       ;
+; prescaler:ClockScaler|Add0~12    ; 1       ;
+; prescaler:ClockScaler|Add0~11    ; 1       ;
+; prescaler:ClockScaler|Add0~10    ; 1       ;
+; prescaler:ClockScaler|Add0~9     ; 1       ;
+; prescaler:ClockScaler|Add0~8     ; 1       ;
+; prescaler:ClockScaler|Add0~7     ; 1       ;
+; prescaler:ClockScaler|Add0~6     ; 1       ;
+; prescaler:ClockScaler|Add0~5     ; 1       ;
+; prescaler:ClockScaler|Add0~4     ; 1       ;
+; prescaler:ClockScaler|Add0~3     ; 1       ;
+; prescaler:ClockScaler|Add0~2     ; 1       ;
+; prescaler:ClockScaler|Add0~1     ; 1       ;
+; prescaler:ClockScaler|Add0~0     ; 1       ;
++----------------------------------+---------+
 
 
-+------------------------------------------------------+
-; Interconnect Usage Summary                           ;
-+----------------------------+-------------------------+
-; Interconnect Resource Type ; Usage                   ;
-+----------------------------+-------------------------+
-; Block interconnects        ; 406 / 197,592 ( < 1 % ) ;
-; C16 interconnects          ; 7 / 6,270 ( < 1 % )     ;
-; C4 interconnects           ; 195 / 123,120 ( < 1 % ) ;
-; Direct links               ; 95 / 197,592 ( < 1 % )  ;
-; Global clocks              ; 2 / 16 ( 13 % )         ;
-; Local interconnects        ; 164 / 68,416 ( < 1 % )  ;
-; R24 interconnects          ; 58 / 5,926 ( < 1 % )    ;
-; R4 interconnects           ; 307 / 167,484 ( < 1 % ) ;
-+----------------------------+-------------------------+
++-----------------------------------------------------+
+; Interconnect Usage Summary                          ;
++----------------------------+------------------------+
+; Interconnect Resource Type ; Usage                  ;
++----------------------------+------------------------+
+; Block interconnects        ; 22 / 197,592 ( < 1 % ) ;
+; C16 interconnects          ; 1 / 6,270 ( < 1 % )    ;
+; C4 interconnects           ; 15 / 123,120 ( < 1 % ) ;
+; Direct links               ; 8 / 197,592 ( < 1 % )  ;
+; Global clocks              ; 2 / 16 ( 13 % )        ;
+; Local interconnects        ; 29 / 68,416 ( < 1 % )  ;
+; R24 interconnects          ; 0 / 5,926 ( 0 % )      ;
+; R4 interconnects           ; 4 / 167,484 ( < 1 % )  ;
++----------------------------+------------------------+
+
+
++---------------------------------------------------------------------------+
+; LAB Logic Elements                                                        ;
++---------------------------------------------+-----------------------------+
+; Number of Logic Elements  (Average = 11.33) ; Number of LABs  (Total = 3) ;
++---------------------------------------------+-----------------------------+
+; 1                                           ; 0                           ;
+; 2                                           ; 1                           ;
+; 3                                           ; 0                           ;
+; 4                                           ; 0                           ;
+; 5                                           ; 0                           ;
+; 6                                           ; 0                           ;
+; 7                                           ; 0                           ;
+; 8                                           ; 0                           ;
+; 9                                           ; 0                           ;
+; 10                                          ; 0                           ;
+; 11                                          ; 0                           ;
+; 12                                          ; 0                           ;
+; 13                                          ; 0                           ;
+; 14                                          ; 0                           ;
+; 15                                          ; 0                           ;
+; 16                                          ; 2                           ;
++---------------------------------------------+-----------------------------+
+
+
++------------------------------------------------------------------+
+; LAB-wide Signals                                                 ;
++------------------------------------+-----------------------------+
+; LAB-wide Signals  (Average = 1.00) ; Number of LABs  (Total = 3) ;
++------------------------------------+-----------------------------+
+; 1 Clock                            ; 3                           ;
++------------------------------------+-----------------------------+
 
 
 +----------------------------------------------------------------------------+
-; LAB Logic Elements                                                         ;
-+---------------------------------------------+------------------------------+
-; Number of Logic Elements  (Average = 12.54) ; Number of LABs  (Total = 24) ;
-+---------------------------------------------+------------------------------+
-; 1                                           ; 1                            ;
-; 2                                           ; 2                            ;
-; 3                                           ; 0                            ;
-; 4                                           ; 1                            ;
-; 5                                           ; 1                            ;
-; 6                                           ; 0                            ;
-; 7                                           ; 0                            ;
-; 8                                           ; 1                            ;
-; 9                                           ; 0                            ;
-; 10                                          ; 0                            ;
-; 11                                          ; 0                            ;
-; 12                                          ; 1                            ;
-; 13                                          ; 1                            ;
-; 14                                          ; 0                            ;
-; 15                                          ; 2                            ;
-; 16                                          ; 14                           ;
-+---------------------------------------------+------------------------------+
+; LAB Signals Sourced                                                        ;
++----------------------------------------------+-----------------------------+
+; Number of Signals Sourced  (Average = 20.67) ; Number of LABs  (Total = 3) ;
++----------------------------------------------+-----------------------------+
+; 0                                            ; 0                           ;
+; 1                                            ; 0                           ;
+; 2                                            ; 0                           ;
+; 3                                            ; 1                           ;
+; 4                                            ; 0                           ;
+; 5                                            ; 0                           ;
+; 6                                            ; 0                           ;
+; 7                                            ; 0                           ;
+; 8                                            ; 0                           ;
+; 9                                            ; 0                           ;
+; 10                                           ; 0                           ;
+; 11                                           ; 0                           ;
+; 12                                           ; 0                           ;
+; 13                                           ; 0                           ;
+; 14                                           ; 0                           ;
+; 15                                           ; 0                           ;
+; 16                                           ; 0                           ;
+; 17                                           ; 0                           ;
+; 18                                           ; 0                           ;
+; 19                                           ; 0                           ;
+; 20                                           ; 0                           ;
+; 21                                           ; 0                           ;
+; 22                                           ; 0                           ;
+; 23                                           ; 0                           ;
+; 24                                           ; 0                           ;
+; 25                                           ; 0                           ;
+; 26                                           ; 0                           ;
+; 27                                           ; 0                           ;
+; 28                                           ; 1                           ;
+; 29                                           ; 0                           ;
+; 30                                           ; 0                           ;
+; 31                                           ; 1                           ;
++----------------------------------------------+-----------------------------+
 
 
-+-------------------------------------------------------------------+
-; LAB-wide Signals                                                  ;
-+------------------------------------+------------------------------+
-; LAB-wide Signals  (Average = 2.08) ; Number of LABs  (Total = 24) ;
-+------------------------------------+------------------------------+
-; 1 Async. clear                     ; 14                           ;
-; 1 Clock                            ; 20                           ;
-; 1 Clock enable                     ; 6                            ;
-; 1 Sync. clear                      ; 3                            ;
-; 2 Clock enables                    ; 6                            ;
-; 2 Clocks                           ; 1                            ;
-+------------------------------------+------------------------------+
++-------------------------------------------------------------------------------+
+; LAB Signals Sourced Out                                                       ;
++-------------------------------------------------+-----------------------------+
+; Number of Signals Sourced Out  (Average = 2.33) ; Number of LABs  (Total = 3) ;
++-------------------------------------------------+-----------------------------+
+; 0                                               ; 0                           ;
+; 1                                               ; 1                           ;
+; 2                                               ; 0                           ;
+; 3                                               ; 2                           ;
++-------------------------------------------------+-----------------------------+
 
 
-+-----------------------------------------------------------------------------+
-; LAB Signals Sourced                                                         ;
-+----------------------------------------------+------------------------------+
-; Number of Signals Sourced  (Average = 17.50) ; Number of LABs  (Total = 24) ;
-+----------------------------------------------+------------------------------+
-; 0                                            ; 0                            ;
-; 1                                            ; 1                            ;
-; 2                                            ; 3                            ;
-; 3                                            ; 1                            ;
-; 4                                            ; 0                            ;
-; 5                                            ; 0                            ;
-; 6                                            ; 1                            ;
-; 7                                            ; 0                            ;
-; 8                                            ; 1                            ;
-; 9                                            ; 0                            ;
-; 10                                           ; 0                            ;
-; 11                                           ; 0                            ;
-; 12                                           ; 0                            ;
-; 13                                           ; 0                            ;
-; 14                                           ; 0                            ;
-; 15                                           ; 1                            ;
-; 16                                           ; 0                            ;
-; 17                                           ; 1                            ;
-; 18                                           ; 0                            ;
-; 19                                           ; 0                            ;
-; 20                                           ; 1                            ;
-; 21                                           ; 4                            ;
-; 22                                           ; 3                            ;
-; 23                                           ; 0                            ;
-; 24                                           ; 2                            ;
-; 25                                           ; 1                            ;
-; 26                                           ; 0                            ;
-; 27                                           ; 1                            ;
-; 28                                           ; 0                            ;
-; 29                                           ; 0                            ;
-; 30                                           ; 0                            ;
-; 31                                           ; 2                            ;
-; 32                                           ; 1                            ;
-+----------------------------------------------+------------------------------+
-
-
-+--------------------------------------------------------------------------------+
-; LAB Signals Sourced Out                                                        ;
-+-------------------------------------------------+------------------------------+
-; Number of Signals Sourced Out  (Average = 8.92) ; Number of LABs  (Total = 24) ;
-+-------------------------------------------------+------------------------------+
-; 0                                               ; 0                            ;
-; 1                                               ; 2                            ;
-; 2                                               ; 4                            ;
-; 3                                               ; 1                            ;
-; 4                                               ; 1                            ;
-; 5                                               ; 1                            ;
-; 6                                               ; 1                            ;
-; 7                                               ; 0                            ;
-; 8                                               ; 0                            ;
-; 9                                               ; 1                            ;
-; 10                                              ; 1                            ;
-; 11                                              ; 3                            ;
-; 12                                              ; 3                            ;
-; 13                                              ; 2                            ;
-; 14                                              ; 0                            ;
-; 15                                              ; 1                            ;
-; 16                                              ; 1                            ;
-; 17                                              ; 0                            ;
-; 18                                              ; 0                            ;
-; 19                                              ; 0                            ;
-; 20                                              ; 1                            ;
-; 21                                              ; 1                            ;
-+-------------------------------------------------+------------------------------+
-
-
-+-----------------------------------------------------------------------------+
-; LAB Distinct Inputs                                                         ;
-+----------------------------------------------+------------------------------+
-; Number of Distinct Inputs  (Average = 13.83) ; Number of LABs  (Total = 24) ;
-+----------------------------------------------+------------------------------+
-; 0                                            ; 0                            ;
-; 1                                            ; 0                            ;
-; 2                                            ; 2                            ;
-; 3                                            ; 0                            ;
-; 4                                            ; 4                            ;
-; 5                                            ; 0                            ;
-; 6                                            ; 1                            ;
-; 7                                            ; 0                            ;
-; 8                                            ; 1                            ;
-; 9                                            ; 0                            ;
-; 10                                           ; 1                            ;
-; 11                                           ; 1                            ;
-; 12                                           ; 1                            ;
-; 13                                           ; 1                            ;
-; 14                                           ; 2                            ;
-; 15                                           ; 0                            ;
-; 16                                           ; 1                            ;
-; 17                                           ; 2                            ;
-; 18                                           ; 0                            ;
-; 19                                           ; 1                            ;
-; 20                                           ; 0                            ;
-; 21                                           ; 2                            ;
-; 22                                           ; 0                            ;
-; 23                                           ; 0                            ;
-; 24                                           ; 0                            ;
-; 25                                           ; 0                            ;
-; 26                                           ; 2                            ;
-; 27                                           ; 0                            ;
-; 28                                           ; 0                            ;
-; 29                                           ; 0                            ;
-; 30                                           ; 1                            ;
-; 31                                           ; 1                            ;
-+----------------------------------------------+------------------------------+
++---------------------------------------------------------------------------+
+; LAB Distinct Inputs                                                       ;
++---------------------------------------------+-----------------------------+
+; Number of Distinct Inputs  (Average = 5.67) ; Number of LABs  (Total = 3) ;
++---------------------------------------------+-----------------------------+
+; 0                                           ; 0                           ;
+; 1                                           ; 0                           ;
+; 2                                           ; 1                           ;
+; 3                                           ; 0                           ;
+; 4                                           ; 0                           ;
+; 5                                           ; 1                           ;
+; 6                                           ; 0                           ;
+; 7                                           ; 0                           ;
+; 8                                           ; 0                           ;
+; 9                                           ; 0                           ;
+; 10                                          ; 1                           ;
++---------------------------------------------+-----------------------------+
 
 
 +-------------------------------------------------------------------------+
@@ -2542,13 +1941,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Fitter
     Info: Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Sep 25 00:52:12 2013
+    Info: Processing started: Mon Sep 30 09:33:27 2013
 Info: Command: quartus_fit --read_settings_files=off --write_settings_files=off Hometrainer -c Hometrainer
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (119006): Selected device EP2C70F896C6 for design "Hometrainer"
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
-Info (171003): Fitter is performing an Auto Fit compilation, which may decrease Fitter effort to reduce compilation time
+Info (171004): Fitter is performing a Standard Fit compilation using maximum Fitter effort to optimize design performance
 Warning (292013): Feature LogicLock is only available with a valid subscription license. You can purchase a software subscription to gain full access to this feature.
 Info (176444): Device migration not selected. If you intend to use device migration later, you may need to change the pin assignments as they may be incompatible with other devices
 Info (169124): Fitter converted 3 user pins into dedicated programming pins
@@ -2559,7 +1958,13 @@ Critical Warning (169085): No exact pin location assignment(s) for 1 pins of 146
     Info (169086): Pin SW[7] not assigned to an exact location on the device
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'Hometrainer.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332144): No user constrained base clocks found in the design
-Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
+Info (332128): Timing requirements not specified -- optimizing circuit to achieve the following default global requirements
+    Info (332127): Assuming a default timing requirement
+Info (332111): Found 2 clocks
+    Info (332111):   Period   Clock Name
+    Info (332111): ======== ============
+    Info (332111):    1.000     CLOCK_50
+    Info (332111):    1.000 prescaler:ClockScaler|clkint
 Info (176353): Automatically promoted node CLOCK_50 (placed in PIN AD15 (CLK13, LVDSCLK6p, Input))
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G14
 Info (176353): Automatically promoted node prescaler:ClockScaler|clkint 
@@ -2575,6 +1980,8 @@ Extra Info (176248): Moving registers into I/O cells, Multiplier Blocks, and RAM
 Extra Info (176249): Finished moving registers into I/O cells, Multiplier Blocks, and RAM blocks
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
+Info (223000): Starting Vectorless Power Activity Estimation
+Info (223001): Completed Vectorless Power Activity Estimation
 Info (176214): Statistics of I/O pins that need to be placed that use the same VCCIO and VREF, before I/O pin placement
     Info (176211): Number of I/O pins in group: 1 (unused VREF, 3.3V VCCIO, 1 input, 0 output, 0 bidirectional)
         Info (176212): I/O standards used: 3.3-V LVTTL.
@@ -2590,17 +1997,16 @@ Info (176215): I/O bank details before I/O pin placement
         Info (176213): I/O bank number 8 does not use VREF pins and has 3.3V VCCIO pins. 32 total pin(s) used --  40 pins available
 Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
 Info (170189): Fitter placement preparation operations beginning
+Info (223000): Starting Vectorless Power Activity Estimation
+Info (223001): Completed Vectorless Power Activity Estimation
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:02
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 2% of the available device resources in the region that extends from location X48_Y0 to location X59_Y12
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
-    Info (170201): Optimizations that may affect the design's routability were skipped
-    Info (170200): Optimizations that may affect the design's timing were skipped
+    Info (170196): Router estimated peak interconnect usage is 0% of the available device resources in the region that extends from location X84_Y39 to location X95_Y51
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
 Info (306004): Started post-fitting delay annotation
 Warning (306006): Found 123 output pins without output pin load capacitance assignment
     Info (306007): Pin "IO_A[25]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
@@ -2763,8 +2169,8 @@ Warning (169064): Following 32 pins have no output enable or a GND or VCC output
 Warning (169174): The Reserve All Unused Pins setting has not been specified, and will default to 'As output driving ground'.
 Info: Quartus II 32-bit Fitter was successful. 0 errors, 7 warnings
     Info: Peak virtual memory: 467 megabytes
-    Info: Processing ended: Wed Sep 25 00:52:30 2013
+    Info: Processing ended: Mon Sep 30 09:33:45 2013
     Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:17
+    Info: Total CPU time (on all processors): 00:00:13
 
 
