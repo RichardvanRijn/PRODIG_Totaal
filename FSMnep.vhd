@@ -6,19 +6,19 @@ USE ieee.std_logic_arith.all;
 entity FSMnep is
 port(
 		clk			:in	std_logic;
-		SW1714		:in	std_logic_vector(3 downto 0);
-		Stand			:out	std_logic_vector(3 downto 0)
+		SW1710		:in	std_logic_vector(7 downto 0);
+		Stand			:out	std_logic_vector(7 downto 0)
 		);
 end entity FSMnep;
 
 architecture hardware of FSMnep is
-signal standint : std_logic_vector(3 downto 0) := "0000";
-signal SWbuffer	: std_logic_vector(3 downto 0);
+signal standint : std_logic_vector(7 downto 0) := "00000000";
+signal SWbuffer	: std_logic_vector(7 downto 0);
 begin
 	process(clk)
 	begin
 		if rising_edge(clk) then
-			SWbuffer <= SW1714;
+			SWbuffer <= SW1710;
 		end if;
 	end process;
 	

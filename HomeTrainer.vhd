@@ -91,15 +91,15 @@ component SequentialDevider is
 			);
 end component SequentialDevider;
 	
---	component double_dabble_8bit is
---		port (clk : in std_logic;
---		areset : in std_logic;
---		start : in std_logic;
---		bin : in unsigned (7 downto 0);
---		bcd : out unsigned (9 downto 0)
+	component double_dabble_8bit is
+		port (clk : in std_logic;
+		areset : in std_logic;
+--		--start : in std_logic;
+		bin : in unsigned (7 downto 0);
+		bcd : out unsigned (9 downto 0)
 --		--ready : out std_logic
---		);
---	end component double_dabble_8bit;
+		);
+	end component double_dabble_8bit;
 	
 		component ADC is
 	port(
@@ -122,6 +122,23 @@ end component SequentialDevider;
 			);
 	end component Hbrug;
 	
+	
+	component seg_decoder is
+    port (data   : in unsigned(3 downto 0);
+          leds   : out std_logic_vector(6 downto 0)
+         );
+	end component seg_decoder;
+	
+	component FSMnep is
+	port(
+		clk			:in	std_logic;
+		SW1710		:in	std_logic_vector(7 downto 0);
+		Stand			:out	std_logic_vector(7 downto 0)
+		);
+	end component FSMnep;
+	
+	
+	
 signal reset, CLOCK_10, refresh, enable, outputtotal: std_logic;
 signal countdata: unsigned(31 downto 0);
 signal sec, min: unsigned(5 downto 0);
@@ -135,6 +152,9 @@ signal BikeButtons: std_logic_vector(6 downto 1);
 
 signal StandFSM : std_logic_vector(7 downto 0);
 signal ADC_data_int : std_logic_vector(7 downto 0);
+
+signal bcd : unsigned(9 downto 0);
+signal CurrentRPMDig0, CurrentRPMDig1, CurrentRPMDig2: unsigned(3 downto 0);
 
 begin
 
@@ -150,6 +170,11 @@ begin
 	ADC_Busy <= IO_A(16);
 	ADC_Data(7 downto 0) <= IO_A(24 downto 17);
 	BikeButtons(6 downto 1) <= IO_A(31 downto 26);
+	
+	CurrentRPMDig0 <= bcd(3 downto 0);
+	CurrentRPMDig1 <= bcd(7 downto 4);
+	CurrentRPMDig2(1 downto 0) <= bcd(9 downto 8);
+	CurrentRPMDig2(3 downto 2) <= "00";
 	
 	ADClezer : ADC
 		port map (CLK_10K => CLOCK_10, DB => ADC_Data, Busy => ADC_Busy, conv => ADC_Convstart, rd => ADC_RD, data => ADC_data_int);
@@ -169,13 +194,39 @@ begin
 	Devider:	SequentialDevider
 		port map (clk => CLOCK_10, reset => reset, refresh => refresh, outputtotal => outputtotal, tempcount => tempcount, sec => sec, min => min, hr => hr, Halldata => countdata, CurrentRPM => CurrentRPM, TotAvgRPM => TotAvgRPM);
 	
+	
+	Digit0: seg_decoder
+		 port map (data => CurrentRPM(3 downto 0), leds => HEX0_D);
+		 
+	Digit1: seg_decoder
+		 port map (data => CurrentRPM(7 downto 4), leds => HEX1_D);
+	
+	Digit3: seg_decoder
+		 port map (data => CurrentRPMdig0, leds => HEX3_D);
+		 
+	Digit4: seg_decoder
+		 port map (data => CurrentRPMdig1, leds => HEX4_D);
+		 
+	Digit5: seg_decoder
+		 port map (data => CurrentRPMdig2, leds => HEX5_D);
+		 
+	Digit6: seg_decoder
+		port map (data => TotAvgRPM(3 downto 0), leds => HEX6_D);
+		
+	Digit7: seg_decoder
+		port map (data => TotAvgRPM(7 downto 4), leds => HEX7_D);
+		 
 
-
---	converter: double_dabble_8bit
---		port map (clk => CLOCK_50, areset => reset, bin => CurrentRPM, bcd => bcd, start => deviderready);
+	converter: double_dabble_8bit
+		port map (clk => CLOCK_10, areset => reset, bin => CurrentRPM, bcd => bcd);
+		
+	nepFSM: FSMnep
+		port map (clk => CLOCK_10, SW1710 => SW(17 downto 10), Stand => StandFSM);
 	
 	
 	reset <= SW(0);
+	
+	outputtotal <= not button(3);
 		
 	HEX0_DP <= '1';
 	HEX1_DP <= '1';
@@ -186,13 +237,9 @@ begin
 	HEX6_DP <= '1';
 	HEX7_DP <= '1';
 
-	HEX0_D <= "1111111";
-	HEX1_D <= "1111111";
 	HEX2_D <= "1111111";
-	HEX3_D <= "1111111";
-	HEX4_D <= "1111111";
-	HEX5_D <= "1111111";
-	HEX6_D <= "1111111";
-	HEX7_D <= "1111111";
-
+	
+	enable <= '1';
+	
+	
 end architecture structural;

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Hometrainer
-Mon Sep 30 09:33:26 2013
+Wed Oct 02 23:38:40 2013
 Quartus II 32-bit Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
 
 
@@ -16,13 +16,14 @@ Quartus II 32-bit Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Editio
   8. State Machine - |HomeTrainer|HallCounter:HallSensCount|state
   9. State Machine - |HomeTrainer|ADC:ADClezer|state
  10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
  13. Multiplexer Restructuring Statistics (Restructuring Performed)
  14. Parameter Settings for User Entity Instance: prescaler:ClockScaler
- 15. Port Connectivity Checks: "SequentialDevider:Devider"
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
+ 15. Port Connectivity Checks: "seg_decoder:Digit5"
+ 16. Port Connectivity Checks: "Timer:TotalTimer"
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
 
 
 
@@ -48,15 +49,15 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Sep 30 09:33:25 2013         ;
+; Analysis & Synthesis Status        ; Successful - Wed Oct 02 23:38:40 2013         ;
 ; Quartus II 32-bit Version          ; 11.1 Build 216 11/23/2011 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Hometrainer                                   ;
 ; Top-level Entity Name              ; HomeTrainer                                   ;
 ; Family                             ; Cyclone II                                    ;
-; Total logic elements               ; 37                                            ;
-;     Total combinational functions  ; 28                                            ;
-;     Dedicated logic registers      ; 29                                            ;
-; Total registers                    ; 29                                            ;
+; Total logic elements               ; 629                                           ;
+;     Total combinational functions  ; 560                                           ;
+;     Dedicated logic registers      ; 296                                           ;
+; Total registers                    ; 296                                           ;
 ; Total pins                         ; 146                                           ;
 ; Total virtual pins                 ; 0                                             ;
 ; Total memory bits                  ; 0                                             ;
@@ -166,10 +167,13 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+
 ; Timer.vhd                        ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Timer.vhd             ;
 ; SequentialDevider.vhd            ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/SequentialDevider.vhd ;
+; seg_decoder.vhd                  ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/seg_decoder.vhd       ;
 ; prescaler.vhd                    ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/prescaler.vhd         ;
 ; HomeTrainer.vhd                  ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/HomeTrainer.vhd       ;
 ; Hbrug.vhd                        ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Hbrug.vhd             ;
 ; HallCounter.vhd                  ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/HallCounter.vhd       ;
+; FSMnep.vhd                       ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/FSMnep.vhd            ;
+; double.vhd                       ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/double.vhd            ;
 ; ADC.vhd                          ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/ADC.vhd               ;
 +----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+
 
@@ -179,40 +183,52 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+------------------------------+
 ; Resource                                    ; Usage                        ;
 +---------------------------------------------+------------------------------+
-; Estimated Total logic elements              ; 37                           ;
+; Estimated Total logic elements              ; 629                          ;
 ;                                             ;                              ;
-; Total combinational functions               ; 28                           ;
+; Total combinational functions               ; 560                          ;
 ; Logic element usage by number of LUT inputs ;                              ;
-;     -- 4 input functions                    ; 7                            ;
-;     -- 3 input functions                    ; 6                            ;
-;     -- <=2 input functions                  ; 15                           ;
+;     -- 4 input functions                    ; 180                          ;
+;     -- 3 input functions                    ; 171                          ;
+;     -- <=2 input functions                  ; 209                          ;
 ;                                             ;                              ;
 ; Logic elements by mode                      ;                              ;
-;     -- normal mode                          ; 17                           ;
-;     -- arithmetic mode                      ; 11                           ;
+;     -- normal mode                          ; 285                          ;
+;     -- arithmetic mode                      ; 275                          ;
 ;                                             ;                              ;
-; Total registers                             ; 29                           ;
-;     -- Dedicated logic registers            ; 29                           ;
+; Total registers                             ; 296                          ;
+;     -- Dedicated logic registers            ; 296                          ;
 ;     -- I/O registers                        ; 0                            ;
 ;                                             ;                              ;
 ; I/O pins                                    ; 146                          ;
 ; Maximum fan-out node                        ; prescaler:ClockScaler|clkint ;
-; Maximum fan-out                             ; 17                           ;
-; Total fan-out                               ; 156                          ;
-; Average fan-out                             ; 0.77                         ;
+; Maximum fan-out                             ; 284                          ;
+; Total fan-out                               ; 2827                         ;
+; Average fan-out                             ; 2.82                         ;
 +---------------------------------------------+------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                        ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------+
-; |HomeTrainer               ; 28 (0)            ; 29 (0)       ; 0           ; 0            ; 0       ; 0         ; 146  ; 0            ; |HomeTrainer                       ;              ;
-;    |ADC:ADClezer|          ; 7 (7)             ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|ADC:ADClezer          ;              ;
-;    |Hbrug:Motorsturing|    ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Hbrug:Motorsturing    ;              ;
-;    |prescaler:ClockScaler| ; 18 (18)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|prescaler:ClockScaler ;              ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                      ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
+; Compilation Hierarchy Node        ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                       ; Library Name ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
+; |HomeTrainer                      ; 560 (0)           ; 296 (0)      ; 0           ; 0            ; 0       ; 0         ; 146  ; 0            ; |HomeTrainer                              ;              ;
+;    |ADC:ADClezer|                 ; 7 (7)             ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|ADC:ADClezer                 ;              ;
+;    |FSMnep:nepFSM|                ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|FSMnep:nepFSM                ;              ;
+;    |HallCounter:HallSensCount|    ; 51 (51)           ; 41 (41)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|HallCounter:HallSensCount    ;              ;
+;    |Hbrug:Motorsturing|           ; 24 (24)           ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Hbrug:Motorsturing           ;              ;
+;    |SequentialDevider:Devider|    ; 327 (327)         ; 121 (121)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|SequentialDevider:Devider    ;              ;
+;    |Timer:TotalTimer|             ; 69 (69)           ; 63 (63)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Timer:TotalTimer             ;              ;
+;    |double_dabble_8bit:converter| ; 24 (24)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|double_dabble_8bit:converter ;              ;
+;    |prescaler:ClockScaler|        ; 17 (17)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|prescaler:ClockScaler        ;              ;
+;    |seg_decoder:Digit0|           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit0           ;              ;
+;    |seg_decoder:Digit1|           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit1           ;              ;
+;    |seg_decoder:Digit3|           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit3           ;              ;
+;    |seg_decoder:Digit4|           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit4           ;              ;
+;    |seg_decoder:Digit5|           ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit5           ;              ;
+;    |seg_decoder:Digit6|           ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit6           ;              ;
+;    |seg_decoder:Digit7|           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit7           ;              ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -245,30 +261,17 @@ Encoding Type:  One-Hot
 +----------+----------+----------+----------+----------+----------+
 
 
-+------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                 ;
-+-------------------------------------------+----------------------------------------+
-; Register name                             ; Reason for Removal                     ;
-+-------------------------------------------+----------------------------------------+
-; Hbrug:Motorsturing|brugplus               ; Stuck at GND due to stuck port data_in ;
-; HallCounter:HallSensCount|DelayCount[0,1] ; Lost fanout                            ;
-; HallCounter:HallSensCount|state.Rest      ; Lost fanout                            ;
-; HallCounter:HallSensCount|state.WaitLow   ; Lost fanout                            ;
-; HallCounter:HallSensCount|state.DelayIn   ; Lost fanout                            ;
-; HallCounter:HallSensCount|state.Measure   ; Lost fanout                            ;
-; HallCounter:HallSensCount|state.WaitHigh  ; Lost fanout                            ;
-; HallCounter:HallSensCount|state.DelayOut  ; Lost fanout                            ;
-; Total Number of Removed Registers = 9     ;                                        ;
-+-------------------------------------------+----------------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                            ;
-+-----------------------------------------+--------------------+-----------------------------------------+
-; Register name                           ; Reason for Removal ; Registers Removed due to This Register  ;
-+-----------------------------------------+--------------------+-----------------------------------------+
-; HallCounter:HallSensCount|DelayCount[1] ; Lost Fanouts       ; HallCounter:HallSensCount|DelayCount[0] ;
-+-----------------------------------------+--------------------+-----------------------------------------+
++----------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                 ;
++----------------------------------------------+-----------------------------------------------------+
+; Register name                                ; Reason for Removal                                  ;
++----------------------------------------------+-----------------------------------------------------+
+; SequentialDevider:Devider|TempBottom[15..19] ; Stuck at GND due to stuck port data_in              ;
+; SequentialDevider:Devider|TotBottom[28..31]  ; Stuck at GND due to stuck port data_in              ;
+; SequentialDevider:Devider|TotRPM_Final[0,1]  ; Stuck at GND due to stuck port data_in              ;
+; SequentialDevider:Devider|TotBottom[23..27]  ; Merged with SequentialDevider:Devider|TotBottom[22] ;
+; Total Number of Removed Registers = 16       ;                                                     ;
++----------------------------------------------+-----------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -276,25 +279,51 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 29    ;
-; Number of registers using Synchronous Clear  ; 12    ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Total registers                              ; 296   ;
+; Number of registers using Synchronous Clear  ; 77    ;
+; Number of registers using Synchronous Load   ; 33    ;
+; Number of registers using Asynchronous Clear ; 193   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 8     ;
+; Number of registers using Clock Enable       ; 217   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                 ;
-+--------------------+-----------+---------------+----------------------+------------------------+--------------------------------------------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                                       ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+--------------------------------------------------+----------------------------+
-; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; |HomeTrainer|prescaler:ClockScaler|count[5]      ;                            ;
-; 9:1                ; 4 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; |HomeTrainer|HallCounter:HallSensCount|Selector2 ;                            ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; |HomeTrainer|HallCounter:HallSensCount|Selector3 ;                            ;
-+--------------------+-----------+---------------+----------------------+------------------------+--------------------------------------------------+----------------------------+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; double_dabble_8bit:converter|readyint  ; 23      ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------------------------------------------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                                              ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------------------------------------------------+----------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; |HomeTrainer|SequentialDevider:Devider|WaitTimer[1]     ;                            ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; |HomeTrainer|Timer:TotalTimer|RefreshCount[5]           ;                            ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; |HomeTrainer|prescaler:ClockScaler|count[0]             ;                            ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; |HomeTrainer|double_dabble_8bit:converter|bcd_int[0]    ;                            ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; |HomeTrainer|double_dabble_8bit:converter|bin_int[5]    ;                            ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 0 LEs                ; 28 LEs                 ; |HomeTrainer|Timer:TotalTimer|TotalDelay[4]             ;                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |HomeTrainer|Hbrug:Motorsturing|brugplus                ;                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |HomeTrainer|double_dabble_8bit:converter|bcd_int[8]    ;                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |HomeTrainer|double_dabble_8bit:converter|bcd_int[2]    ;                            ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; |HomeTrainer|Timer:TotalTimer|TotalSec[0]               ;                            ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TotTop[11]       ;                            ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TempRPM_Final[6] ;                            ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; |HomeTrainer|Timer:TotalTimer|TotalMin[3]               ;                            ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; |HomeTrainer|SequentialDevider:Devider|TotRPS_Calc[1]   ;                            ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; |HomeTrainer|Timer:TotalTimer|TotalHr[0]                ;                            ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TempRPM_Calc[5]  ;                            ;
+; 6:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TempTop[18]      ;                            ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; |HomeTrainer|HallCounter:HallSensCount|Selector4        ;                            ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; |HomeTrainer|HallCounter:HallSensCount|Selector3        ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------------------------------------------------+----------------------------+
 
 
 +--------------------------------------------------------------------+
@@ -308,14 +337,22 @@ Encoding Type:  One-Hot
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "SequentialDevider:Devider"                                                                ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; currentrpm ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; totavgrpm  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
++------------------------------------------------+
+; Port Connectivity Checks: "seg_decoder:Digit5" ;
++------------+-------+----------+----------------+
+; Port       ; Type  ; Severity ; Details        ;
++------------+-------+----------+----------------+
+; data[3..2] ; Input ; Info     ; Stuck at GND   ;
++------------+-------+----------+----------------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "Timer:TotalTimer" ;
++--------+-------+----------+------------------+
+; Port   ; Type  ; Severity ; Details          ;
++--------+-------+----------+------------------+
+; enable ; Input ; Info     ; Stuck at VCC     ;
++--------+-------+----------+------------------+
 
 
 +-------------------------------+
@@ -323,7 +360,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:06     ;
 +----------------+--------------+
 
 
@@ -333,9 +370,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Sep 30 09:33:21 2013
+    Info: Processing started: Wed Oct 02 23:38:31 2013
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Hometrainer -c Hometrainer
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file sequentialdevidersim.vhd
+    Info (12022): Found design unit 1: SequentialDeviderSim-behav
+    Info (12023): Found entity 1: SequentialDeviderSim
 Info (12021): Found 2 design units, including 1 entities, in source file motor.vhd
     Info (12022): Found design unit 1: Motor-hardware
     Info (12023): Found entity 1: Motor
@@ -375,25 +415,26 @@ Info (12021): Found 2 design units, including 1 entities, in source file seg_dec
 Info (12127): Elaborating entity "Hometrainer" for the top level hierarchy
 Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(27): used implicit default value for signal "LEDG" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(28): used implicit default value for signal "LEDR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(125): used implicit default value for signal "enable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(125): used implicit default value for signal "outputtotal" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at HomeTrainer.vhd(130): object "CurrentRPM" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at HomeTrainer.vhd(130): object "TotAvgRPM" assigned a value but never read
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(132): used implicit default value for signal "LCD_Data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(133): used implicit default value for signal "LCD_RS" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(133): used implicit default value for signal "LCD_RW" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(133): used implicit default value for signal "LCD_E" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at HomeTrainer.vhd(134): object "BikeButtons" assigned a value but never read
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(136): used implicit default value for signal "StandFSM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(149): used implicit default value for signal "LCD_Data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(150): used implicit default value for signal "LCD_RS" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(150): used implicit default value for signal "LCD_RW" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(150): used implicit default value for signal "LCD_E" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at HomeTrainer.vhd(151): object "BikeButtons" assigned a value but never read
 Info (12128): Elaborating entity "ADC" for hierarchy "ADC:ADClezer"
 Info (12128): Elaborating entity "Hbrug" for hierarchy "Hbrug:Motorsturing"
 Info (12128): Elaborating entity "prescaler" for hierarchy "prescaler:ClockScaler"
 Info (12128): Elaborating entity "Timer" for hierarchy "Timer:TotalTimer"
 Info (12128): Elaborating entity "HallCounter" for hierarchy "HallCounter:HallSensCount"
 Info (12128): Elaborating entity "SequentialDevider" for hierarchy "SequentialDevider:Devider"
+Warning (10036): Verilog HDL or VHDL warning at SequentialDevider.vhd(23): object "TotSecs" assigned a value but never read
+Info (12128): Elaborating entity "seg_decoder" for hierarchy "seg_decoder:Digit0"
+Info (12128): Elaborating entity "double_dabble_8bit" for hierarchy "double_dabble_8bit:converter"
+Info (12128): Elaborating entity "FSMnep" for hierarchy "FSMnep:nepFSM"
 Info (13014): Ignored 11 buffer(s)
     Info (13019): Ignored 11 SOFT buffer(s)
+Info (13005): Duplicate registers merged to single register
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "IO_A[11]" and its non-tri-state driver.
     Warning (13035): Inserted always-enabled tri-state buffer between "IO_A[12]" and its non-tri-state driver.
     Warning (13035): Inserted always-enabled tri-state buffer between "IO_A[14]" and its non-tri-state driver.
     Warning (13035): Inserted always-enabled tri-state buffer between "IO_A[15]" and its non-tri-state driver.
@@ -427,8 +468,10 @@ Warning (13032): The following tri-state nodes are fed by constants
     Warning (13033): The pin "IO_A[8]" is fed by GND
     Warning (13033): The pin "IO_A[9]" is fed by GND
     Warning (13033): The pin "IO_A[10]" is fed by GND
-    Warning (13033): The pin "IO_A[11]" is fed by GND
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "IO_A[11]~synth"
     Warning (13010): Node "IO_A[12]~synth"
     Warning (13010): Node "IO_A[14]~synth"
     Warning (13010): Node "IO_A[15]~synth"
@@ -460,41 +503,8 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[15]" is stuck at GND
     Warning (13410): Pin "LEDR[16]" is stuck at GND
     Warning (13410): Pin "LEDR[17]" is stuck at GND
-    Warning (13410): Pin "HEX7_D[0]" is stuck at VCC
-    Warning (13410): Pin "HEX7_D[1]" is stuck at VCC
-    Warning (13410): Pin "HEX7_D[2]" is stuck at VCC
-    Warning (13410): Pin "HEX7_D[3]" is stuck at VCC
-    Warning (13410): Pin "HEX7_D[4]" is stuck at VCC
-    Warning (13410): Pin "HEX7_D[5]" is stuck at VCC
-    Warning (13410): Pin "HEX7_D[6]" is stuck at VCC
-    Warning (13410): Pin "HEX6_D[0]" is stuck at VCC
-    Warning (13410): Pin "HEX6_D[1]" is stuck at VCC
-    Warning (13410): Pin "HEX6_D[2]" is stuck at VCC
-    Warning (13410): Pin "HEX6_D[3]" is stuck at VCC
-    Warning (13410): Pin "HEX6_D[4]" is stuck at VCC
-    Warning (13410): Pin "HEX6_D[5]" is stuck at VCC
-    Warning (13410): Pin "HEX6_D[6]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[0]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[1]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[2]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[3]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[4]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[5]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[6]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[0]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[1]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[2]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[3]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[4]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[5]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[6]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[0]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[1]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[2]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[3]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[4]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[5]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[6]" is stuck at VCC
+    Warning (13410): Pin "HEX6_D[5]" is stuck at GND
+    Warning (13410): Pin "HEX5_D[1]" is stuck at GND
     Warning (13410): Pin "HEX2_D[0]" is stuck at VCC
     Warning (13410): Pin "HEX2_D[1]" is stuck at VCC
     Warning (13410): Pin "HEX2_D[2]" is stuck at VCC
@@ -502,20 +512,6 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX2_D[4]" is stuck at VCC
     Warning (13410): Pin "HEX2_D[5]" is stuck at VCC
     Warning (13410): Pin "HEX2_D[6]" is stuck at VCC
-    Warning (13410): Pin "HEX1_D[0]" is stuck at VCC
-    Warning (13410): Pin "HEX1_D[1]" is stuck at VCC
-    Warning (13410): Pin "HEX1_D[2]" is stuck at VCC
-    Warning (13410): Pin "HEX1_D[3]" is stuck at VCC
-    Warning (13410): Pin "HEX1_D[4]" is stuck at VCC
-    Warning (13410): Pin "HEX1_D[5]" is stuck at VCC
-    Warning (13410): Pin "HEX1_D[6]" is stuck at VCC
-    Warning (13410): Pin "HEX0_D[0]" is stuck at VCC
-    Warning (13410): Pin "HEX0_D[1]" is stuck at VCC
-    Warning (13410): Pin "HEX0_D[2]" is stuck at VCC
-    Warning (13410): Pin "HEX0_D[3]" is stuck at VCC
-    Warning (13410): Pin "HEX0_D[4]" is stuck at VCC
-    Warning (13410): Pin "HEX0_D[5]" is stuck at VCC
-    Warning (13410): Pin "HEX0_D[6]" is stuck at VCC
     Warning (13410): Pin "HEX0_DP" is stuck at VCC
     Warning (13410): Pin "HEX1_DP" is stuck at VCC
     Warning (13410): Pin "HEX2_DP" is stuck at VCC
@@ -524,21 +520,11 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX5_DP" is stuck at VCC
     Warning (13410): Pin "HEX6_DP" is stuck at VCC
     Warning (13410): Pin "HEX7_DP" is stuck at VCC
-Info (17049): 8 registers lost all their fanouts during netlist optimizations. The first 8 are displayed below.
-    Info (17050): Register "HallCounter:HallSensCount|DelayCount[1]" lost all its fanouts during netlist optimizations.
-    Info (17050): Register "HallCounter:HallSensCount|DelayCount[0]" lost all its fanouts during netlist optimizations.
-    Info (17050): Register "HallCounter:HallSensCount|state.Rest" lost all its fanouts during netlist optimizations.
-    Info (17050): Register "HallCounter:HallSensCount|state.WaitLow" lost all its fanouts during netlist optimizations.
-    Info (17050): Register "HallCounter:HallSensCount|state.DelayIn" lost all its fanouts during netlist optimizations.
-    Info (17050): Register "HallCounter:HallSensCount|state.Measure" lost all its fanouts during netlist optimizations.
-    Info (17050): Register "HallCounter:HallSensCount|state.WaitHigh" lost all its fanouts during netlist optimizations.
-    Info (17050): Register "HallCounter:HallSensCount|state.DelayOut" lost all its fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-Warning (21074): Design contains 21 input pin(s) that do not drive logic
+Warning (21074): Design contains 12 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "BUTTON[0]"
     Warning (15610): No output dependent on input pin "BUTTON[1]"
     Warning (15610): No output dependent on input pin "BUTTON[2]"
-    Warning (15610): No output dependent on input pin "BUTTON[3]"
     Warning (15610): No output dependent on input pin "SW[1]"
     Warning (15610): No output dependent on input pin "SW[2]"
     Warning (15610): No output dependent on input pin "SW[3]"
@@ -548,23 +534,15 @@ Warning (21074): Design contains 21 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
-    Warning (15610): No output dependent on input pin "SW[10]"
-    Warning (15610): No output dependent on input pin "SW[11]"
-    Warning (15610): No output dependent on input pin "SW[12]"
-    Warning (15610): No output dependent on input pin "SW[13]"
-    Warning (15610): No output dependent on input pin "SW[14]"
-    Warning (15610): No output dependent on input pin "SW[15]"
-    Warning (15610): No output dependent on input pin "SW[16]"
-    Warning (15610): No output dependent on input pin "SW[17]"
-Info (21057): Implemented 183 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 778 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 23 input pins
     Info (21059): Implemented 91 output pins
     Info (21060): Implemented 32 bidirectional pins
-    Info (21061): Implemented 37 logic cells
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 166 warnings
-    Info: Peak virtual memory: 318 megabytes
-    Info: Processing ended: Mon Sep 30 09:33:26 2013
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:04
+    Info (21061): Implemented 632 logic cells
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 107 warnings
+    Info: Peak virtual memory: 322 megabytes
+    Info: Processing ended: Wed Oct 02 23:38:40 2013
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:08
 
 

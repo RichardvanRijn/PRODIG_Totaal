@@ -357,7 +357,7 @@ GND*                         : AJ18      :        :                   :         
 GND*                         : AJ19      :        :                   :         : 7         :                
 GND*                         : AJ20      :        :                   :         : 7         :                
 GND*                         : AJ21      :        :                   :         : 7         :                
-GND*                         : AJ22      :        :                   :         : 7         :                
+SW[7]                        : AJ22      : input  : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : AJ23      :        :                   :         : 7         :                
 GND*                         : AJ24      :        :                   :         : 7         :                
 GND*                         : AJ25      :        :                   :         : 7         :                
@@ -430,7 +430,7 @@ GND*                         : C3        :        :                   :         
 GND*                         : C4        :        :                   :         : 3         :                
 GND*                         : C5        :        :                   :         : 3         :                
 GND                          : C6        : gnd    :                   :         :           :                
-SW[7]                        : C7        : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : C7        :        :                   :         : 3         :                
 VCCIO3                       : C8        : power  :                   : 3.3V    : 3         :                
 GND*                         : C9        :        :                   :         : 3         :                
 GND*                         : C10       :        :                   :         : 3         :                

@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity double_dabble_8bit is
 port (clk : in std_logic;
 	areset : in std_logic;
-	start : in std_logic;
+	--start : in std_logic;
 	bin : in unsigned (7 downto 0);
 	bcd : out unsigned (9 downto 0)
 	--ready : out std_logic
@@ -21,6 +21,7 @@ architecture rtl_reg_ready of double_dabble_8bit is
 signal counter : integer range 0 to 8;
 -- Internal storage for presented binary number
 signal bin_int : unsigned(7 downto 0);
+signal readyint : std_logic := '1';
 begin
 
     -- The conversion process if under control of a positive edge
@@ -42,16 +43,18 @@ begin
             bcd_int := "0000000000";
             bin_int <= "00000000";
 				bcd <= "0000000000";
+				readyint <= '1';
             --ready <= '0';
         -- Edge detected
         elsif rising_edge(clk) then
             -- On start, set counter to the number of iterations, clear
             -- the internal BCD register and load the binary number into
             -- the internal storage. Clear the ready flag.
-            if start = '1' then
+            if readyint = '1' then -- and start = '1'
                 counter <= 8;
                 bcd_int := "0000000000";
                 bin_int <= bin;
+					 readyint <= '0';
                 --ready <= '0';
             -- Running and not done...
             elsif counter > 0 then
@@ -73,10 +76,13 @@ begin
                 bin_int <= bin_int(6 downto 0) & '0';
                 -- Not ready yet
                 --ready <= '0';
+					 readyint <= '0';
             else
                 -- Counter done, so ready
                 --ready <= '1';
 					 bcd <= bcd_int;
+					 
+					 readyint <= '1';
             end if;
         end if;
         -- Output the internal BCD storage to the outside world.

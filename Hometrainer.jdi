@@ -1,7 +1,7 @@
 <sld_project_info>
   <file_info>
-    <file checksum="0x0060C201" device="EP2C70F896C6" path="Hometrainer.sof" usercode="0xFFFFFFFF"/>
-    <file checksum="0x187E1CF6" device="EPCS16" path="Hometrainer.pof" usercode="0x00000000"/>
+    <file checksum="0x006687DD" device="EP2C70F896C6" path="Hometrainer.sof" usercode="0xFFFFFFFF"/>
+    <file checksum="0x18713BBF" device="EPCS16" path="Hometrainer.pof" usercode="0x00000000"/>
   </file_info>
   <hub_info ir_width="0" node_count="0"/>
   <node_info/>
