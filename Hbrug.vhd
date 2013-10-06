@@ -17,7 +17,7 @@ architecture hardware of Hbrug is
 signal Buf : std_logic_vector(7 downto 0);
 Begin
 buf (7 downto 0) <= Stand;
-process (Clk_10K, Stand)
+process (Clk_10K, Stand, buf)
 begin
 
 if rising_edge(Clk_10K) then

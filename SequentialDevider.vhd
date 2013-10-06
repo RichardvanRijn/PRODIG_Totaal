@@ -20,9 +20,10 @@ end entity SequentialDevider;
 
 architecture hardware of SequentialDevider is
 signal TempBottom, TempTop : unsigned(19 downto 0);
-signal TotBottom, TotTop, TotSecs : unsigned(31 downto 0);
+signal TotBottom, TotSecs : unsigned(31 downto 0); --TotTop
+signal TotTop : unsigned (63 downto 0);
 signal TempRPM_Calc, TempRPM_Final, TotRPM_Final: unsigned(7 downto 0);
-signal TotRPS_Calc : unsigned (3 downto 0);
+signal TotRPS_Calc : unsigned (7 downto 0);
 signal TempRunning, TotRunning : std_logic;
 signal WaitTimer : unsigned (1 downto 0) := "00";
 signal refreshint : std_logic := '0';
@@ -36,18 +37,18 @@ begin
 			TempBottom <= "00000000000000000000";
 			TempTop <= "00000000000000000000";
 			TotBottom <= "00000000000000000000000000000000";
-			TotTop <= "00000000000000000000000000000000";
+			TotTop <= "0000000000000000000000000000000000000000000000000000000000000000";
 			TotSecs <= "00000000000000000000000000000000";
 			TempRPM_Calc <= "00000000";
 			TempRPM_Final <= "00000000";
 			TotRPM_Final <= "00000000";
-			TotRPS_Calc <= "0000";
+			TotRPS_Calc <= "00000000";
 			TempRunning <= '0';
 			TotRunning <= '0';
 			refreshint <= '0';
 		elsif rising_edge(clk) then
 			
-			if outputtotal = '0' and TotRunning = '0' then
+			if outputtotal = '0' then
 				if TempRunning = '0' and refresh = '1' and WaitTimer = 0 then
 					WaitTimer <= "11";
 					refreshint <= '1';
@@ -81,24 +82,31 @@ begin
 						TempRPM_Final <= TempRPM_Calc;
 					end if;
 				end if;
-			elsif TotRunning = '0' and outputtotal = '1' then
+			elsif TotRunning = '0' then
 				--TotSecs <= "0000" & (sec + ((min + (hr * 60)) * 60));
-				TotBottom <= "0000" & (sec + ((min + (hr * 60)) * 60));
 				--TotBottom <= Totsecs;
-				TotTop <= Halldata;
-				TotRPS_Calc <= "0000";
+				
+				TotBottom <= "0000" & (sec + ((min + (hr * 60)) * 60));
+				TotTop <= Halldata * 60;
+				TotRPS_Calc <= "00000000";
 				TotRunning <= '1';
-			elsif TotRunning = '1' then --and outputtotal = '1' then
-				if TotTop >= TotBottom then
+			elsif TotRunning = '1' then --and outputtotal = '1' then 
+				if TotRPS_Calc = 200 then
+					TotRPM_Final <= TotRPS_Calc;
+				   TotRunning <= '0';
+				elsif TotTop >= TotBottom then
 					TotTop <= TotTop - TotBottom;
 					TotRPS_Calc <= TotRPS_Calc + 1;
 				elsif TotTop(31 downto 0) >= (('0' & TotBottom(31 downto 1))) then
-					TotRunning <= '0';
+					--TotRunning <= '0';
+					
 					TotRPS_Calc <= TotRPS_Calc + 1;
-					TotRPM_Final <= TotRPS_Calc * 60;
+					TotTop <= TotTop - (('0' & TotBottom(31 downto 1)));
+					
+					--TotRPM_Final <= TotRPS_Calc * 60;
 				else
 					TotRunning <= '0';
-					TotRPM_Final <= TotRPS_Calc * 60;
+					TotRPM_Final <= TotRPS_Calc;
 				end if;
 			end if;
 

@@ -195,20 +195,20 @@ begin
 		port map (clk => CLOCK_10, reset => reset, refresh => refresh, outputtotal => outputtotal, tempcount => tempcount, sec => sec, min => min, hr => hr, Halldata => countdata, CurrentRPM => CurrentRPM, TotAvgRPM => TotAvgRPM);
 	
 	
-	Digit0: seg_decoder
-		 port map (data => CurrentRPM(3 downto 0), leds => HEX0_D);
+--	Digit0: seg_decoder
+--		 port map (data => CurrentRPM(3 downto 0), leds => HEX0_D);
 		 
-	Digit1: seg_decoder
-		 port map (data => CurrentRPM(7 downto 4), leds => HEX1_D);
+--	Digit1: seg_decoder
+--		 port map (data => CurrentRPM(7 downto 4), leds => HEX1_D);
 	
 	Digit3: seg_decoder
-		 port map (data => CurrentRPMdig0, leds => HEX3_D);
+		 port map (data => CurrentRPMdig0, leds => HEX0_D);
 		 
 	Digit4: seg_decoder
-		 port map (data => CurrentRPMdig1, leds => HEX4_D);
+		 port map (data => CurrentRPMdig1, leds => HEX1_D);
 		 
 	Digit5: seg_decoder
-		 port map (data => CurrentRPMdig2, leds => HEX5_D);
+		 port map (data => CurrentRPMdig2, leds => HEX2_D);
 		 
 	Digit6: seg_decoder
 		port map (data => TotAvgRPM(3 downto 0), leds => HEX6_D);
@@ -226,7 +226,7 @@ begin
 	
 	reset <= SW(0);
 	
-	outputtotal <= not button(3);
+	outputtotal <= SW(1);
 		
 	HEX0_DP <= '1';
 	HEX1_DP <= '1';
@@ -237,7 +237,10 @@ begin
 	HEX6_DP <= '1';
 	HEX7_DP <= '1';
 
-	HEX2_D <= "1111111";
+--	HEX2_D <= "1111111";
+	HEX3_D <= "1111111";
+	HEX4_D <= "1111111";
+	HEX5_D <= "1111111";
 	
 	enable <= '1';
 	

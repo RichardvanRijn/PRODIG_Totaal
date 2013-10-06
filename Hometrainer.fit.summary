@@ -1,14 +1,14 @@
-Fitter Status : Successful - Wed Oct 02 23:39:14 2013
+Fitter Status : Successful - Sun Oct 06 22:30:46 2013
 Quartus II 32-bit Version : 11.1 Build 216 11/23/2011 SP 1 SJ Web Edition
 Revision Name : Hometrainer
 Top-level Entity Name : HomeTrainer
 Family : Cyclone II
 Device : EP2C70F896C6
 Timing Models : Final
-Total logic elements : 621 / 68,416 ( < 1 % )
-    Total combinational functions : 561 / 68,416 ( < 1 % )
-    Dedicated logic registers : 296 / 68,416 ( < 1 % )
-Total registers : 296
+Total logic elements : 836 / 68,416 ( 1 % )
+    Total combinational functions : 799 / 68,416 ( 1 % )
+    Dedicated logic registers : 334 / 68,416 ( < 1 % )
+Total registers : 334
 Total pins : 146 / 622 ( 23 % )
 Total virtual pins : 0
 Total memory bits : 0 / 1,152,000 ( 0 % )

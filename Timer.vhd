@@ -22,7 +22,7 @@ signal TotalHr : unsigned(6 downto 0);
 signal RefreshCount, RefreshCountFinal : unsigned(14 downto 0); -- Seconden met één cijfer achter de komma, als heel getal weergegeven (3.2 seconden -> 32)
 begin
 	
-	teller1 :process (clk) is
+process (clk) is
 	begin
 		if rising_edge(clk) then
 			if reset = '1' then
@@ -36,7 +36,10 @@ begin
 					RefreshCountFinal <= RefreshCount;
 					RefreshCount <= "000000000000000";
 				else
-					if RefreshCount < 30000 then
+					if refreshcount = 30000 then
+						RefreshCountFinal <= RefreshCount;
+						RefreshCount <= "000000000000000";
+					elsif RefreshCount < 30000 then
 						RefreshCount <= RefreshCount + 1;
 					end if;
 				end if;

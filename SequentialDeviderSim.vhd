@@ -55,7 +55,7 @@ begin
  wait for 3500000 ns;
  outputtotal <= '1';
  wait for 120 us;
- outputtotal <= '0';
+ --outputtotal <= '0';
  wait;
  end process;
  
@@ -68,10 +68,10 @@ begin
  reset <= '1';
  refresh <= '0';
  tempcount <= "001100101001111";
- sec <= "111011";
- min <= "111010";
- hr <= "1111010";
- halldata <= "00000100010001000100001100001011";
+ sec <= "000000";
+ min <= "000101";
+ hr <= "0000000";
+ halldata <= "00000000000000000000001011101110";
 
  wait until Clk_10k = '1';
  wait for 10 us;
@@ -82,7 +82,6 @@ begin
  wait for 10 us;
  
  tempcount <= "111010100110000";
---						101110111000
  wait until Clk_10k = '1';
  wait for 10 us;
  

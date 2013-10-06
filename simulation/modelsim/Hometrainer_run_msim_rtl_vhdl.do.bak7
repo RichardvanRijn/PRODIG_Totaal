@@ -13,7 +13,6 @@ vcom -93 -work work {C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/HomeTrainer
 vcom -93 -work work {C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Hbrug.vhd}
 vcom -93 -work work {C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/HallCounter.vhd}
 vcom -93 -work work {C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/FSMnep.vhd}
-vcom -93 -work work {C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/double.vhd}
 vcom -93 -work work {C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/ADC.vhd}
 
 do "C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/SequentialDeviderSim.do"
