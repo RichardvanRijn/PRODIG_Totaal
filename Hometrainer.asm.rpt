@@ -1,5 +1,5 @@
 Assembler report for Hometrainer
-Sun Oct 06 22:30:53 2013
+Wed Oct 09 00:34:06 2013
 Quartus II 32-bit Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Oct 06 22:30:53 2013 ;
+; Assembler Status      ; Successful - Wed Oct 09 00:34:06 2013 ;
 ; Revision Name         ; Hometrainer                           ;
 ; Top-level Entity Name ; HomeTrainer                           ;
 ; Family                ; Cyclone II                            ;
@@ -95,7 +95,7 @@ applicable agreement for further details.
 +----------------+--------------------------------------------------------------------------+
 ; Device         ; EP2C70F896C6                                                             ;
 ; JTAG usercode  ; 0xFFFFFFFF                                                               ;
-; Checksum       ; 0x0068A532                                                               ;
+; Checksum       ; 0x0065C536                                                               ;
 +----------------+--------------------------------------------------------------------------+
 
 
@@ -106,7 +106,7 @@ applicable agreement for further details.
 +--------------------+----------------------------------------------------------------------+
 ; Device             ; EPCS16                                                               ;
 ; JTAG usercode      ; 0x00000000                                                           ;
-; Checksum           ; 0x1871B38F                                                           ;
+; Checksum           ; 0x187644A0                                                           ;
 ; Compression Ratio  ; 3                                                                    ;
 +--------------------+----------------------------------------------------------------------+
 
@@ -117,19 +117,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Assembler
     Info: Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Oct 06 22:30:47 2013
+    Info: Processing started: Wed Oct 09 00:33:59 2013
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Hometrainer -c Hometrainer
-Critical Warning (332012): Synopsys Design Constraints File file not found: 'Hometrainer.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
-Info (332144): No user constrained base clocks found in the design
-Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
-Info (223000): Starting Vectorless Power Activity Estimation
-Info (223001): Completed Vectorless Power Activity Estimation
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
-Info: Quartus II 32-bit Assembler was successful. 0 errors, 1 warning
+Info: Quartus II 32-bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 413 megabytes
-    Info: Processing ended: Sun Oct 06 22:30:53 2013
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Processing ended: Wed Oct 09 00:34:06 2013
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:07
 
 

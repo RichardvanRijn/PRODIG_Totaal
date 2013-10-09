@@ -24,14 +24,16 @@ begin
 	
 process (clk) is
 	begin
-		if rising_edge(clk) then
-			if reset = '1' then
+		if reset = '1' then
 				TotalDelay <= 0;
 				TotalSec <= "000000";
 				TotalMin <= "000000";
 				TotalHr <= "0000000";
 				RefreshCount <= "000000000000000";
-			elsif enable = '1' then
+	
+		elsif rising_edge(clk) then
+		
+			if enable = '1' then
 				if refresh = '1' then
 					RefreshCountFinal <= RefreshCount;
 					RefreshCount <= "000000000000000";

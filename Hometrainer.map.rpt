@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Hometrainer
-Sun Oct 06 22:30:26 2013
+Wed Oct 09 00:33:35 2013
 Quartus II 32-bit Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
 
 
@@ -13,17 +13,26 @@ Quartus II 32-bit Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Editio
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |HomeTrainer|HallCounter:HallSensCount|state
-  9. State Machine - |HomeTrainer|ADC:ADClezer|state
- 10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: prescaler:ClockScaler
- 15. Port Connectivity Checks: "seg_decoder:Digit5"
- 16. Port Connectivity Checks: "Timer:TotalTimer"
- 17. Elapsed Time Per Partition
- 18. Analysis & Synthesis Messages
+  8. State Machine - |HomeTrainer|Ontdender:ontdender6|state
+  9. State Machine - |HomeTrainer|Ontdender:ontdender5|state
+ 10. State Machine - |HomeTrainer|Ontdender:ontdender4|state
+ 11. State Machine - |HomeTrainer|Ontdender:ontdender3|state
+ 12. State Machine - |HomeTrainer|Ontdender:ontdender2|state
+ 13. State Machine - |HomeTrainer|Ontdender:ontdender1|state
+ 14. State Machine - |HomeTrainer|hometrainer_fsm:FSM|state
+ 15. State Machine - |HomeTrainer|HallCounter:HallSensCount|state
+ 16. State Machine - |HomeTrainer|ADC:ADClezer|state
+ 17. Registers Removed During Synthesis
+ 18. Removed Registers Triggering Further Register Optimizations
+ 19. General Register Statistics
+ 20. Inverted Register Statistics
+ 21. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 22. Parameter Settings for User Entity Instance: prescaler:ClockScaler
+ 23. Port Connectivity Checks: "seg_decoder:Digit7"
+ 24. Port Connectivity Checks: "seg_decoder:Digit2"
+ 25. Port Connectivity Checks: "hometrainer_fsm:FSM"
+ 26. Elapsed Time Per Partition
+ 27. Analysis & Synthesis Messages
 
 
 
@@ -49,15 +58,15 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Oct 06 22:30:26 2013         ;
+; Analysis & Synthesis Status        ; Successful - Wed Oct 09 00:33:35 2013         ;
 ; Quartus II 32-bit Version          ; 11.1 Build 216 11/23/2011 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Hometrainer                                   ;
 ; Top-level Entity Name              ; HomeTrainer                                   ;
 ; Family                             ; Cyclone II                                    ;
-; Total logic elements               ; 874                                           ;
-;     Total combinational functions  ; 798                                           ;
-;     Dedicated logic registers      ; 334                                           ;
-; Total registers                    ; 334                                           ;
+; Total logic elements               ; 568                                           ;
+;     Total combinational functions  ; 501                                           ;
+;     Dedicated logic registers      ; 283                                           ;
+; Total registers                    ; 283                                           ;
 ; Total pins                         ; 146                                           ;
 ; Total virtual pins                 ; 0                                             ;
 ; Total memory bits                  ; 0                                             ;
@@ -165,6 +174,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                          ;
 +----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+
+; hometrainer_fsm.vhd              ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/hometrainer_fsm.vhd   ;
 ; Timer.vhd                        ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Timer.vhd             ;
 ; SequentialDevider.vhd            ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/SequentialDevider.vhd ;
 ; seg_decoder.vhd                  ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/seg_decoder.vhd       ;
@@ -172,9 +182,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; HomeTrainer.vhd                  ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/HomeTrainer.vhd       ;
 ; Hbrug.vhd                        ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Hbrug.vhd             ;
 ; HallCounter.vhd                  ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/HallCounter.vhd       ;
-; FSMnep.vhd                       ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/FSMnep.vhd            ;
 ; double.vhd                       ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/double.vhd            ;
 ; ADC.vhd                          ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/ADC.vhd               ;
+; Ontdender.vhd                    ; yes             ; User VHDL File  ; C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/Ontdender.vhd         ;
 +----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+
 
 
@@ -183,51 +193,166 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+------------------------------+
 ; Resource                                    ; Usage                        ;
 +---------------------------------------------+------------------------------+
-; Estimated Total logic elements              ; 874                          ;
+; Estimated Total logic elements              ; 568                          ;
 ;                                             ;                              ;
-; Total combinational functions               ; 798                          ;
+; Total combinational functions               ; 501                          ;
 ; Logic element usage by number of LUT inputs ;                              ;
-;     -- 4 input functions                    ; 185                          ;
-;     -- 3 input functions                    ; 295                          ;
-;     -- <=2 input functions                  ; 318                          ;
+;     -- 4 input functions                    ; 182                          ;
+;     -- 3 input functions                    ; 124                          ;
+;     -- <=2 input functions                  ; 195                          ;
 ;                                             ;                              ;
 ; Logic elements by mode                      ;                              ;
-;     -- normal mode                          ; 356                          ;
-;     -- arithmetic mode                      ; 442                          ;
+;     -- normal mode                          ; 340                          ;
+;     -- arithmetic mode                      ; 161                          ;
 ;                                             ;                              ;
-; Total registers                             ; 334                          ;
-;     -- Dedicated logic registers            ; 334                          ;
+; Total registers                             ; 283                          ;
+;     -- Dedicated logic registers            ; 283                          ;
 ;     -- I/O registers                        ; 0                            ;
 ;                                             ;                              ;
 ; I/O pins                                    ; 146                          ;
 ; Maximum fan-out node                        ; prescaler:ClockScaler|clkint ;
-; Maximum fan-out                             ; 322                          ;
-; Total fan-out                               ; 3643                         ;
-; Average fan-out                             ; 2.85                         ;
+; Maximum fan-out                             ; 271                          ;
+; Total fan-out                               ; 2479                         ;
+; Average fan-out                             ; 2.67                         ;
 +---------------------------------------------+------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                      ;
-+-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
-; Compilation Hierarchy Node        ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                       ; Library Name ;
-+-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
-; |HomeTrainer                      ; 798 (0)           ; 334 (0)      ; 0           ; 0            ; 0       ; 0         ; 146  ; 0            ; |HomeTrainer                              ;              ;
-;    |ADC:ADClezer|                 ; 7 (7)             ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|ADC:ADClezer                 ;              ;
-;    |FSMnep:nepFSM|                ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|FSMnep:nepFSM                ;              ;
-;    |HallCounter:HallSensCount|    ; 52 (52)           ; 41 (41)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|HallCounter:HallSensCount    ;              ;
-;    |Hbrug:Motorsturing|           ; 24 (24)           ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Hbrug:Motorsturing           ;              ;
-;    |SequentialDevider:Devider|    ; 570 (570)         ; 159 (159)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|SequentialDevider:Devider    ;              ;
-;    |Timer:TotalTimer|             ; 73 (73)           ; 63 (63)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Timer:TotalTimer             ;              ;
-;    |double_dabble_8bit:converter| ; 24 (24)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|double_dabble_8bit:converter ;              ;
-;    |prescaler:ClockScaler|        ; 17 (17)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|prescaler:ClockScaler        ;              ;
-;    |seg_decoder:Digit3|           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit3           ;              ;
-;    |seg_decoder:Digit4|           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit4           ;              ;
-;    |seg_decoder:Digit5|           ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit5           ;              ;
-;    |seg_decoder:Digit6|           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit6           ;              ;
-;    |seg_decoder:Digit7|           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit7           ;              ;
-+-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                        ;
++------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
+; Compilation Hierarchy Node         ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                        ; Library Name ;
++------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
+; |HomeTrainer                       ; 501 (0)           ; 283 (0)      ; 0           ; 0            ; 0       ; 0         ; 146  ; 0            ; |HomeTrainer                               ;              ;
+;    |ADC:ADClezer|                  ; 7 (7)             ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|ADC:ADClezer                  ;              ;
+;    |HallCounter:HallSensCount|     ; 19 (19)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|HallCounter:HallSensCount     ;              ;
+;    |Hbrug:Motorsturing|            ; 22 (22)           ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Hbrug:Motorsturing            ;              ;
+;    |Ontdender:ontdender1|          ; 22 (22)           ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Ontdender:ontdender1          ;              ;
+;    |Ontdender:ontdender2|          ; 22 (22)           ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Ontdender:ontdender2          ;              ;
+;    |Ontdender:ontdender3|          ; 22 (22)           ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Ontdender:ontdender3          ;              ;
+;    |Ontdender:ontdender4|          ; 22 (22)           ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Ontdender:ontdender4          ;              ;
+;    |Ontdender:ontdender5|          ; 22 (22)           ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Ontdender:ontdender5          ;              ;
+;    |Ontdender:ontdender6|          ; 22 (22)           ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Ontdender:ontdender6          ;              ;
+;    |SequentialDevider:Devider|     ; 124 (124)         ; 55 (55)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|SequentialDevider:Devider     ;              ;
+;    |Timer:TotalTimer|              ; 25 (25)           ; 30 (30)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|Timer:TotalTimer              ;              ;
+;    |double_dabble_8bit:converter2| ; 15 (15)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|double_dabble_8bit:converter2 ;              ;
+;    |double_dabble_8bit:converter|  ; 18 (18)           ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|double_dabble_8bit:converter  ;              ;
+;    |hometrainer_fsm:FSM|           ; 89 (89)           ; 36 (36)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|hometrainer_fsm:FSM           ;              ;
+;    |prescaler:ClockScaler|         ; 17 (17)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|prescaler:ClockScaler         ;              ;
+;    |seg_decoder:Digit0|            ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit0            ;              ;
+;    |seg_decoder:Digit1|            ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit1            ;              ;
+;    |seg_decoder:Digit2|            ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit2            ;              ;
+;    |seg_decoder:Digit5|            ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit5            ;              ;
+;    |seg_decoder:Digit6|            ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit6            ;              ;
+;    |seg_decoder:Digit7|            ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |HomeTrainer|seg_decoder:Digit7            ;              ;
++------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------+
+; State Machine - |HomeTrainer|Ontdender:ontdender6|state ;
++----------+----------+----------+----------+-------------+
+; Name     ; state.s3 ; state.s2 ; state.s1 ; state.s0    ;
++----------+----------+----------+----------+-------------+
+; state.s0 ; 0        ; 0        ; 0        ; 0           ;
+; state.s1 ; 0        ; 0        ; 1        ; 1           ;
+; state.s2 ; 0        ; 1        ; 0        ; 1           ;
+; state.s3 ; 1        ; 0        ; 0        ; 1           ;
++----------+----------+----------+----------+-------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------+
+; State Machine - |HomeTrainer|Ontdender:ontdender5|state ;
++----------+----------+----------+----------+-------------+
+; Name     ; state.s3 ; state.s2 ; state.s1 ; state.s0    ;
++----------+----------+----------+----------+-------------+
+; state.s0 ; 0        ; 0        ; 0        ; 0           ;
+; state.s1 ; 0        ; 0        ; 1        ; 1           ;
+; state.s2 ; 0        ; 1        ; 0        ; 1           ;
+; state.s3 ; 1        ; 0        ; 0        ; 1           ;
++----------+----------+----------+----------+-------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------+
+; State Machine - |HomeTrainer|Ontdender:ontdender4|state ;
++----------+----------+----------+----------+-------------+
+; Name     ; state.s3 ; state.s2 ; state.s1 ; state.s0    ;
++----------+----------+----------+----------+-------------+
+; state.s0 ; 0        ; 0        ; 0        ; 0           ;
+; state.s1 ; 0        ; 0        ; 1        ; 1           ;
+; state.s2 ; 0        ; 1        ; 0        ; 1           ;
+; state.s3 ; 1        ; 0        ; 0        ; 1           ;
++----------+----------+----------+----------+-------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------+
+; State Machine - |HomeTrainer|Ontdender:ontdender3|state ;
++----------+----------+----------+----------+-------------+
+; Name     ; state.s3 ; state.s2 ; state.s1 ; state.s0    ;
++----------+----------+----------+----------+-------------+
+; state.s0 ; 0        ; 0        ; 0        ; 0           ;
+; state.s1 ; 0        ; 0        ; 1        ; 1           ;
+; state.s2 ; 0        ; 1        ; 0        ; 1           ;
+; state.s3 ; 1        ; 0        ; 0        ; 1           ;
++----------+----------+----------+----------+-------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------+
+; State Machine - |HomeTrainer|Ontdender:ontdender2|state ;
++----------+----------+----------+----------+-------------+
+; Name     ; state.s3 ; state.s2 ; state.s1 ; state.s0    ;
++----------+----------+----------+----------+-------------+
+; state.s0 ; 0        ; 0        ; 0        ; 0           ;
+; state.s1 ; 0        ; 0        ; 1        ; 1           ;
+; state.s2 ; 0        ; 1        ; 0        ; 1           ;
+; state.s3 ; 1        ; 0        ; 0        ; 1           ;
++----------+----------+----------+----------+-------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------+
+; State Machine - |HomeTrainer|Ontdender:ontdender1|state ;
++----------+----------+----------+----------+-------------+
+; Name     ; state.s3 ; state.s2 ; state.s1 ; state.s0    ;
++----------+----------+----------+----------+-------------+
+; state.s0 ; 0        ; 0        ; 0        ; 0           ;
+; state.s1 ; 0        ; 0        ; 1        ; 1           ;
+; state.s2 ; 0        ; 1        ; 0        ; 1           ;
+; state.s3 ; 1        ; 0        ; 0        ; 1           ;
++----------+----------+----------+----------+-------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |HomeTrainer|hometrainer_fsm:FSM|state                                                                                                                                                                                          ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+
+; Name      ; state.s19 ; state.s18 ; state.s17 ; state.s16 ; state.s15 ; state.s14 ; state.s13 ; state.s12 ; state.s11 ; state.s10 ; state.s9 ; state.s8 ; state.s7 ; state.s6 ; state.s5 ; state.s4 ; state.s3 ; state.s2 ; state.s1 ; state.s0 ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+
+; state.s0  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ;
+; state.s1  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 1        ;
+; state.s2  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 1        ;
+; state.s3  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 1        ;
+; state.s4  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 1        ;
+; state.s5  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s6  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s7  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s8  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s9  ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s10 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s11 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s12 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s13 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s14 ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s15 ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s16 ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s17 ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s18 ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.s19 ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+
 
 
 Encoding Type:  One-Hot
@@ -259,16 +384,63 @@ Encoding Type:  One-Hot
 +----------+----------+----------+----------+----------+----------+
 
 
-+----------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                 ;
-+----------------------------------------------+-----------------------------------------------------+
-; Register name                                ; Reason for Removal                                  ;
-+----------------------------------------------+-----------------------------------------------------+
-; SequentialDevider:Devider|TempBottom[15..19] ; Stuck at GND due to stuck port data_in              ;
-; SequentialDevider:Devider|TotBottom[28..31]  ; Stuck at GND due to stuck port data_in              ;
-; SequentialDevider:Devider|TotBottom[23..27]  ; Merged with SequentialDevider:Devider|TotBottom[22] ;
-; Total Number of Removed Registers = 14       ;                                                     ;
-+----------------------------------------------+-----------------------------------------------------+
++-----------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                  ;
++----------------------------------------------+------------------------------------------------------+
+; Register name                                ; Reason for Removal                                   ;
++----------------------------------------------+------------------------------------------------------+
+; SequentialDevider:Devider|TotBottom[0..31]   ; Stuck at GND due to stuck port clock_enable          ;
+; SequentialDevider:Devider|TotTop[0..63]      ; Stuck at GND due to stuck port clock_enable          ;
+; SequentialDevider:Devider|TotRPM_Final[0..7] ; Stuck at GND due to stuck port clock_enable          ;
+; SequentialDevider:Devider|TotRPS_Calc[0..7]  ; Stuck at GND due to stuck port clock_enable          ;
+; SequentialDevider:Devider|TotRunning         ; Stuck at GND due to stuck port clock_enable          ;
+; HallCounter:HallSensCount|TotalCount[0..31]  ; Lost fanout                                          ;
+; Timer:TotalTimer|TotalDelay[0..13]           ; Lost fanout                                          ;
+; Timer:TotalTimer|TotalSec[0..5]              ; Lost fanout                                          ;
+; Timer:TotalTimer|TotalMin[0..5]              ; Lost fanout                                          ;
+; Timer:TotalTimer|TotalHr[0..6]               ; Lost fanout                                          ;
+; hometrainer_fsm:FSM|intern_weerstand[0]      ; Stuck at GND due to stuck port data_in               ;
+; SequentialDevider:Devider|TempBottom[15..19] ; Stuck at GND due to stuck port data_in               ;
+; double_dabble_8bit:converter|readyint        ; Merged with double_dabble_8bit:converter2|readyint   ;
+; double_dabble_8bit:converter|counter[3]      ; Merged with double_dabble_8bit:converter2|counter[3] ;
+; double_dabble_8bit:converter|counter[2]      ; Merged with double_dabble_8bit:converter2|counter[2] ;
+; double_dabble_8bit:converter|counter[1]      ; Merged with double_dabble_8bit:converter2|counter[1] ;
+; double_dabble_8bit:converter|counter[0]      ; Merged with double_dabble_8bit:converter2|counter[0] ;
+; double_dabble_8bit:converter2|bin_int[0..7]  ; Stuck at GND due to stuck port data_in               ;
+; double_dabble_8bit:converter2|bcd_int[0]     ; Stuck at GND due to stuck port data_in               ;
+; double_dabble_8bit:converter2|bcd[0]         ; Stuck at GND due to stuck port data_in               ;
+; Total Number of Removed Registers = 199      ;                                                      ;
++----------------------------------------------+------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                           ;
++-------------------------------------------+--------------------------------+------------------------------------------+
+; Register name                             ; Reason for Removal             ; Registers Removed due to This Register   ;
++-------------------------------------------+--------------------------------+------------------------------------------+
+; SequentialDevider:Devider|TotBottom[1]    ; Stuck at GND                   ; Timer:TotalTimer|TotalSec[1]             ;
+;                                           ; due to stuck port clock_enable ;                                          ;
+; SequentialDevider:Devider|TotBottom[0]    ; Stuck at GND                   ; Timer:TotalTimer|TotalSec[0]             ;
+;                                           ; due to stuck port clock_enable ;                                          ;
+; SequentialDevider:Devider|TotRPM_Final[7] ; Stuck at GND                   ; double_dabble_8bit:converter2|bin_int[7] ;
+;                                           ; due to stuck port clock_enable ;                                          ;
+; SequentialDevider:Devider|TotRPM_Final[6] ; Stuck at GND                   ; double_dabble_8bit:converter2|bin_int[6] ;
+;                                           ; due to stuck port clock_enable ;                                          ;
+; SequentialDevider:Devider|TotRPM_Final[5] ; Stuck at GND                   ; double_dabble_8bit:converter2|bin_int[5] ;
+;                                           ; due to stuck port clock_enable ;                                          ;
+; SequentialDevider:Devider|TotRPM_Final[4] ; Stuck at GND                   ; double_dabble_8bit:converter2|bin_int[4] ;
+;                                           ; due to stuck port clock_enable ;                                          ;
+; SequentialDevider:Devider|TotRPM_Final[3] ; Stuck at GND                   ; double_dabble_8bit:converter2|bin_int[3] ;
+;                                           ; due to stuck port clock_enable ;                                          ;
+; SequentialDevider:Devider|TotRPM_Final[2] ; Stuck at GND                   ; double_dabble_8bit:converter2|bin_int[2] ;
+;                                           ; due to stuck port clock_enable ;                                          ;
+; SequentialDevider:Devider|TotRPM_Final[1] ; Stuck at GND                   ; double_dabble_8bit:converter2|bin_int[1] ;
+;                                           ; due to stuck port clock_enable ;                                          ;
+; SequentialDevider:Devider|TotRPM_Final[0] ; Stuck at GND                   ; double_dabble_8bit:converter2|bin_int[0] ;
+;                                           ; due to stuck port clock_enable ;                                          ;
+; double_dabble_8bit:converter2|bcd_int[0]  ; Stuck at GND                   ; double_dabble_8bit:converter2|bcd[0]     ;
+;                                           ; due to stuck port data_in      ;                                          ;
++-------------------------------------------+--------------------------------+------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -276,24 +448,43 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 334   ;
-; Number of registers using Synchronous Clear  ; 87    ;
-; Number of registers using Synchronous Load   ; 64    ;
-; Number of registers using Asynchronous Clear ; 231   ;
+; Total registers                              ; 283   ;
+; Number of registers using Synchronous Clear  ; 51    ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 148   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 256   ;
+; Number of registers using Clock Enable       ; 190   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------+
-; Inverted Register Statistics                     ;
-+----------------------------------------+---------+
-; Inverted Register                      ; Fan out ;
-+----------------------------------------+---------+
-; double_dabble_8bit:converter|readyint  ; 23      ;
-; Total number of inverted registers = 1 ;         ;
-+----------------------------------------+---------+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; double_dabble_8bit:converter2|readyint  ; 32      ;
+; Ontdender:ontdender4|teller[2]          ; 2       ;
+; Ontdender:ontdender4|teller[5]          ; 2       ;
+; Ontdender:ontdender4|teller[6]          ; 2       ;
+; hometrainer_fsm:FSM|intern_weerstand[3] ; 7       ;
+; Ontdender:ontdender6|teller[2]          ; 2       ;
+; Ontdender:ontdender6|teller[5]          ; 2       ;
+; Ontdender:ontdender6|teller[6]          ; 2       ;
+; Ontdender:ontdender3|teller[2]          ; 2       ;
+; Ontdender:ontdender3|teller[5]          ; 2       ;
+; Ontdender:ontdender3|teller[6]          ; 2       ;
+; Ontdender:ontdender2|teller[2]          ; 2       ;
+; Ontdender:ontdender2|teller[5]          ; 2       ;
+; Ontdender:ontdender2|teller[6]          ; 2       ;
+; Ontdender:ontdender5|teller[2]          ; 2       ;
+; Ontdender:ontdender5|teller[5]          ; 2       ;
+; Ontdender:ontdender5|teller[6]          ; 2       ;
+; Ontdender:ontdender1|teller[2]          ; 2       ;
+; Ontdender:ontdender1|teller[5]          ; 2       ;
+; Ontdender:ontdender1|teller[6]          ; 2       ;
+; Total number of inverted registers = 20 ;         ;
++-----------------------------------------+---------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -301,26 +492,34 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+---------------------------------------------------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                                              ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+---------------------------------------------------------+----------------------------+
-; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; |HomeTrainer|prescaler:ClockScaler|count[8]             ;                            ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; |HomeTrainer|prescaler:ClockScaler|count[2]             ;                            ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; |HomeTrainer|SequentialDevider:Devider|WaitTimer[0]     ;                            ;
 ; 3:1                ; 15 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; |HomeTrainer|Timer:TotalTimer|RefreshCountFinal[9]      ;                            ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; |HomeTrainer|double_dabble_8bit:converter|bcd_int[0]    ;                            ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; |HomeTrainer|double_dabble_8bit:converter|bin_int[5]    ;                            ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 0 LEs                ; 28 LEs                 ; |HomeTrainer|Timer:TotalTimer|TotalDelay[6]             ;                            ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; |HomeTrainer|Timer:TotalTimer|RefreshCount[5]           ;                            ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; |HomeTrainer|double_dabble_8bit:converter|bcd_int[0]    ;                            ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; |HomeTrainer|double_dabble_8bit:converter|bin_int[3]    ;                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |HomeTrainer|double_dabble_8bit:converter2|bcd_int[5]   ;                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |HomeTrainer|double_dabble_8bit:converter|bcd_int[7]    ;                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |HomeTrainer|double_dabble_8bit:converter|bcd_int[2]    ;                            ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |HomeTrainer|Hbrug:Motorsturing|brugmin                 ;                            ;
-; 4:1                ; 15 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; |HomeTrainer|Timer:TotalTimer|RefreshCount[0]           ;                            ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |HomeTrainer|double_dabble_8bit:converter|bcd_int[5]    ;                            ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |HomeTrainer|double_dabble_8bit:converter|bcd_int[1]    ;                            ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; |HomeTrainer|Timer:TotalTimer|TotalSec[0]               ;                            ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TotRPM_Final[6]  ;                            ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TempRPM_Final[2] ;                            ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; |HomeTrainer|Timer:TotalTimer|TotalMin[1]               ;                            ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TotRPS_Calc[5]   ;                            ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; |HomeTrainer|SequentialDevider:Devider|TotTop[1]        ;                            ;
-; 5:1                ; 62 bits   ; 186 LEs       ; 124 LEs              ; 62 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TotTop[2]        ;                            ;
-; 6:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; |HomeTrainer|Timer:TotalTimer|TotalHr[4]                ;                            ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TempRPM_Final[7] ;                            ;
 ; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TempRPM_Calc[0]  ;                            ;
-; 6:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TempTop[13]      ;                            ;
+; 6:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; |HomeTrainer|SequentialDevider:Devider|TempTop[15]      ;                            ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; |HomeTrainer|Ontdender:ontdender6|teller[4]             ;                            ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; |HomeTrainer|Ontdender:ontdender5|teller[0]             ;                            ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; |HomeTrainer|Ontdender:ontdender4|teller[3]             ;                            ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; |HomeTrainer|Ontdender:ontdender3|teller[4]             ;                            ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; |HomeTrainer|Ontdender:ontdender2|teller[4]             ;                            ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; |HomeTrainer|Ontdender:ontdender1|teller[3]             ;                            ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; |HomeTrainer|hometrainer_fsm:FSM|intern_stand[0]        ;                            ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; |HomeTrainer|hometrainer_fsm:FSM|intern_weerstand[5]    ;                            ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; |HomeTrainer|Ontdender:ontdender6|teller[6]             ;                            ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; |HomeTrainer|Ontdender:ontdender5|teller[5]             ;                            ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; |HomeTrainer|Ontdender:ontdender4|teller[6]             ;                            ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; |HomeTrainer|Ontdender:ontdender3|teller[6]             ;                            ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; |HomeTrainer|Ontdender:ontdender2|teller[5]             ;                            ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; |HomeTrainer|Ontdender:ontdender1|teller[6]             ;                            ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; |HomeTrainer|hometrainer_fsm:FSM|state                  ;                            ;
 ; 9:1                ; 4 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; |HomeTrainer|HallCounter:HallSensCount|Selector7        ;                            ;
 ; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; |HomeTrainer|HallCounter:HallSensCount|Selector3        ;                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+---------------------------------------------------------+----------------------------+
@@ -338,7 +537,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +------------------------------------------------+
-; Port Connectivity Checks: "seg_decoder:Digit5" ;
+; Port Connectivity Checks: "seg_decoder:Digit7" ;
 +------------+-------+----------+----------------+
 ; Port       ; Type  ; Severity ; Details        ;
 +------------+-------+----------+----------------+
@@ -346,13 +545,25 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------+-------+----------+----------------+
 
 
-+----------------------------------------------+
-; Port Connectivity Checks: "Timer:TotalTimer" ;
-+--------+-------+----------+------------------+
-; Port   ; Type  ; Severity ; Details          ;
-+--------+-------+----------+------------------+
-; enable ; Input ; Info     ; Stuck at VCC     ;
-+--------+-------+----------+------------------+
++------------------------------------------------+
+; Port Connectivity Checks: "seg_decoder:Digit2" ;
++------------+-------+----------+----------------+
+; Port       ; Type  ; Severity ; Details        ;
++------------+-------+----------+----------------+
+; data[3..2] ; Input ; Info     ; Stuck at GND   ;
++------------+-------+----------+----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "hometrainer_fsm:FSM"                                                                       ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; reset_timer ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; reset_hall  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; reset_seq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; stand       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -360,7 +571,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:07     ;
+; Top            ; 00:00:05     ;
 +----------------+--------------+
 
 
@@ -370,9 +581,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Oct 06 22:30:17 2013
+    Info: Processing started: Wed Oct 09 00:33:27 2013
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Hometrainer -c Hometrainer
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file hometrainer_fsm.vhd
+    Info (12022): Found design unit 1: hometrainer_fsm-behav
+    Info (12023): Found entity 1: hometrainer_fsm
 Info (12021): Found 2 design units, including 1 entities, in source file sequentialdevidersim.vhd
     Info (12022): Found design unit 1: SequentialDeviderSim-behav
     Info (12023): Found entity 1: SequentialDeviderSim
@@ -412,24 +626,33 @@ Info (12021): Found 2 design units, including 1 entities, in source file adc.vhd
 Info (12021): Found 2 design units, including 1 entities, in source file seg_decoder_vector.vhd
     Info (12022): Found design unit 1: seg_decoder_vector-behav
     Info (12023): Found entity 1: seg_decoder_vector
+Info (12021): Found 2 design units, including 1 entities, in source file ontdender.vhd
+    Info (12022): Found design unit 1: Ontdender-hardware
+    Info (12023): Found entity 1: Ontdender
 Info (12127): Elaborating entity "Hometrainer" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(27): used implicit default value for signal "LEDG" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(28): used implicit default value for signal "LEDR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(149): used implicit default value for signal "LCD_Data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(150): used implicit default value for signal "LCD_RS" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(150): used implicit default value for signal "LCD_RW" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(150): used implicit default value for signal "LCD_E" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at HomeTrainer.vhd(151): object "BikeButtons" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(184): used implicit default value for signal "LCD_Data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(185): used implicit default value for signal "LCD_RS" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(185): used implicit default value for signal "LCD_RW" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at HomeTrainer.vhd(185): used implicit default value for signal "LCD_E" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at HomeTrainer.vhd(194): object "reset_timer" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at HomeTrainer.vhd(195): object "reset_hall" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at HomeTrainer.vhd(196): object "reset_seq" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at HomeTrainer.vhd(201): object "stand" assigned a value but never read
+Warning (10873): Using initial value X (don't care) for net "LEDG[8..4]" at HomeTrainer.vhd(27)
 Info (12128): Elaborating entity "ADC" for hierarchy "ADC:ADClezer"
 Info (12128): Elaborating entity "Hbrug" for hierarchy "Hbrug:Motorsturing"
 Info (12128): Elaborating entity "prescaler" for hierarchy "prescaler:ClockScaler"
 Info (12128): Elaborating entity "Timer" for hierarchy "Timer:TotalTimer"
+Warning (10492): VHDL Process Statement warning at Timer.vhd(27): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "HallCounter" for hierarchy "HallCounter:HallSensCount"
 Info (12128): Elaborating entity "SequentialDevider" for hierarchy "SequentialDevider:Devider"
 Warning (10036): Verilog HDL or VHDL warning at SequentialDevider.vhd(23): object "TotSecs" assigned a value but never read
-Info (12128): Elaborating entity "seg_decoder" for hierarchy "seg_decoder:Digit3"
+Info (12128): Elaborating entity "hometrainer_fsm" for hierarchy "hometrainer_fsm:FSM"
+Warning (10540): VHDL Signal Declaration warning at hometrainer_fsm.vhd(15): used explicit default value for signal "outputtotal" because signal was never assigned a value
+Info (12128): Elaborating entity "Ontdender" for hierarchy "Ontdender:ontdender1"
+Info (12128): Elaborating entity "seg_decoder" for hierarchy "seg_decoder:Digit0"
 Info (12128): Elaborating entity "double_dabble_8bit" for hierarchy "double_dabble_8bit:converter"
-Info (12128): Elaborating entity "FSMnep" for hierarchy "FSMnep:nepFSM"
 Info (13014): Ignored 11 buffer(s)
     Info (13019): Ignored 11 SOFT buffer(s)
 Info (13005): Duplicate registers merged to single register
@@ -440,12 +663,6 @@ Warning (13034): The following nodes have both tri-state and non-tri-state drive
     Warning (13035): Inserted always-enabled tri-state buffer between "IO_A[15]" and its non-tri-state driver.
 Warning (13039): The following bidir pins have no drivers
     Warning (13040): Bidir "IO_A[25]" has no driver
-    Warning (13040): Bidir "IO_A[26]" has no driver
-    Warning (13040): Bidir "IO_A[27]" has no driver
-    Warning (13040): Bidir "IO_A[28]" has no driver
-    Warning (13040): Bidir "IO_A[29]" has no driver
-    Warning (13040): Bidir "IO_A[30]" has no driver
-    Warning (13040): Bidir "IO_A[31]" has no driver
     Warning (13040): Bidir "IO_A[13]" has no driver
     Warning (13040): Bidir "IO_A[16]" has no driver
     Warning (13040): Bidir "IO_A[17]" has no driver
@@ -456,6 +673,12 @@ Warning (13039): The following bidir pins have no drivers
     Warning (13040): Bidir "IO_A[22]" has no driver
     Warning (13040): Bidir "IO_A[23]" has no driver
     Warning (13040): Bidir "IO_A[24]" has no driver
+    Warning (13040): Bidir "IO_A[26]" has no driver
+    Warning (13040): Bidir "IO_A[27]" has no driver
+    Warning (13040): Bidir "IO_A[28]" has no driver
+    Warning (13040): Bidir "IO_A[29]" has no driver
+    Warning (13040): Bidir "IO_A[30]" has no driver
+    Warning (13040): Bidir "IO_A[31]" has no driver
 Warning (13032): The following tri-state nodes are fed by constants
     Warning (13033): The pin "IO_A[0]" is fed by GND
     Warning (13033): The pin "IO_A[1]" is fed by GND
@@ -476,10 +699,6 @@ Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "IO_A[14]~synth"
     Warning (13010): Node "IO_A[15]~synth"
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDG[0]" is stuck at GND
-    Warning (13410): Pin "LEDG[1]" is stuck at GND
-    Warning (13410): Pin "LEDG[2]" is stuck at GND
-    Warning (13410): Pin "LEDG[3]" is stuck at GND
     Warning (13410): Pin "LEDG[4]" is stuck at GND
     Warning (13410): Pin "LEDG[5]" is stuck at GND
     Warning (13410): Pin "LEDG[6]" is stuck at GND
@@ -503,26 +722,20 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[15]" is stuck at GND
     Warning (13410): Pin "LEDR[16]" is stuck at GND
     Warning (13410): Pin "LEDR[17]" is stuck at GND
-    Warning (13410): Pin "HEX5_D[0]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[1]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[2]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[3]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[4]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[5]" is stuck at VCC
-    Warning (13410): Pin "HEX5_D[6]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[0]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[1]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[2]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[3]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[4]" is stuck at VCC
-    Warning (13410): Pin "HEX4_D[5]" is stuck at VCC
+    Warning (13410): Pin "HEX7_D[1]" is stuck at GND
+    Warning (13410): Pin "HEX4_D[0]" is stuck at GND
+    Warning (13410): Pin "HEX4_D[1]" is stuck at GND
+    Warning (13410): Pin "HEX4_D[2]" is stuck at GND
+    Warning (13410): Pin "HEX4_D[3]" is stuck at GND
+    Warning (13410): Pin "HEX4_D[4]" is stuck at GND
+    Warning (13410): Pin "HEX4_D[5]" is stuck at GND
     Warning (13410): Pin "HEX4_D[6]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[0]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[1]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[2]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[3]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[4]" is stuck at VCC
-    Warning (13410): Pin "HEX3_D[5]" is stuck at VCC
+    Warning (13410): Pin "HEX3_D[0]" is stuck at GND
+    Warning (13410): Pin "HEX3_D[1]" is stuck at GND
+    Warning (13410): Pin "HEX3_D[2]" is stuck at GND
+    Warning (13410): Pin "HEX3_D[3]" is stuck at GND
+    Warning (13410): Pin "HEX3_D[4]" is stuck at GND
+    Warning (13410): Pin "HEX3_D[5]" is stuck at GND
     Warning (13410): Pin "HEX3_D[6]" is stuck at VCC
     Warning (13410): Pin "HEX2_D[1]" is stuck at GND
     Warning (13410): Pin "HEX0_DP" is stuck at VCC
@@ -533,12 +746,80 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX5_DP" is stuck at VCC
     Warning (13410): Pin "HEX6_DP" is stuck at VCC
     Warning (13410): Pin "HEX7_DP" is stuck at VCC
+Info (17049): 65 registers lost all their fanouts during netlist optimizations. The first 65 are displayed below.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[31]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[30]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[29]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[28]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[27]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[26]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[25]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[24]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[23]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[22]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[21]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[20]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[19]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[18]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[17]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[16]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[15]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[14]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[13]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[12]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[11]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[10]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[9]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[8]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[7]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[6]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[5]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[4]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[3]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[2]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[1]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "HallCounter:HallSensCount|TotalCount[0]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[13]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[12]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[11]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[10]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[9]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[8]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[7]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[6]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[5]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[4]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[3]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[2]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[1]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalDelay[0]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalSec[5]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalSec[4]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalSec[3]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalSec[2]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalSec[1]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalSec[0]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalMin[5]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalMin[4]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalMin[3]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalMin[2]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalMin[1]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalMin[0]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalHr[6]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalHr[5]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalHr[4]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalHr[3]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalHr[2]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalHr[1]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Timer:TotalTimer|TotalHr[0]" lost all its fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-Warning (21074): Design contains 12 input pin(s) that do not drive logic
+Warning (21074): Design contains 22 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "BUTTON[0]"
     Warning (15610): No output dependent on input pin "BUTTON[1]"
     Warning (15610): No output dependent on input pin "BUTTON[2]"
     Warning (15610): No output dependent on input pin "BUTTON[3]"
+    Warning (15610): No output dependent on input pin "SW[0]"
+    Warning (15610): No output dependent on input pin "SW[1]"
     Warning (15610): No output dependent on input pin "SW[2]"
     Warning (15610): No output dependent on input pin "SW[3]"
     Warning (15610): No output dependent on input pin "SW[4]"
@@ -547,15 +828,23 @@ Warning (21074): Design contains 12 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
-Info (21057): Implemented 1021 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "SW[10]"
+    Warning (15610): No output dependent on input pin "SW[11]"
+    Warning (15610): No output dependent on input pin "SW[12]"
+    Warning (15610): No output dependent on input pin "SW[13]"
+    Warning (15610): No output dependent on input pin "SW[14]"
+    Warning (15610): No output dependent on input pin "SW[15]"
+    Warning (15610): No output dependent on input pin "SW[16]"
+    Warning (15610): No output dependent on input pin "SW[17]"
+Info (21057): Implemented 722 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 23 input pins
     Info (21059): Implemented 91 output pins
     Info (21060): Implemented 32 bidirectional pins
-    Info (21061): Implemented 875 logic cells
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 120 warnings
+    Info (21061): Implemented 576 logic cells
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 125 warnings
     Info: Peak virtual memory: 323 megabytes
-    Info: Processing ended: Sun Oct 06 22:30:26 2013
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Processing ended: Wed Oct 09 00:33:35 2013
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:08
 
 

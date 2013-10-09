@@ -48,6 +48,30 @@ end entity HomeTrainer;
 
 architecture structural of HomeTrainer is
 
+component hometrainer_fsm is
+	port(
+		Reset			:			in std_logic := '1';
+		Clk			:			in std_logic;
+		Recovery		:			in std_logic := '1';
+		Start_stop	:			in std_logic := '1';
+		Up				:			in std_logic := '1';
+		Down			:			in std_logic := '1';
+		Mode			:			in std_logic := '1';
+		
+		outputtotal :			out std_logic := '0';
+		enable_timer:			out std_logic := '0';	--start en pauze voor de timer
+		reset_timer	:			out std_logic := '0';	--zet timer direct op 0
+		reset_hall	:			out std_logic := '0'; --reset hallcounter
+		reset_seq	:			out std_logic := '0'; --reset sequentiele deler
+		welkom		:			out std_logic := '0'; --welkomscherm gewenst	
+		neutraal		:			out std_logic := '0'; --neutraalscherm
+		actief		:			out std_logic := '0'; --scherm waar de data voor het fieten op geprojecteerd wordt.
+		menu			:			out std_logic := '0';  --het keuzemenu "intestellen"
+		stand			:			out std_logic_vector(3 downto 0);
+		weerstand	:			out std_logic_vector(7 downto 0)
+		);
+end component hometrainer_fsm;
+
 	component prescaler is
 		port (clkin  : in std_logic;
 				reset : in std_logic;
@@ -137,14 +161,25 @@ end component SequentialDevider;
 		);
 	end component FSMnep;
 	
+	component Ontdender is
+	port(
+		Clk_10k 		: in std_logic;
+		Knop			: in std_logic :='1';
+		signal_int	: out std_logic :='1'
+		);
+	end component Ontdender;
 	
 	
-signal reset, CLOCK_10, refresh, enable, outputtotal: std_logic;
+	
+signal reset, CLOCK_10, refresh, enable_timer, outputtotal, Up, Mode, Down, Startstop, Recovery: std_logic;
+signal Up_int, Mode_int, Down_int, Startstop_int, Recovery_int, reset_int: std_logic;
 signal countdata: unsigned(31 downto 0);
 signal sec, min: unsigned(5 downto 0);
 signal tempcount: unsigned(14 downto 0);
 signal hr: unsigned(6 downto 0);
 signal CurrentRPM, TotAvgRPM : unsigned(7 downto 0);
+
+signal AVGRPM	: unsigned(3 downto 0);
 
 signal LCD_Data, ADC_Data: std_logic_vector(7 downto 0);
 signal LCD_RS, LCD_RW, LCD_E, Servo_Positive, Servo_Negative, ADC_ConvStart, ADC_RD, ADC_Busy, Hallsensor: std_logic;
@@ -153,8 +188,18 @@ signal BikeButtons: std_logic_vector(6 downto 1);
 signal StandFSM : std_logic_vector(7 downto 0);
 signal ADC_data_int : std_logic_vector(7 downto 0);
 
-signal bcd : unsigned(9 downto 0);
+signal bcd, bcd2 : unsigned(9 downto 0);
 signal CurrentRPMDig0, CurrentRPMDig1, CurrentRPMDig2: unsigned(3 downto 0);
+
+signal		reset_timer	:	std_logic := '0';	--zet timer direct op 0
+signal		reset_hall	:  std_logic := '0'; --reset hallcounter
+signal		reset_seq	:  std_logic := '0'; --reset sequentiele deler
+signal		welkom		:	std_logic := '0'; --welkomscherm gewenst	
+signal		neutraal		:	std_logic := '0'; --neutraalscherm
+signal		actief		:	std_logic := '0'; --scherm waar de data voor het fieten op geprojecteerd wordt.
+signal		menu			:	std_logic := '0';  --het keuzemenu "intestellen"
+signal		stand			:	std_logic_vector(3 downto 0);
+
 
 begin
 
@@ -170,11 +215,20 @@ begin
 	ADC_Busy <= IO_A(16);
 	ADC_Data(7 downto 0) <= IO_A(24 downto 17);
 	BikeButtons(6 downto 1) <= IO_A(31 downto 26);
+	Up <= Up_int;
+	Mode	<= Mode_int;
+	Startstop <= Startstop_int;
+	Recovery <= not Recovery_int;
+	Down <= Down_int;
+	reset <= reset_int;
 	
 	CurrentRPMDig0 <= bcd(3 downto 0);
 	CurrentRPMDig1 <= bcd(7 downto 4);
 	CurrentRPMDig2(1 downto 0) <= bcd(9 downto 8);
 	CurrentRPMDig2(3 downto 2) <= "00";
+	
+	AVGRPM(1 downto 0) <= BCD2(9 downto 8);
+	AVGRPM(3 downto 2) <= "00";
 	
 	ADClezer : ADC
 		port map (CLK_10K => CLOCK_10, DB => ADC_Data, Busy => ADC_Busy, conv => ADC_Convstart, rd => ADC_RD, data => ADC_data_int);
@@ -183,51 +237,76 @@ begin
 		port map (CLK_10K => CLOCK_10, Stand => StandFSM, ADC_data => ADC_data_int, brugplus => Servo_Positive, brugmin => Servo_Negative);
 	
 	ClockScaler: prescaler
-		port map (clkin => CLOCK_50, reset => reset, clkout => CLOCK_10);
+		port map (clkin => CLOCK_50, reset => Recovery, clkout => CLOCK_10);
 
 	TotalTimer: Timer
-		port map (clk => CLOCK_10, enable => enable, reset => reset, refresh => refresh, tempcount => tempcount, sec => sec, min => min, hr => hr);
+		port map (clk => CLOCK_10, enable => enable_timer, reset => Recovery, refresh => refresh, tempcount => tempcount, sec => sec, min => min, hr => hr);
 
 	HallSensCount: HallCounter
-		port map (Clk_10k => CLOCK_10, reset => reset, Hallsensor => Hallsensor, refresh => refresh, data => countdata);
+		port map (Clk_10k => CLOCK_10, reset => Recovery, Hallsensor => Hallsensor, refresh => refresh, data => countdata);
 
 	Devider:	SequentialDevider
-		port map (clk => CLOCK_10, reset => reset, refresh => refresh, outputtotal => outputtotal, tempcount => tempcount, sec => sec, min => min, hr => hr, Halldata => countdata, CurrentRPM => CurrentRPM, TotAvgRPM => TotAvgRPM);
+		port map (clk => CLOCK_10, reset => Recovery, refresh => refresh, outputtotal => outputtotal, tempcount => tempcount, sec => sec, min => min, hr => hr, Halldata => countdata, CurrentRPM => CurrentRPM, TotAvgRPM => TotAvgRPM);
+		
+	FSM: hometrainer_FSM
+		port map (Clk => CLOCK_10, Reset => reset, Recovery => Recovery, Start_stop => Startstop, Up => Up, Down => Down, Mode => Mode,
+		enable_timer => enable_timer, outputtotal => outputtotal, reset_timer => reset_timer, reset_hall => reset_hall, reset_seq => reset_seq, welkom => welkom, neutraal => neutraal,
+		actief => actief, menu => menu, stand => stand, weerstand => standFSM);
 	
 	
---	Digit0: seg_decoder
---		 port map (data => CurrentRPM(3 downto 0), leds => HEX0_D);
-		 
---	Digit1: seg_decoder
---		 port map (data => CurrentRPM(7 downto 4), leds => HEX1_D);
 	
-	Digit3: seg_decoder
+	ontdender1: Ontdender
+		port map (Clk_10k => CLOCK_10, Knop => BikeButtons(1), signal_int => Up_int);
+		
+	ontdender2: Ontdender
+		port map (Clk_10k => CLOCK_10, Knop => BikeButtons(2), signal_int => Mode_int);
+		
+	ontdender3: Ontdender
+		port map (Clk_10k => CLOCK_10, Knop => BikeButtons(3), signal_int => Startstop_int);
+		
+	ontdender4: Ontdender
+		port map (Clk_10k => CLOCK_10, Knop => BikeButtons(4), signal_int => Recovery_int);
+		
+	ontdender5: Ontdender
+		port map (Clk_10k => CLOCK_10, Knop => BikeButtons(5), signal_int => Down_int);
+		
+	ontdender6: Ontdender
+		port map (Clk_10k => CLOCK_10, Knop => BikeButtons(6), signal_int => reset_int);
+
+	
+	
+	Digit0: seg_decoder
 		 port map (data => CurrentRPMdig0, leds => HEX0_D);
 		 
-	Digit4: seg_decoder
+	Digit1: seg_decoder
 		 port map (data => CurrentRPMdig1, leds => HEX1_D);
 		 
-	Digit5: seg_decoder
+	Digit2: seg_decoder
 		 port map (data => CurrentRPMdig2, leds => HEX2_D);
 		 
-	Digit6: seg_decoder
-		port map (data => TotAvgRPM(3 downto 0), leds => HEX6_D);
+	Digit5: seg_decoder
+		port map (data => bcd2(3 downto 0), leds => HEX5_D);
 		
+	Digit6: seg_decoder
+		port map (data => bcd2(7 downto 4), leds => HEX6_D);
+	
 	Digit7: seg_decoder
-		port map (data => TotAvgRPM(7 downto 4), leds => HEX7_D);
+		port map (data => AVGRPM, leds => HEX7_D);
+		
+	Digit3: seg_decoder
+		port map (data => TotAvgRPM(3 downto 0), leds => HEX3_D);
+		
+	Digit4: seg_decoder
+		port map (data => TotAvgRPM(7 downto 4), leds => HEX4_D);
 		 
 
 	converter: double_dabble_8bit
-		port map (clk => CLOCK_10, areset => reset, bin => CurrentRPM, bcd => bcd);
+		port map (clk => CLOCK_10, areset => Recovery, bin => CurrentRPM, bcd => bcd);
+	
+	converter2: double_dabble_8bit
+		port map (clk => CLOCK_10, areset => Recovery, bin => TotAvgRPM, bcd => bcd2);
 		
-	nepFSM: FSMnep
-		port map (clk => CLOCK_10, SW1710 => SW(17 downto 10), Stand => StandFSM);
 	
-	
-	reset <= SW(0);
-	
-	outputtotal <= SW(1);
-		
 	HEX0_DP <= '1';
 	HEX1_DP <= '1';
 	HEX2_DP <= '1';
@@ -238,11 +317,10 @@ begin
 	HEX7_DP <= '1';
 
 --	HEX2_D <= "1111111";
-	HEX3_D <= "1111111";
-	HEX4_D <= "1111111";
-	HEX5_D <= "1111111";
-	
-	enable <= '1';
-	
+
+	ledg(0) <= welkom;
+	ledg(1) <= neutraal;
+	ledg(2) <= actief;
+	ledg(3) <= menu;
 	
 end architecture structural;

@@ -1,5 +1,5 @@
 EDA Netlist Writer report for Hometrainer
-Sun Oct 06 22:30:58 2013
+Wed Oct 09 00:34:10 2013
 Quartus II 32-bit Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Sun Oct 06 22:30:58 2013 ;
+; EDA Netlist Writer Status ; Successful - Wed Oct 09 00:34:10 2013 ;
 ; Revision Name             ; Hometrainer                           ;
 ; Top-level Entity Name     ; HomeTrainer                           ;
 ; Family                    ; Cyclone II                            ;
@@ -84,13 +84,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit EDA Netlist Writer
     Info: Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Oct 06 22:30:55 2013
+    Info: Processing started: Wed Oct 09 00:34:08 2013
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off Hometrainer -c Hometrainer
 Info (204026): Generated files "Hometrainer.vho", "Hometrainer_fast.vho", "Hometrainer_vhd.sdo" and "Hometrainer_vhd_fast.sdo" in directory "C:/Users/Richard/Documents/GitHub/PRODIG_Totaal/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 32-bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 274 megabytes
-    Info: Processing ended: Sun Oct 06 22:30:58 2013
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Peak virtual memory: 272 megabytes
+    Info: Processing ended: Wed Oct 09 00:34:10 2013
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 
