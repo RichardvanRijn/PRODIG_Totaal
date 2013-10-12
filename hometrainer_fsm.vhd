@@ -12,17 +12,18 @@ entity hometrainer_fsm is
 		Down			:			in std_logic := '1';
 		Mode			:			in std_logic := '1';
 		
-		outputtotal :			out std_logic := '0';
-		enable_timer:			out std_logic := '0';	--start en pauze voor de timer
-		reset_timer	:			out std_logic := '0';	--zet timer direct op 0
+		enable_timer:			out std_logic := '0'; --start en pauze voor de timer
+		reset_timer	:			out std_logic := '0'; --zet timer direct op 0
 		reset_hall	:			out std_logic := '0'; --reset hallcounter
 		reset_seq	:			out std_logic := '0'; --reset sequentiele deler
 		welkom		:			out std_logic := '0'; --welkomscherm gewenst	
 		neutraal		:			out std_logic := '0'; --neutraalscherm
 		actief		:			out std_logic := '0'; --scherm waar de data voor het fieten op geprojecteerd wordt.
-		menu			:			out std_logic := '0';  --het keuzemenu "intestellen"
-		stand			:			out std_logic_vector(3 downto 0);
-		weerstand	:			out std_logic_vector(7 downto 0)
+		actief2		:			out std_logic := '0'; --scherm zoals actief1 maar dan met gem RPM
+		eind			:			out std_logic := '0'; --allerlaatste scherm
+		stand			:			out unsigned(3 downto 0);
+		weerstand	:			out std_logic_vector(7 downto 0);
+		outputtotal	:			out std_logic := '0'	 --laat sequentiele-deler huidige RPM uitrekenen(een 1 op deze uitgang zorgt voor gem. RPM)
 		);
 end hometrainer_fsm;
 -- eind entity van hometrainer_fsm.
@@ -35,19 +36,21 @@ signal intern_reset_seq		:	std_logic := '0';
 signal intern_welkom			:	std_logic := '0'; --interne signalen voor lcd-toestand
 signal intern_neutraal		:	std_logic := '0';
 signal intern_actief			:	std_logic := '0';
-signal intern_menu			:	std_logic := '0';
+signal intern_actief2		:	std_logic := '0';
+signal intern_eind			:	std_logic := '0';
 
-signal intern_stand			: unsigned(3 downto 0) := "0000";
-signal intern_weerstand		: unsigned(7 downto 0) := "00001000";
+signal intern_stand			: unsigned(3 downto 0)	:= "0000";
+signal intern_weerstand		: unsigned(7 downto 0)	:= "00001000";
+signal timer1					: integer range 0 to 300000 := 0;
 
-type type_state is (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19);
+type type_state is (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, ucs, ufs, dcs, dfs, fs);
 signal state :	type_state;
 signal state_buffer : type_state;
 
 begin --begin architecture
 process(Clk, recovery) --initialiseer proces
 begin --begin proces
-if recovery = '1' then
+if recovery = '0' then
 state <= s0;
 
 elsif rising_edge(Clk) then --maak state_machine afhankelijk van klok
@@ -62,9 +65,10 @@ case state is
 			end if;
 			intern_welkom 			<= '1';
 			--rest op 0
-			intern_actief			<= '0';
-			intern_menu				<= '0';
 			intern_neutraal		<= '0';
+			intern_actief			<= '0';
+			intern_actief2			<= '0';
+			intern_eind				<= '0';
 			--resetten
 			intern_reset_timer	<= '1';
 			intern_reset_hall		<= '1';
@@ -72,6 +76,8 @@ case state is
 			--standen resetten
 			intern_stand			<= "0000";
 			intern_weerstand		<= "00001000";
+			--zet timer1 op 0
+			timer1 <= 0;
 		when s1 => --Welkomscherm en reset
 			if reset = '1' then 
 			state <= s0;
@@ -82,9 +88,10 @@ case state is
 			end if;
 			intern_welkom 			<= '1';
 			--rest op 0
-			intern_actief			<= '0';
-			intern_menu				<= '0';
 			intern_neutraal		<= '0';
+			intern_actief			<= '0';
+			intern_actief2			<= '0';
+			intern_eind				<= '0';
 			--resetten
 			intern_reset_timer	<= '1';
 			intern_reset_hall		<= '1';
@@ -92,6 +99,8 @@ case state is
 			--standen resetten
 			intern_stand			<= "0000";
 			intern_weerstand		<= "00001000";
+			--zet timer1 op 0
+			timer1 <= 0;
 		when s2 => --Welkomscherm
 			if reset = '0' then
 			state <= s1;
@@ -100,276 +109,370 @@ case state is
 			elsif start_stop = '0' then
 			state <= s2;
 			else
-			state <= s2;
+			state <= s0;
 			end if;
 			intern_welkom 			<= '1';
 			--rest op 0
-			intern_actief			<= '0';
-			intern_menu				<= '0';
 			intern_neutraal		<= '0';
+			intern_actief			<= '0';
+			intern_actief2			<= '0';
+			intern_eind				<= '0';
 			--resetten
 			intern_reset_timer	<= '0';
 			intern_reset_hall		<= '0';
 			intern_reset_seq		<= '0';
-		when s3 =>	--neutrale scherm
+			--zet timer1 op 0
+			timer1 <= 0;
+		when s3 =>	--neutrale scherm(stand en rpm)
 			if reset = '0' then
 			state <= s1;
 			elsif start_stop = '0' then
 			state <= s4;
-			elsif mode = '0' then
-			state <= s9;
 			elsif up = '0' then
-			state <= s12;
+			state <= ucs;
 			elsif down = '0' then
-			state <= s16;
-			end if;
-			intern_neutraal 		<= '1';
-			--rest op 0
-			intern_actief 			<= '0';
-			intern_menu				<= '0';
-			intern_welkom			<= '0';
-		when s4 => --neutrale scherm
-			if reset = '0' then
-			state <= s1;
-			elsif start_stop = '1' then
-			state <= s5;
-			elsif start_stop = '0' then
-			state <= s4;
+			state <= dcs;
+			elsif timer1 = 299999 then
+			state <= s0;
 			else
-			state <= s4;
-			end if;
-			intern_neutraal 		<= '1';
-			--rest op 0
-			intern_actief 			<= '0';
-			intern_menu				<= '0';
-			intern_welkom			<= '0';
-		when s5 => --actieve stand (timer loopt)
-			if reset = '0' then
-			state <= s1;
-			elsif start_stop = '0' then
-			state <= s6;
-			elsif up = '0' then
-			state <= s14;
-			elsif down = '0' then
-			state <= s18;
-			else
-			state <= s5;
-			end if;
-			intern_enable_timer 	<= '1';
-			intern_actief 			<= '1';
-			--rest op 0
-			intern_menu				<= '0';
-			intern_neutraal		<= '0';
-			intern_welkom			<= '0';
-		when s6 => --actieve stand (timer loopt)
-			if reset = '0' then
-			state <= s1;
-			elsif start_stop = '1' then
-			state <= s7;
-			elsif start_stop = '0' then
-			state <= s6;
-			end if;
-			intern_enable_timer 	<= '1';
-			intern_actief 			<= '1';
-			--rest op 0
-			intern_menu				<= '0';
-			intern_neutraal		<= '0';
-			intern_welkom			<= '0';
-		when s7 => --actieve stand (timer pauzeert)
-			if reset = '0' then
-			state <= s1;
-			elsif start_stop = '0' then
-			state <= s8;
-			elsif start_stop = '1' then
-			state <= s7;
-			end if;
-			intern_enable_timer 	<= '0';
-			intern_actief 			<= '1';
-			--rest op 0
-			intern_menu				<= '0';
-			intern_neutraal		<= '0';
-			intern_welkom			<= '0';
-		when s8 => --actieve stand (timer pauzeert)
-			if reset = '0' then
-			state <= s1;
-			elsif start_stop = '1' then
-			state <= s5;
-			elsif start_stop = '0' then
-			state <= s8;
-			end if;
-			intern_enable_timer 	<= '0';
-			intern_actief 			<= '1';
-			--rest op 0
-			intern_menu				<= '0';
-			intern_neutraal		<= '0';
-			intern_welkom			<= '0';
-		when s9 => --neutrale scherm
-			if reset = '0' then
-			state <= s1;
-			elsif mode = '1' then
-			state <= s10;
-			elsif mode = '0' then
-			state <= s9;
-			end if;
-			intern_neutraal 		<= '1';
-			--rest op 0
-			intern_actief 			<= '0';
-			intern_menu				<= '0';
-			intern_welkom			<= '0';
-		when s10 => --menu scherm
-			if reset = '0' then
-			state <= s1;
-			elsif mode = '0' then
-			state <= s11;
-			else
-			state <= s10;
-			end if;
-			intern_menu 			<= '1';
-			--rest op 0
-			intern_actief			<= '0';
-			intern_neutraal		<= '0';
-			intern_welkom			<= '0';
-		when s11 => --menu scherm
-			if reset = '0' then
-			state <= s1;
-			elsif mode = '1' then
 			state <= s3;
+			end if;
+			intern_neutraal 		<= '1';
+			--zet timer aan
+			intern_enable_timer	<= '1';
+			--rest op 0
+			intern_welkom			<= '0';
+			intern_actief			<= '0';
+			intern_actief2			<= '0';
+			intern_eind				<= '0';
+			--zet buffer
+			state_buffer <= s3;
+			--zorg voor huidige rpm
+			outputtotal <= '0';
+			--tel 30 seconden
+			timer1 <= timer1 + 1;
+		when s4 => --start_stop control voor neutrale scherm(stand en rpm)
+			if reset = '0' then
+			state <= s1;
+			elsif start_stop = '1' then
+			state <= s5;
+			elsif start_stop = '0' then
+			state <= s4;
+			else
+			state <= s3;
+			end if;
+			intern_neutraal 		<= '1';
+			--zet timer aan
+			intern_enable_timer	<= '1';
+			--rest op 0
+			intern_welkom			<= '0';
+			intern_actief			<= '0';
+			intern_actief2			<= '0';
+			intern_eind				<= '0';
+			--zorg voor huidige rpm
+			outputtotal <= '0';
+			--zet timer1 op 0
+			timer1 <= 0;
+		when s5 => --actieve stand 1 (timer loopt en hartslag)
+			if reset = '0' then
+			state <= s6;
+			elsif mode = '0' then
+			state <= s7;
+			elsif start_stop = '0' then
+			state <= s8;
+			elsif up = '0' then
+			state <= ucs;
+			elsif down = '0' then
+			state <= dcs;
+			else
+			state <= s5;
+			end if;
+			intern_actief 			<= '1';
+			--zet timer aan
+			intern_enable_timer 	<= '1';
+			--rest op 0
+			intern_neutraal		<= '0';
+			intern_welkom			<= '0';
+			intern_actief2			<= '0';
+			intern_eind				<= '0';
+			--zet buffer
+			state_buffer <= s5;
+			--zorg voor huidige rpm
+			outputtotal <= '0';
+			--zet timer1 op 0
+			timer1 <= 0;
+		when s6 => --reset control voor actieve stand 1 (timer loopt en hartslag)
+			if reset = '0' then
+			state <= s6;
+			elsif reset = '1' then
+			state <= s3;
+			else
+			state <= s5;
+			end if;
+			intern_actief 			<= '1';
+			--zet timer aan
+			intern_enable_timer 	<= '1';
+			--resetten
+			intern_reset_timer	<= '1';
+			intern_reset_hall		<= '1';
+			intern_reset_seq		<= '1';
+			--rest op 0
+			intern_neutraal		<= '0';
+			intern_welkom			<= '0';
+			intern_actief2			<= '0';
+			intern_eind				<= '0';
+			--zorg voor huidige rpm
+			outputtotal <= '0';
+			--zet timer1 op 0
+			timer1 <= 0;
+		when s7 =>  --mode control voor actieve stand 1 (timer loopt en hartslag)
+			if reset = '0' then
+			state <= s1;
+			elsif mode = '0' then
+			state <= s7;
+			elsif mode = '1' then
+			state <= s9;
+			else
+			state <= s5;
+			end if;
+			intern_actief 			<= '1';
+			--zet timer aan
+			intern_enable_timer 	<= '1';
+			--rest op 0
+			intern_neutraal		<= '0';
+			intern_welkom			<= '0';
+			intern_actief2			<= '0';
+			intern_eind				<= '0';
+			--zorg voor huidige rpm
+			outputtotal <= '0';
+			--zet timer1 op 0
+			timer1 <= 0;
+		when s8 => --start_stop control voor actieve stand 1 (timer loopt en hartslag en Huidige RPM)
+			if reset = '0' then
+			state <= s1;
+			elsif start_stop = '0' then
+			state <= s8;
+			elsif start_stop = '1' then
+			state <= fs;
+			else
+			state <= s5;
+			end if;
+			intern_actief 			<= '1';
+			--zet timer aan
+			intern_enable_timer 	<= '1';
+			--rest op 0
+			intern_neutraal		<= '0';
+			intern_welkom			<= '0';
+			intern_actief2			<= '0';
+			intern_eind				<= '0';
+			--zorg voor huidige rpm
+			outputtotal <= '0';
+			--zet timer1 op 0
+			timer1 <= 0;
+		when s9 => --actieve stand 2 (timer loopt en hartslag en gemRPM)
+			if reset = '0' then
+			state <= s10;
 			elsif mode = '0' then
 			state <= s11;
+			elsif start_stop = '0' then
+			state <= s12;
+			elsif up = '0' then
+			state <= ucs;
+			elsif down = '0' then
+			state <= dcs;
+			else
+			state <= s9;
 			end if;
-			intern_menu 			<= '1';
+			intern_actief2 		<= '1';
+			--zet timer aan
+			intern_enable_timer 	<= '1';
 			--rest op 0
 			intern_actief			<= '0';
 			intern_neutraal		<= '0';
 			intern_welkom			<= '0';
-		when s12 => --up controle state (s3)
+			intern_eind				<= '0';
+			--zet buffer
+			state_buffer <= s9;
+			--zorg voor gemRPM
+			outputtotal <= '1';
+			--zet timer1 op 0
+			timer1 <= 0;
+		when s10 => --reset control state voor actieve stand 2
+			if reset = '0' then
+			state <= s10;
+			elsif reset = '1' then
+			state <= s3;
+			else
+			state <= s9;
+			end if;
+			intern_actief2 		<= '1';
+			--zet timer aan
+			intern_enable_timer 	<= '1';
+			--resetten
+			intern_reset_timer	<= '1';
+			intern_reset_hall		<= '1';
+			intern_reset_seq		<= '1';
+			--rest op 0
+			intern_actief			<= '0';
+			intern_neutraal		<= '0';
+			intern_welkom			<= '0';
+			intern_eind				<= '0';
+			--zorg voor gemRPM
+			outputtotal <= '1';
+			--zet timer1 op 0
+			timer1 <= 0;
+		when s11 => --mode control state voor actieve stand 2
 			if reset = '0' then
 			state <= s1;
-			elsif up = '1' then
+			elsif mode = '0' then
+			state <= s11;
+			elsif mode <= '1' then
+			state <= s5;
+			else
+			state <= s9;
+			end if;
+			intern_actief2 		<= '1';
+			--zet timer aan
+			intern_enable_timer 	<= '1';
+			--rest op 0
+			intern_actief			<= '0';
+			intern_neutraal		<= '0';
+			intern_welkom			<= '0';
+			intern_eind				<= '0';
+			--zorg voor gemRPM
+			outputtotal <= '1';
+			--zet timer1 op 0
+			timer1 <= 0;
+		when s12 => --start_stop control state voor actieve stand 2
+			if reset = '0' then
+			state <= s1;
+			elsif start_stop = '0' then
+			state <= s12;
+			elsif start_stop = '1' then
+			state <= fs;
+			else
+			state <= s9;
+			end if;
+			intern_actief2 		<= '1';
+			--zet timer aan
+			intern_enable_timer 	<= '1';
+			--rest op 0
+			intern_actief			<= '0';
+			intern_neutraal		<= '0';
+			intern_welkom			<= '0';
+			intern_eind				<= '0';
+			--zorg voor gemRPM
+			outputtotal <= '1';
+			--zet timer1 op 0
+			timer1 <= 0;
+		when fs => --eind state
+			if reset = '0' then
 			state <= s13;
-			elsif up = '0' then
-			state <= s12;
-			end if;
-			intern_neutraal <= '1';
-			--rest op 0
-			intern_actief 			<= '0';
-			intern_menu				<= '0';
-			intern_welkom			<= '0';
-		when s13 => --up state (s3)
-			if reset = '0' then
-			state <= s1;
-			elsif up = '0' then
-			state <= s12;
-			else
+			elsif start_stop = '0' then
+			state <= s14;
+			elsif timer1 = 299999 then
 			state <= s3;
 			end if;
-			intern_neutraal <= '1';
+			intern_eind				<= '1';
+			--zet timer uit
+			intern_enable_timer	<= '0';
 			--rest op 0
-			intern_actief 			<= '0';
-			intern_menu				<= '0';
+			intern_actief2			<= '0';
+			intern_actief			<= '0';
+			intern_neutraal		<= '0';
 			intern_welkom			<= '0';
-			--stand aanpassen
-			if intern_stand /= 15 then
-			intern_stand <= intern_stand + 1;
-			intern_weerstand <= intern_weerstand + 6;
+			--zorg voor gemRPM
+			outputtotal <= '1';
+			--wacht 30 seconden
+			timer1 <= timer1 + 1;
+		when s13 => --reset control state voor eind state
+			if reset = '0' then
+			state <= s13;
+			elsif reset <= '1' then
+			state <= s3;
+			else
+			state <= fs;
 			end if;
-		when s14 => --up controle state(s5)
+			intern_eind				<= '1';
+			--zet timer uit
+			intern_enable_timer	<= '0';
+			--resetten
+			intern_reset_timer	<= '1';
+			intern_reset_hall		<= '1';
+			intern_reset_seq		<= '1';
+			--rest op 0
+			intern_actief2			<= '0';
+			intern_actief			<= '0';
+			intern_neutraal		<= '0';
+			intern_welkom			<= '0';
+			--zorg voor gemRPM
+			outputtotal <= '1';
+			--zet timer1 op 0
+			timer1 <= 0;
+		when s14 => --start_stop control state voor eind state
+			if reset = '0' then
+			state <= s1;
+			elsif start_stop = '0' then
+			state <= s14;
+			elsif start_stop = '1' then
+			state <= s3;
+			else
+			state <= fs;
+			end if;
+			intern_eind				<= '1';
+			--zet timer uit
+			intern_enable_timer	<= '0';
+			--resetten
+			intern_reset_timer	<= '1';
+			intern_reset_hall		<= '1';
+			intern_reset_seq		<= '1';
+			--rest op 0
+			intern_actief2			<= '0';
+			intern_actief			<= '0';
+			intern_neutraal		<= '0';
+			intern_welkom			<= '0';
+			--zorg voor gemRPM
+			outputtotal <= '1';
+			--zet timer1 op 0
+			timer1 <= 0;
+		when ucs => --up controle state
 			if reset = '0' then
 			state <= s1;
 			elsif up = '1' then
-			state <= s15;
+			state <= ufs;
 			elsif up = '0' then
-			state <= s14;
+			state <= ucs;
 			end if;
-			intern_actief <= '1';
-			intern_enable_timer <= '1';
-			--rest op 0
-			intern_menu				<= '0';
-			intern_neutraal		<= '0';
-			intern_welkom			<= '0';
-		when s15 => --up state (s5)
+		when ufs => --up final state
 			if reset = '0' then
 			state <= s1;
-			elsif up = '0' then
-			state <= s14;
-			else
-			state <= s5;
 			end if;
-			intern_actief <= '1';
-			intern_enable_timer <= '1';
-			--rest op 0
-			intern_menu				<= '0';
-			intern_neutraal		<= '0';
-			intern_welkom			<= '0';
 			--stand aanpassen
 			if intern_stand /= 15 then
 			intern_stand <= intern_stand + 1;
 			intern_weerstand <= intern_weerstand + 6;
 			end if;
-		when s16 => --down controle state (s3)
+			--zet state weer terug
+			state <= state_buffer;
+		when dcs => --down controle state
 			if reset = '0' then
 			state <= s1;
 			elsif down = '1' then
-			state <= s17;
+			state <= dfs;
 			elsif down = '0' then
-			state <= s16;
+			state <= dcs;
 			end if;
-			intern_neutraal <= '1';
-			--rest op 0
-			intern_actief 			<= '0';
-			intern_menu				<= '0';
-			intern_welkom			<= '0';
-		when s17 => --down state (s3)
+		when dfs => --down state
 			if reset = '0' then
 			state <= s1;
-			elsif down = '0' then
-			state <= s16;
-			else
-			state <= s3;
 			end if;
-			intern_neutraal <= '1';
-			--rest op 0
-			intern_actief 			<= '0';
-			intern_menu				<= '0';
-			intern_welkom			<= '0';
 			--stand aanpassen
 			if intern_stand /= 0 then
 			intern_stand <= intern_stand - 1;
 			intern_weerstand <= intern_weerstand - 6;
 			end if;
-		when s18 => --down controle state (s5)
-			if reset = '0' then
-			state <= s1;
-			elsif down = '1' then
-			state <= s19;
-			elsif down = '0' then
-			state <= s18;
-			end if;
-			intern_actief <= '1';
-			intern_enable_timer <= '1';
-			--rest op 0
-			intern_menu				<= '0';
-			intern_neutraal		<= '0';
-			intern_welkom			<= '0';
-		when s19 => --down state (s5)
-			if reset = '0' then
-			state <= s1;
-			elsif down = '0' then
-			state <= s18;
-			else
-			state <= s5;
-			end if;
-			intern_actief <= '1';
-			intern_enable_timer <= '1';
-			--rest op 0
-			intern_menu				<= '0';
-			intern_neutraal		<= '0';
-			intern_welkom			<= '0';
-			--stand aanpassen
-			if intern_stand /= 0 then
-			intern_stand <= intern_stand - 1;
-			intern_weerstand <= intern_weerstand - 6;
-			end if;
+			--zet state weer terug
+			state <= state_buffer;
 		when others =>
 			state <= s1;
 		end case;
@@ -383,8 +486,10 @@ reset_seq		<= intern_reset_seq;
 welkom			<= intern_welkom;
 neutraal			<= intern_neutraal;
 actief			<= intern_actief;
-menu				<= intern_menu;
-stand				<= conv_std_logic_vector(intern_stand, 4);
+actief2			<= intern_actief2;
+eind				<= intern_eind;
+stand				<= intern_stand;
+--stand				<= conv_std_logic_vector(intern_stand, 4);
 weerstand		<= conv_std_logic_vector(intern_weerstand, 8);
 
 end architecture;

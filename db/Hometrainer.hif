@@ -99,46 +99,6 @@ USR
 
 # end
 # entity
-prescaler
-# storage
-db|Hometrainer.(5).cnf
-db|Hometrainer.(5).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-prescaler.vhd
-b2557ebc29c93e57861be63fce9347d
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
-freqin
-50000000
-PARAMETER_SIGNED_DEC
-DEF
-freqout
-10000
-PARAMETER_SIGNED_DEC
-DEF
-}
-# hierarchies {
-prescaler:ClockScaler
-}
-# macro_sequence
-
-# end
-# entity
 seg_decoder
 # storage
 db|Hometrainer.(9).cnf
@@ -171,130 +131,6 @@ USR
 6 downto 0
 PARAMETER_STRING
 USR
-}
-# hierarchies {
-seg_decoder:Digit0
-seg_decoder:Digit1
-seg_decoder:Digit2
-seg_decoder:Digit5
-seg_decoder:Digit6
-seg_decoder:Digit7
-seg_decoder:Digit3
-seg_decoder:Digit4
-}
-# macro_sequence
-
-# end
-# entity
-HallCounter
-# storage
-db|Hometrainer.(7).cnf
-db|Hometrainer.(7).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-hallcounter.vhd
-5ff6a87c08c3d2791488c18a0afaa9e
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
- constraint(data)
-31 downto 0
-PARAMETER_STRING
-USR
-}
-# hierarchies {
-HallCounter:HallSensCount
-}
-# macro_sequence
-
-# end
-# entity
-FSMnep
-# storage
-db|Hometrainer.(3).cnf
-db|Hometrainer.(3).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-fsmnep.vhd
-50c08d3b472cf8040805b5255bf1cbd
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
- constraint(sw1710)
-7 downto 0
-PARAMETER_STRING
-USR
- constraint(stand)
-7 downto 0
-PARAMETER_STRING
-USR
-}
-# macro_sequence
-
-# end
-# entity
-double_dabble_8bit
-# storage
-db|Hometrainer.(10).cnf
-db|Hometrainer.(10).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-double.vhd
-1695f9fe5ebf98a2acbf1db980383a78
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
- constraint(bin)
-7 downto 0
-PARAMETER_STRING
-USR
- constraint(bcd)
-9 downto 0
-PARAMETER_STRING
-USR
-}
-# hierarchies {
-double_dabble_8bit:converter
-double_dabble_8bit:converter2
 }
 # macro_sequence
 
@@ -335,66 +171,6 @@ USR
 }
 # hierarchies {
 Hbrug:Motorsturing
-}
-# macro_sequence
-
-# end
-# entity
-SequentialDevider
-# storage
-db|Hometrainer.(8).cnf
-db|Hometrainer.(8).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-sequentialdevider.vhd
-29e354fe64382c0a3d4b3c2dd70c1
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
- constraint(tempcount)
-14 downto 0
-PARAMETER_STRING
-USR
- constraint(sec)
-5 downto 0
-PARAMETER_STRING
-USR
- constraint(min)
-5 downto 0
-PARAMETER_STRING
-USR
- constraint(hr)
-6 downto 0
-PARAMETER_STRING
-USR
- constraint(halldata)
-31 downto 0
-PARAMETER_STRING
-USR
- constraint(currentrpm)
-7 downto 0
-PARAMETER_STRING
-USR
- constraint(totavgrpm)
-7 downto 0
-PARAMETER_STRING
-USR
-}
-# hierarchies {
-SequentialDevider:Devider
 }
 # macro_sequence
 
@@ -448,76 +224,6 @@ Timer:TotalTimer
 
 # end
 # entity
-hometrainer_fsm
-# storage
-db|Hometrainer.(11).cnf
-db|Hometrainer.(11).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-hometrainer_fsm.vhd
-8e9ff46d8452e391c78642a2e47bfb
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
- constraint(stand)
-3 downto 0
-PARAMETER_STRING
-USR
- constraint(weerstand)
-7 downto 0
-PARAMETER_STRING
-USR
-}
-# hierarchies {
-hometrainer_fsm:FSM
-}
-# macro_sequence
-
-# end
-# entity
-Hometrainer
-# storage
-db|Hometrainer.(0).cnf
-db|Hometrainer.(0).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-hometrainer.vhd
-ad53725db74f7da0cb44e71e3012a2f5
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
 Ontdender
 # storage
 db|Hometrainer.(12).cnf
@@ -548,6 +254,729 @@ Ontdender:ontdender3
 Ontdender:ontdender4
 Ontdender:ontdender5
 Ontdender:ontdender6
+}
+# macro_sequence
+
+# end
+# entity
+prescaler
+# storage
+db|Hometrainer.(5).cnf
+db|Hometrainer.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+prescaler.vhd
+3b5c83e13613a0803eb38442d64412d
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+freqin
+50000000
+PARAMETER_SIGNED_DEC
+DEF
+freqout
+10000
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+prescaler:ClockScaler
+}
+# macro_sequence
+
+# end
+# entity
+hartslagsensor
+# storage
+db|Hometrainer.(11).cnf
+db|Hometrainer.(11).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+hartslagsensor.vhd
+b3c8c4518b9e57d3e629317eb257823
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(bpm)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+hartslagsensor:Heartbeatsensor
+}
+# macro_sequence
+
+# end
+# entity
+double_dabble_8bit
+# storage
+db|Hometrainer.(13).cnf
+db|Hometrainer.(13).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+double_8bit.vhd
+1695f9fe5ebf98a2acbf1db980383a78
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(bin)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(bcd)
+9 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+double_dabble_8bit:converter
+double_dabble_8bit:converter2
+double_dabble_8bit:converter3
+}
+# macro_sequence
+
+# end
+# entity
+double_dabble_6bit
+# storage
+db|Hometrainer.(10).cnf
+db|Hometrainer.(10).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+double_6bit.vhd
+b5c639f6975acf8e9c8681c18943af2
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(bin)
+5 downto 0
+PARAMETER_STRING
+USR
+ constraint(bcd)
+6 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+double_dabble_6bit:converter4
+double_dabble_6bit:converter5
+}
+# macro_sequence
+
+# end
+# entity
+double_dabble_7bit
+# storage
+db|Hometrainer.(14).cnf
+db|Hometrainer.(14).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+double_7bit.vhd
+979bff78d1d4f195d94ecd8fb972367a
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(bin)
+6 downto 0
+PARAMETER_STRING
+USR
+ constraint(bcd)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+double_dabble_7bit:converter6
+}
+# macro_sequence
+
+# end
+# entity
+HallCounter
+# storage
+db|Hometrainer.(7).cnf
+db|Hometrainer.(7).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+hallcounter.vhd
+75a6a43624512e0668f52ca42b123bf
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(data)
+31 downto 0
+PARAMETER_STRING
+USR
+}
+# macro_sequence
+
+# end
+# entity
+double_dabble_32bit
+# storage
+db|Hometrainer.(15).cnf
+db|Hometrainer.(15).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+double_32bit.vhd
+888c2577617ad93e2c3410c911d8476a
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(bin)
+31 downto 0
+PARAMETER_STRING
+USR
+ constraint(bcd)
+39 downto 0
+PARAMETER_STRING
+USR
+}
+# macro_sequence
+
+# end
+# entity
+HallCounter
+# storage
+db|Hometrainer.(8).cnf
+db|Hometrainer.(8).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+hallcounter.vhd
+75a6a43624512e0668f52ca42b123bf
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(data)
+20 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+HallCounter:HallSensCount
+}
+# macro_sequence
+
+# end
+# entity
+SequentialDevider
+# storage
+db|Hometrainer.(16).cnf
+db|Hometrainer.(16).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+sequentialdevider.vhd
+b0629a4a96c4ba39074ab9263d72d0
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(tempcount)
+14 downto 0
+PARAMETER_STRING
+USR
+ constraint(sec)
+5 downto 0
+PARAMETER_STRING
+USR
+ constraint(min)
+5 downto 0
+PARAMETER_STRING
+USR
+ constraint(hr)
+6 downto 0
+PARAMETER_STRING
+USR
+ constraint(halldata)
+20 downto 0
+PARAMETER_STRING
+USR
+ constraint(currentrpm)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(totavgrpm)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+SequentialDevider:Devider
+}
+# macro_sequence
+
+# end
+# entity
+double_dabble_32bit
+# storage
+db|Hometrainer.(17).cnf
+db|Hometrainer.(17).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+double_32bit.vhd
+888c2577617ad93e2c3410c911d8476a
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(bin)
+20 downto 0
+PARAMETER_STRING
+USR
+ constraint(bcd)
+27 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+double_dabble_32bit:converter7
+}
+# macro_sequence
+
+# end
+# entity
+hometrainer_fsm
+# storage
+db|Hometrainer.(3).cnf
+db|Hometrainer.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+hometrainer_fsm.vhd
+27c024814cc34d983b5d91bdeeb1eed
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(stand)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(weerstand)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+hometrainer_fsm:FSM
+}
+# macro_sequence
+
+# end
+# entity
+LCDDriver
+# storage
+db|Hometrainer.(18).cnf
+db|Hometrainer.(18).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+lcddriver.vhd
+948ad4c23ca895f8beed5ca5d6280
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(screenmessage)
+1 to 4,1 to 16
+PARAMETER_STRING
+USR
+ constraint(io_a)
+10 downto 0
+PARAMETER_STRING
+USR
+}
+# include_file {
+lcdmessagepkg.vhd
+a647315768a61dd53549d334ac1e170
+}
+# hierarchies {
+LCDDriver:ScreenDriver
+}
+# macro_sequence
+
+# end
+# entity
+LCDData
+# storage
+db|Hometrainer.(19).cnf
+db|Hometrainer.(19).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+lcddata.vhd
+45285ee37a29274c8e39b9d1e7936ec
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(totalrounds)
+27 downto 0
+PARAMETER_STRING
+USR
+ constraint(currentrpm)
+11 downto 0
+PARAMETER_STRING
+USR
+ constraint(totavgrpm)
+11 downto 0
+PARAMETER_STRING
+USR
+ constraint(stand)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(sec)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(min)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(hr)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(heartbeat)
+11 downto 0
+PARAMETER_STRING
+USR
+ constraint(screenmessage)
+1 to 4,1 to 16
+PARAMETER_STRING
+USR
+}
+# include_file {
+lcdmessagepkg.vhd
+a647315768a61dd53549d334ac1e170
+}
+# hierarchies {
+LCDData:LCDDataAndRefresh
+}
+# macro_sequence
+
+# end
+# entity
+double_dabble_4bit
+# storage
+db|Hometrainer.(20).cnf
+db|Hometrainer.(20).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+double_4bit.vhd
+18ebb12fad895ec386ed12bf8f1c5e
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+ constraint(bin)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(bcd)
+4 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+double_dabble_4bit:converter8
+}
+# macro_sequence
+
+# end
+# entity
+LCDDriver_Module
+# storage
+db|Hometrainer.(21).cnf
+db|Hometrainer.(21).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+lcddriver_module.vhd
+331a5c32519c2146a7e0dd3c6b15148
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+freq
+10000
+PARAMETER_SIGNED_DEC
+USR
+areset_pol
+'1'
+PARAMETER_ENUM
+USR
+time_init1
+40000000000000 fs
+PARAMETER_PHYSICAL
+USR
+time_init2
+4100000000000 fs
+PARAMETER_PHYSICAL
+USR
+time_init3
+100000000000 fs
+PARAMETER_PHYSICAL
+USR
+time_tas
+60000000 fs
+PARAMETER_PHYSICAL
+USR
+time_cycle_e
+2000000000 fs
+PARAMETER_PHYSICAL
+USR
+time_pweh
+500000000 fs
+PARAMETER_PHYSICAL
+USR
+time_no_bf
+2000000000000 fs
+PARAMETER_PHYSICAL
+USR
+cursor_on
+false
+PARAMETER_ENUM
+USR
+blink_on
+false
+PARAMETER_ENUM
+USR
+use_bf
+false
+PARAMETER_ENUM
+USR
+ constraint(data)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(lcd_db)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+LCDDriver:ScreenDriver|LCDDriver_Module:lcdm
+}
+# macro_sequence
+
+# end
+# entity
+Hometrainer
+# storage
+db|Hometrainer.(0).cnf
+db|Hometrainer.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+hometrainer.vhd
+c6b7d64ccd10774ace4b7ac478663860
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# include_file {
+lcdmessagepkg.vhd
+a647315768a61dd53549d334ac1e170
+}
+# hierarchies {
+|
 }
 # macro_sequence
 

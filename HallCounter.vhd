@@ -8,12 +8,12 @@ entity HallCounter is
 			reset			: in std_logic;
 			Hallsensor  : in std_logic;
 			refresh 		: out std_logic; -- Signals sequential devider to refresh output to new value
-			data 			: out unsigned(31 downto 0)
+			data 			: out unsigned(20 downto 0)
 			);
 end entity HallCounter;
 
 architecture hardware of HallCounter is
-signal TotalCount : unsigned(31 downto 0);
+signal TotalCount : unsigned(20 downto 0);
 signal DelayCount : integer range 0 to 3;
 signal CalcTick : std_logic;
 
@@ -27,7 +27,7 @@ begin
 
 		if reset = '1' then
 			state <= Rest;
-			TotalCount <= "00000000000000000000000000000000";
+			TotalCount <= "000000000000000000000";
 			DelayCount <= 0;
 			CalcTick <= '0';
 		elsif rising_edge(Clk_10k) then

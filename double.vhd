@@ -2,23 +2,23 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity double_dabble_8bit is
+entity double_dabble_5bit is
 port (clk : in std_logic;
 	areset : in std_logic;
 	--start : in std_logic;
-	bin : in unsigned (7 downto 0);
-	bcd : out unsigned (9 downto 0)
+	bin : in unsigned (4 downto 0);
+	bcd : out unsigned (6 downto 0)
 	--ready : out std_logic
 );
-end entity double_dabble_8bit;
+end entity double_dabble_5bit;
 
 -- This is the first of multiple architectures describing the
 -- Double Dabble algorithm. The ready signal is registered and
 -- becomes logic 1 when the counter is 0. This is one clock cycle
 -- after the counter has become 0.
-architecture rtl_reg_ready of double_dabble_8bit is
+architecture rtl_reg_ready of double_dabble_5bit is
 -- The internal counter keeps track of the number of iterations
-signal counter : integer range 0 to 8;
+signal counter : integer range 0 to 5;
 -- Internal storage for presented binary number
 signal bin_int : unsigned(7 downto 0);
 signal readyint : std_logic := '1';
@@ -51,7 +51,7 @@ begin
             -- the internal BCD register and load the binary number into
             -- the internal storage. Clear the ready flag.
             if readyint = '1' then -- and start = '1'
-                counter <= 8;
+                counter <= 5;
                 bcd_int := "0000000000";
                 bin_int <= bin;
 					 readyint <= '0';
@@ -80,7 +80,7 @@ begin
             else
                 -- Counter done, so ready
                 --ready <= '1';
-					 bcd <= bcd_int;
+					 bcd <= bcd_int(6 downto 0);
 					 
 					 readyint <= '1';
             end if;

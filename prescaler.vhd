@@ -27,7 +27,7 @@ entity prescaler is
 				freqout : positive := 10000
 				);
 	port (clkin  : in std_logic;
-			reset : in std_logic;
+			--reset : in std_logic;
 			clkout : out std_logic
 			);
 end entity prescaler;
@@ -49,11 +49,11 @@ begin
 	begin
 		-- The global reset signal. Reset the lot.
 		if rising_edge(clkin) then
-			if reset = '1' then
-				count <= 0;
-				clkint := '0';
+--			if reset = '1' then
+--				count <= 0;
+--				clkint := '0';
 			-- If we're at the top...
-			elsif count = countmax then
+			if count = countmax then
 				-- Toggle the output clock and restart counting...
 				clkint := not clkint;
 				count <= 0;

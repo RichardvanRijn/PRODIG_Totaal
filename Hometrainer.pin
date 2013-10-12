@@ -302,7 +302,7 @@ GND*                         : AG23      :        :                   :         
 GND*                         : AG24      :        :                   :         : 7         :                
 GND*                         : AG25      :        :                   :         : 7         :                
 GND*                         : AG26      :        :                   :         : 7         :                
-SW[7]                        : AG27      : input  : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AG27      :        :                   :         : 7         :                
 GND*                         : AG28      :        :                   :         : 6         :                
 GND*                         : AG29      :        :                   :         : 6         :                
 VCCIO6                       : AG30      : power  :                   : 3.3V    : 6         :                
@@ -420,7 +420,7 @@ GND*                         : B23       :        :                   :         
 GND*                         : B24       :        :                   :         : 4         :                
 GND*                         : B25       :        :                   :         : 4         :                
 GND*                         : B26       :        :                   :         : 4         :                
-GND*                         : B27       :        :                   :         : 4         :                
+SW[7]                        : B27       : input  : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : B28       :        :                   :         : 4         :                
 GND*                         : B29       :        :                   :         : 4         :                
 GND                          : B30       : gnd    :                   :         :           :                
@@ -662,7 +662,7 @@ IO_A[23]                     : K25       : bidir  : 3.3-V LVTTL       :         
 GND*                         : K26       :        :                   :         : 5         :                
 GND*                         : K27       :        :                   :         : 5         :                
 GND*                         : K28       :        :                   :         : 5         :                
-GND*                         : K29       :        :                   :         : 5         :                
+heartbeat                    : K29       : input  : 3.3-V LVTTL       :         : 5         : Y              
 GND*                         : K30       :        :                   :         : 5         :                
 HEX5_D[1]                    : L1        : output : 3.3-V LVTTL       :         : 2         : Y              
 HEX5_D[2]                    : L2        : output : 3.3-V LVTTL       :         : 2         : Y              

@@ -12,7 +12,7 @@ entity SequentialDevider is
 			sec			: in unsigned(5 downto 0);
 			min			: in unsigned(5 downto 0);
 			hr				: in unsigned(6 downto 0);
-			Halldata 	: in unsigned(31 downto 0);
+			Halldata 	: in unsigned(20 downto 0);
 			CurrentRPM	: out unsigned(7 downto 0);
 			TotAvgRPM	: out unsigned(7 downto 0)
 			);
@@ -21,7 +21,7 @@ end entity SequentialDevider;
 architecture hardware of SequentialDevider is
 signal TempBottom, TempTop : unsigned(19 downto 0);
 signal TotBottom, TotSecs : unsigned(31 downto 0); --TotTop
-signal TotTop : unsigned (63 downto 0);
+signal TotTop : unsigned (41 downto 0);
 signal TempRPM_Calc, TempRPM_Final, TotRPM_Final: unsigned(7 downto 0);
 signal TotRPS_Calc : unsigned (7 downto 0);
 signal TempRunning, TotRunning : std_logic;
@@ -37,7 +37,7 @@ begin
 			TempBottom <= "00000000000000000000";
 			TempTop <= "00000000000000000000";
 			TotBottom <= "00000000000000000000000000000000";
-			TotTop <= "0000000000000000000000000000000000000000000000000000000000000000";
+			TotTop <= "000000000000000000000000000000000000000000";
 			TotSecs <= "00000000000000000000000000000000";
 			TempRPM_Calc <= "00000000";
 			TempRPM_Final <= "00000000";

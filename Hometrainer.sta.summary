@@ -3,27 +3,27 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow Model Setup 'prescaler:ClockScaler|clkint'
-Slack : -4.891
-TNS   : -691.093
+Slack : -7.906
+TNS   : -2724.346
 
 Type  : Slow Model Setup 'CLOCK_50'
-Slack : -1.756
-TNS   : -22.042
+Slack : -1.351
+TNS   : -17.110
 
 Type  : Slow Model Hold 'CLOCK_50'
-Slack : -2.698
-TNS   : -2.698
+Slack : -2.713
+TNS   : -2.713
 
 Type  : Slow Model Hold 'prescaler:ClockScaler|clkint'
 Slack : 0.391
 TNS   : 0.000
 
 Type  : Slow Model Recovery 'prescaler:ClockScaler|clkint'
-Slack : -3.022
-TNS   : -447.256
+Slack : -3.031
+TNS   : -1368.939
 
 Type  : Slow Model Removal 'prescaler:ClockScaler|clkint'
-Slack : 3.792
+Slack : 2.953
 TNS   : 0.000
 
 Type  : Slow Model Minimum Pulse Width 'CLOCK_50'
@@ -32,30 +32,30 @@ TNS   : -14.380
 
 Type  : Slow Model Minimum Pulse Width 'prescaler:ClockScaler|clkint'
 Slack : -0.500
-TNS   : -270.000
+TNS   : -857.000
 
 Type  : Fast Model Setup 'prescaler:ClockScaler|clkint'
-Slack : -1.743
-TNS   : -206.925
+Slack : -2.823
+TNS   : -837.803
 
 Type  : Fast Model Setup 'CLOCK_50'
-Slack : -0.290
-TNS   : -3.480
+Slack : -0.144
+TNS   : -1.728
 
 Type  : Fast Model Hold 'CLOCK_50'
-Slack : -1.688
-TNS   : -1.688
+Slack : -1.700
+TNS   : -1.700
 
 Type  : Fast Model Hold 'prescaler:ClockScaler|clkint'
 Slack : 0.215
 TNS   : 0.000
 
 Type  : Fast Model Recovery 'prescaler:ClockScaler|clkint'
-Slack : -1.334
-TNS   : -197.432
+Slack : -1.275
+TNS   : -576.079
 
 Type  : Fast Model Removal 'prescaler:ClockScaler|clkint'
-Slack : 2.214
+Slack : 1.802
 TNS   : 0.000
 
 Type  : Fast Model Minimum Pulse Width 'CLOCK_50'
@@ -64,6 +64,6 @@ TNS   : -14.380
 
 Type  : Fast Model Minimum Pulse Width 'prescaler:ClockScaler|clkint'
 Slack : -0.500
-TNS   : -270.000
+TNS   : -857.000
 
 ------------------------------------------------------------
